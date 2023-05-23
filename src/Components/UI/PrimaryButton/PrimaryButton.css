@@ -1,0 +1,12 @@
+.btn {
+  font-family: inherit;
+  opacity: 0.5;
+  color: var(--color-static-sb);
+  background: var(--bg-static-sb);
+}
+
+.btn:hover {
+  opacity: 0.8;
+  cursor: pointer;
+  color: var(--color-hover-sb);
+}

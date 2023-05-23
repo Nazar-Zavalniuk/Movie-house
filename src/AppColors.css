@@ -1,0 +1,121 @@
+:root {
+  /* Main page */
+  --bg-page-mp: #000000;
+  --bg-wrapper-mp: #111111;
+  --page-color-mp: #aaa;
+
+  /* Page navigation buttons */
+  --bg-static-pnb: #333;
+  --bg-hover-pnb: #454545;
+  --color-static-pnb: #ccc;
+  --color-hover-pnb: #fff;
+
+  /* Movie card */
+  --bg-empty-star-mc: #949494;
+  --bg-filled-star-mc: #fed70b;
+  --bg-static-mc: #222;
+  --bg-hover-mc: #353535;
+  --color-static-mc: #aaa;
+  --color-hover-mc: #ddd;
+  --color-rel-year-mc: #bf090e;
+
+  /* Nav bar buttons */
+  --bg-static-nbb: #181818;
+  --bg-hover-nbb: #333;
+  --color-static-nbb: #999;
+  --color-hover-nbb: #ddd;
+
+  /* Search button */
+  --bg-static-sb: #333;
+  --color-static-sb: #fff;
+  --color-hover-sb: #ddd;
+
+  /* Serch input */
+  --bg-static-si: #080808;
+  --bg-hover-si: #484848;
+  --bc-static-si: #333;
+  --color-static-si: #ddd;
+  --color-hover-si: #888;
+  --color-focus-si: #fff;
+
+  /* Side bar */
+  --bg-sb: #181818;
+
+  /* Side bar buttons */
+  --bg-static-sbb: #222;
+  --bg-hover-sbb: #333;
+  --color-static-sbb: #aaa;
+  --color-hover-sbb: #ddd;
+
+  /* Side bar recommendations */
+  --bg-sbr: #222;
+
+  /* Side bar recomendations movie card */
+  --bg-static-sbrms: #292929;
+  --bg-hover-sbrms: #353535;
+  --color-static-sbrms: #aaa;
+  --color-hover-sbrms: #ddd;
+
+  /* Footer */
+  --bg-f: #181818;
+  --color-f: #777;
+  --color-static-link-f: #aaa;
+  --color-hover-link-f: #ddd;
+
+  /* Page registration/login */
+  --bg-body-prl: #181818;
+  --color-body-static-prl: #aaa;
+  --bg-form-prl: #222;
+  --color-body-hover-prl: #ccc;
+
+  /* Page registration/login inputs*/
+  --bg-static-prli: #333;
+  --color-static-prli: #eee;
+  --outline-prli: #fff;
+
+  /* Page registration/login buttons*/
+  --bg-static-prlb: #333;
+  --color-static-prlb: #ddd;
+  --bc-static-prlb: #181818;
+  --bc-hover-prlb: #444;
+  --color-hover-prlb: #eee;
+  --bg-active-prlb: #21759b;
+  --color-active-prlb: #eaf2fa;
+
+  /* Page faq */
+  --bg-title-faq: #333;
+  --color-title-faq: #ccc;
+  --color-link-faq: #ccc;
+  --color-text-faq: #aaa;
+
+  /* Movie page */
+  --bg-body-movp: #181818;
+  --bc-img-movp: #252525;
+  --bg-el-movp: #222;
+  --bg-sub-el-static-movp: #292929;
+  --bg-sub-el-hover-movp: #353535;
+  --prim-color-text-info-movp: #a5a5a5;
+  --sec-color-text-info-movp: #dadada;
+  --th-static-color-text-info-movp: #ccc;
+  --th-hover-color-text-info-movp: #eee;
+  --four-static-color-text-info-movp: #777;
+  --four-hover-color-text-info-movp: #bbb;
+  --color-fl-text-info-movp: #f00;
+
+  /* Movie page movie card*/
+  --color-static-movpmc: #aaa;
+  --color-hover-movpmc: #ddd;
+
+  /* Movie page buttons*/
+  --bg-hover-movpb: #333;
+  --color-hover-movpb: #333;
+  --color-static-movpb: #bbb;
+
+  /* Movie page comments*/
+  --bg-user-name-movpc: #292929;
+  --color-user-name-movpc: #ccc;
+  --color-user-com-movpc: #aaa;
+
+  /* Movie page movie */
+  --bg-movpm: #000000;
+}

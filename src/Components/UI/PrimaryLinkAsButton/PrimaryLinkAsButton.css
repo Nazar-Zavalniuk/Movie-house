@@ -1,0 +1,14 @@
+.link-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--color-static-sbb);
+  background: var(--bg-static-sbb);
+}
+
+.link-btn:hover {
+  color: var(--color-hover-sbb);
+  background: var(--bg-hover-sbb);
+}
