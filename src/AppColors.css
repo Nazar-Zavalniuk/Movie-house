@@ -1,8 +1,17 @@
 :root {
   /* Main page */
-  --bg-page-mp: #000000;
+  --bg-page-mp: #000;
   --bg-wrapper-mp: #111111;
   --page-color-mp: #aaa;
+
+  /* Logo */
+  --color-static-logo: #aaa;
+  --color-hover-logo: #ccc;
+
+  /* Main page list hot links */
+  --color-static-lhl: #aaa;
+  --color-hover-lhl: #ccc;
+  --bc-mplhl: #a5a5a566;
 
   /* Page navigation buttons */
   --bg-static-pnb: #333;
@@ -10,14 +19,26 @@
   --color-static-pnb: #ccc;
   --color-hover-pnb: #fff;
 
-  /* Movie card */
-  --bg-empty-star-mc: #949494;
-  --bg-filled-star-mc: #fed70b;
-  --bg-static-mc: #222;
-  --bg-hover-mc: #353535;
-  --color-static-mc: #aaa;
-  --color-hover-mc: #ddd;
-  --color-rel-year-mc: #bf090e;
+  /* Big movie card */
+  --bg-empty-star-bmc: #959595;
+  --bg-filled-star-bmc: #fed70b;
+  --bg-static-bmc: #222;
+  --bg-hover-bmc: #353535;
+  --color-static-bmc: #bbb;
+  --color-hover-bmc: #eee;
+  --color-rel-year-bmc: #bf090e;
+
+  /* Middle movie card */
+  --bg-static-mmc: #222;
+  --bg-hover-mmc: #353535;
+  --color-static-mmc: #aaa;
+  --color-hover-mmc: #ddd;
+
+  /* Small movie card */
+  --bg-static-smc: #292929;
+  --bg-hover-smc: #353535;
+  --color-static-smc: #aaa;
+  --color-hover-smc: #ddd;
 
   /* Nav bar buttons */
   --bg-static-nbb: #181818;
@@ -32,7 +53,7 @@
 
   /* Serch input */
   --bg-static-si: #080808;
-  --bg-hover-si: #484848;
+  --bc-hover-si: #484848;
   --bc-static-si: #333;
   --color-static-si: #ddd;
   --color-hover-si: #888;
