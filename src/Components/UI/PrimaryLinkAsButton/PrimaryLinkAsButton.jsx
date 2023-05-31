@@ -1,14 +1,15 @@
 import React from "react";
 import "./PrimaryLinkAsButton.css";
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 
-function PrimaryLinkAsButton({ className, children, href, ...props }) {
+function PrimaryLinkAsButton({ className, children, link, ...props }) {
   const classNameLink = classNames("link-btn", className);
 
   return (
-    <a {...props} className={classNameLink} href={href}>
+    <Link {...props} className={classNameLink} to={link}>
       {children}
-    </a>
+    </Link>
   );
 }
 
