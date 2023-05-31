@@ -1,0 +1,54 @@
+.ml-big {
+  width: 212px;
+  height: 357px;
+  margin: 2px;
+  font-size: 13px;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  transition: 0.2s;
+  color: var(--color-static-bmc);
+  background: var(--bg-static-bmc);
+}
+
+.ml-big:hover {
+  color: var(--color-hover-bmc);
+  background: var(--bg-hover-bmc);
+}
+
+.imc-big {
+  margin: 5px 6px;
+}
+
+.mt-big {
+  padding: 0 6px;
+  width: 200px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rating-and-year {
+  margin-top: 3px;
+  padding: 0 6px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.ml-big svg.star.empty {
+  color: var(--bg-empty-star-bmc);
+}
+
+.ml-big svg.star.filled {
+  color: var(--bg-filled-star-bmc);
+}
+
+.year {
+  font-size: 15px;
+  font-weight: bold;
+  font-style: italic;
+  line-height: 1;
+  color: var(--color-rel-year-bmc);
+}

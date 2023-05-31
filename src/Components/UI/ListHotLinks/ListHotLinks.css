@@ -1,0 +1,36 @@
+.hot-links {
+  display: flex;
+  margin: 7px 0 0 7.8px;
+}
+
+.hot-links li {
+  list-style: none;
+  border-right: 1px solid var(--bc-lhl);
+}
+
+.hot-links li:last-child {
+  border: none;
+}
+
+.hot-link {
+  display: inline-flex;
+}
+
+.hot-link,
+.hot-links .btn {
+  margin: 0 10px;
+  padding: 2px 3px;
+  text-decoration: none;
+  color: var(--color-static-lhl);
+}
+
+.hot-link:hover,
+.hot-links .btn:hover {
+  color: var(--color-hover-lhl);
+}
+
+.hot-links .btn {
+  font-size: inherit;
+  opacity: initial;
+  background: none;
+}

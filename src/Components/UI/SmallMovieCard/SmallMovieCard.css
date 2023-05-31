@@ -1,0 +1,30 @@
+.ml-small {
+  width: 127px;
+  height: 203px;
+  margin: 3px;
+  font-size: 11px;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  transition: 0.2s;
+  color: var(--color-static-smc);
+  background: var(--bg-static-smc);
+}
+
+.ml-small:hover {
+  color: var(--color-hover-smc);
+  background: var(--bg-hover-smc);
+}
+
+.imc-small {
+  margin: 7px 7px 8px;
+}
+
+.mt-small {
+  padding: 0 7px;
+  width: 113px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
