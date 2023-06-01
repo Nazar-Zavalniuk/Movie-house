@@ -30,4 +30,12 @@
   margin-left: 2px;
   font-size: 13px;
   transition: 0.2s;
+  opacity: 0.5;
+  color: var(--color-static-sb);
+  background: var(--bg-static-sb);
+}
+
+.search-btn:hover {
+  opacity: 0.8;
+  color: var(--color-hover-sb);
 }
