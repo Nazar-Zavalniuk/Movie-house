@@ -1,0 +1,28 @@
+.filter {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: var(--color-filter);
+  background: var(--bg-filter);
+}
+
+.filter:hover {
+  color: var(--color-hover-filter);
+}
+
+.filter-title {
+  text-transform: lowercase;
+  text-align: center;
+}
+
+.select {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  cursor: pointer;
+  color: inherit;
+  background: inherit;
+}

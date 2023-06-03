@@ -1,0 +1,43 @@
+.filter-info {
+  margin-top: 4px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  background: var(--bg-filter);
+}
+
+.filter-star {
+  margin-left: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+  color: var(--color-fs-inactive);
+}
+
+.filter-star.active {
+  color: var(--color-fs-active);
+}
+
+.filter-star:hover {
+  transform: scale(1.12);
+}
+
+.filter-text-block {
+  display: flex;
+  flex-flow: row-reverse;
+  align-items: center;
+  flex: 1;
+}
+
+.decor-filter-line {
+  margin: 0 5px;
+  width: 109px;
+  height: 1px;
+  order: 1;
+  background: var(--bg-decor-filter-line);
+}
+
+.filter-text {
+  margin-right: 11px;
+  font-size: 11px;
+  color: var(--color-filter-info);
+}

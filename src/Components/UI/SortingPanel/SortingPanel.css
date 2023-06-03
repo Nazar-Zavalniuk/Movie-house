@@ -1,0 +1,25 @@
+.sorting-panel {
+  margin: 5px 0 0 6px;
+  width: 650px;
+}
+
+.filter-panel {
+  width: 644px;
+  height: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.actors,
+.producer {
+  flex: 1;
+}
+
+.country {
+  flex: 0 0 150px;
+}
+
+.year {
+  flex: 0 0 100px;
+}
