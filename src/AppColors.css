@@ -8,10 +8,23 @@
   --color-static-logo: #aaa;
   --color-hover-logo: #ccc;
 
-  /* Main page list hot links */
+  /* List hot links */
   --color-static-lhl: #aaa;
   --color-hover-lhl: #ccc;
-  --bc-mplhl: #a5a5a566;
+  --bc-lhl: #a5a5a566;
+
+  /* Sorting panel */
+  --bg-filter: #191919;
+  --color-filter: #999;
+  --color-hover-filter: #ccc;
+  --color-fs-inactive: #fed70b;
+  --color-fs-active: #bf090e;
+  --bg-decor-filter-line: linear-gradient(
+    90deg,
+    rgba(24, 24, 24, 0.8) 0%,
+    rgba(238, 2, 2, 0.35) 100%
+  );
+  --color-filter-info: #777;
 
   /* Page navigation buttons */
   --bg-static-pnb: #333;
