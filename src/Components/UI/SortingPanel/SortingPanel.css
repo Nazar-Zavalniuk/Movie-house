@@ -5,21 +5,6 @@
 
 .filter-panel {
   width: 644px;
-  height: 20px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.actors,
-.producer {
-  flex: 1;
-}
-
-.country {
-  flex: 0 0 150px;
-}
-
-.year {
-  flex: 0 0 100px;
+  display: grid;
+  grid-template: 20px / 197px 197px 150px 100px;
 }

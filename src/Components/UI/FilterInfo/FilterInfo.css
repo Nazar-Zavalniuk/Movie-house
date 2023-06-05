@@ -9,7 +9,7 @@
 .filter-star {
   margin-left: 6px;
   cursor: pointer;
-  transition: 0.2s;
+  transition: color ease 0.2s 0s;
   color: var(--color-fs-inactive);
 }
 
