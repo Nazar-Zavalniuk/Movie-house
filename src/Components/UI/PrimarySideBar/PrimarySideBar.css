@@ -1,0 +1,10 @@
+.side-bar {
+  margin: 5px 6px 7.5px 0;
+  width: 298px;
+  height: 1531px;
+  background: var(--bg-sb);
+}
+
+.side-bar-links {
+  padding: 8px 8px 5px;
+}

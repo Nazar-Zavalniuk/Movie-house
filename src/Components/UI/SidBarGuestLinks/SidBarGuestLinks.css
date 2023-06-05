@@ -1,0 +1,9 @@
+.guest-links {
+  display: grid;
+  grid-template: 38px / 147px 86px 41px;
+  column-gap: 4px;
+}
+
+.faq-guest {
+  font-size: 14px;
+}
