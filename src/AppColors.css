@@ -84,6 +84,11 @@
   /* Side bar recommendations */
   --bg-sbr: #222;
 
+  /* Side bar recommendations links */
+  --color-static-sbrl: #aaa;
+  --color-hover-sbrl: #ccc;
+  --color-img-sbrl: #a20811;
+
   /* Side bar recomendations movie card */
   --bg-static-sbrms: #292929;
   --bg-hover-sbrms: #353535;

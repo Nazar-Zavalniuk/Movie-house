@@ -1,0 +1,28 @@
+.recommended.block {
+  margin: 0 8px 5px;
+  width: 282px;
+  background: var(--bg-sbr);
+}
+
+.recommended.title {
+  padding: 12px 0 9px;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  text-decoration: none;
+  color: var(--color-static-sbrl);
+}
+
+.recommended.title:hover {
+  color: var(--color-hover-sbrl);
+}
+
+.recommended.img {
+  margin-left: 1px;
+  color: var(--color-img-sbrl);
+}
+
+.recommended-movie-cards {
+  padding: 0 7px 9px;
+}
