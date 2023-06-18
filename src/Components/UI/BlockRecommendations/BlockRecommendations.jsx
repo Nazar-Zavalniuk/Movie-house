@@ -1,11 +1,11 @@
 import React from "react";
 import "./BlockRecommendations.css";
-import { Link } from "react-router-dom";
 import { BsFillPlayFill } from "react-icons/bs";
 import SmallMovieCard from "../SmallMovieCard/SmallMovieCard";
 import classNames from "classnames";
+import { v4 as uuidv4 } from "uuid";
 
-function BlockRecommendations({ className, movies, link, children, ...props }) {
+function BlockRecommendations({ className, movies, children, ...props }) {
   const classNameBlock = classNames("recommended", className, "block");
   const classNameTitle = classNames("recommended", className, "title");
   const classNameTitleText = classNames("recommended", className, "title-text");
@@ -17,13 +17,13 @@ function BlockRecommendations({ className, movies, link, children, ...props }) {
 
   return (
     <div className={classNameBlock}>
-      <Link className={classNameTitle} to={link}>
+      <div {...props} className={classNameTitle}>
         <span className={classNameTitleText}>{children}</span>
         <BsFillPlayFill className={classNameImg} />
-      </Link>
+      </div>
       <div className={classNameMovieCardBlock}>
         {movies.map((movie) => {
-          return <SmallMovieCard movie={movie} />;
+          return <SmallMovieCard movie={movie} key={uuidv4()} />;
         })}
       </div>
     </div>

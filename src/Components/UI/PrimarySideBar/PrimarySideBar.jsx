@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./PrimarySideBar.css";
 import SidBarGuestLinks from "../SidBarGuestLinks/SidBarGuestLinks";
 import SideBarUserLinks from "../SideBarUserLinks/SideBarUserLinks";

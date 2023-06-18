@@ -1,5 +1,5 @@
 .side-bar {
-  margin: 5px 6px 7.5px 0;
+  margin: 2px 6px 0 0;
   width: 298px;
   height: 1531px;
   background: var(--bg-sb);
@@ -7,4 +7,14 @@
 
 .side-bar-links {
   padding: 8px 8px 5px;
+}
+
+.link-btn {
+  color: var(--color-static-sbb);
+  background: var(--bg-static-sbb);
+}
+
+.link-btn:hover {
+  color: var(--color-hover-sbb);
+  background: var(--bg-hover-sbb);
 }
