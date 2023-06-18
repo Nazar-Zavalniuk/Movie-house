@@ -29,8 +29,11 @@
   /* Page navigation buttons */
   --bg-static-pnb: #333;
   --bg-hover-pnb: #454545;
+  --bg-current-pnb: #000;
+  --bc-current-pnb: #555;
   --color-static-pnb: #ccc;
   --color-hover-pnb: #fff;
+  --color-current-pnb: #7f7e7e;
 
   /* Big movie card */
   --bg-empty-star-bmc: #959595;

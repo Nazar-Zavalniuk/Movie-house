@@ -21,7 +21,7 @@ function BigMovieCard({ movie, ...props }) {
       <span className="movie-title mt-big">{title}</span>
       <div className="rating-and-year">
         <StaticStarRating numberOfStars={10} sizeStar={15} rating={rating} />
-        <span className="year">{year}</span>
+        <span className="production-year">{year}</span>
       </div>
     </Link>
   );

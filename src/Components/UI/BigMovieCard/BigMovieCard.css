@@ -45,7 +45,7 @@
   color: var(--bg-filled-star-bmc);
 }
 
-.year {
+.production-year {
   font-size: 15px;
   font-weight: bold;
   font-style: italic;
