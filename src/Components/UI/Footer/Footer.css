@@ -1,0 +1,46 @@
+.footer {
+  margin: 6px;
+  display: grid;
+  grid-template: 37px / 1fr;
+  justify-items: center;
+  background: var(--bg-f);
+}
+
+.support-ukraine {
+  margin-right: 10px;
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.5;
+}
+
+.support-ukraine:hover {
+  opacity: 1;
+}
+
+.ukrainian-emblem {
+  width: 25px;
+  height: 25px;
+}
+
+.about-site {
+  display: flex;
+  align-items: center;
+}
+
+.link-to-homepage {
+  text-decoration: none;
+  color: var(--color-static-link-f);
+}
+
+.link-to-homepage:hover {
+  color: var(--color-hover-link-f);
+}
+
+.link-to-homepage:visited {
+  color: inherit;
+}
+
+.about-site-description {
+  margin-left: 3px;
+  color: var(--color-f);
+}

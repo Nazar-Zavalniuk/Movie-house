@@ -1,0 +1,27 @@
+.page-navigation-buttons {
+  margin-left: 6px;
+  width: 644px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 4px;
+}
+
+.additional-buttons {
+  padding: 5.5px;
+  cursor: pointer;
+  color: var(--color-static-pnb);
+  background: var(--bg-static-pnb);
+}
+
+.additional-buttons:hover {
+  color: var(--color-hover-pnb);
+  background: var(--bg-hover-pnb);
+}
+
+.decor-dots {
+  padding: 6px;
+  cursor: default;
+  color: var(--color-static-pnb);
+  background: var(--bg-static-pnb);
+}

@@ -1,0 +1,19 @@
+.page-number {
+  padding: 5px;
+  cursor: pointer;
+  color: var(--color-static-pnb);
+  background: var(--bg-static-pnb);
+  border: solid 1px var(--bg-static-pnb);
+}
+
+.page-number:hover {
+  color: var(--color-hover-pnb);
+  background: var(--bg-hover-pnb);
+}
+
+.current-page,
+.current-page:hover {
+  color: var(--color-current-pnb);
+  background: var(--bg-current-pnb);
+  border-color: var(--bc-current-pnb);
+}
