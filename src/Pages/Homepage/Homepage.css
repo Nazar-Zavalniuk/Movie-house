@@ -1,0 +1,51 @@
+.homepage {
+  display: grid;
+  grid-template-columns: 1fr 304px;
+  grid-template-rows: 100px 216px 95px 51px 1451px 31px 49px;
+  grid-template-areas:
+    "header header"
+    "top-movies top-movies"
+    "navbar navbar"
+    "sorting-panel sidebar"
+    "movies sidebar"
+    "page-nav-buttons sidebar"
+    "footer footer";
+}
+
+.header {
+  grid-area: header;
+}
+
+.top-movies {
+  grid-area: top-movies;
+}
+
+.nav-bar {
+  grid-area: navbar;
+}
+
+.sorting-panel {
+  grid-area: sorting-panel;
+}
+
+.main-movies-block {
+  grid-area: movies;
+}
+
+.page-navigation-buttons {
+  grid-area: page-nav-buttons;
+  align-self: start;
+}
+
+.side-bar {
+  grid-area: sidebar;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.link-to-homepage:hover,
+.logo-link:hover {
+  cursor: default;
+}
