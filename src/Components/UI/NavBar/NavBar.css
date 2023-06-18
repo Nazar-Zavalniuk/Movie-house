@@ -1,5 +1,5 @@
 .nav-bar {
-  margin: 5px 6px;
+  margin: 3px 6px;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-auto-rows: 27px;
@@ -7,9 +7,6 @@
 }
 
 .nav-bar-list-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   list-style: none;
   cursor: pointer;
   text-transform: uppercase;
@@ -20,4 +17,12 @@
 .nav-bar-list-item:hover {
   color: var(--color-hover-nbb);
   background: var(--bg-hover-nbb);
+}
+
+.nav-bar-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }

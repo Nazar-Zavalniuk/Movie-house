@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useCallback } from "react";
 import "./NavBar.css";
 import { v4 as uuidv4 } from "uuid";
+import useAppState from "../../../Context/Hook/useAppState";
+import { sortByGenre } from "../../../Utils/Sorting";
 
-function NavBar(props) {
+function NavBar({ ...props }) {
+  const { setSortingParams } = useAppState();
+
   const genres = [
     "Вестерн",
     "Біографія",
@@ -19,7 +23,7 @@ function NavBar(props) {
     "Мультфільм",
     "Пригоди",
     "Сімейний",
-    "Серіали",
+    "Серіал",
     "Спорт",
     "Трилер",
     "Жахи",
@@ -27,12 +31,25 @@ function NavBar(props) {
     "Фантастика",
   ];
 
+  const onChangeGenre = useCallback(
+    (e) => {
+      const genre = e.target.value.toLowerCase();
+
+      if (genre) {
+        sortByGenre(setSortingParams, genre);
+      }
+    },
+    [setSortingParams]
+  );
+
   return (
-    <ul className="nav-bar">
+    <ul className="nav-bar" onClick={onChangeGenre}>
       {genres.map((genre) => {
         return (
           <li className="nav-bar-list-item" key={uuidv4()}>
-            {genre}
+            <option className="nav-bar-option" value={genre}>
+              {genre}
+            </option>
           </li>
         );
       })}
