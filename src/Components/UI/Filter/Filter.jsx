@@ -3,7 +3,13 @@ import "./Filter.css";
 import classNames from "classnames";
 import FilterOptions from "../FilterOptions/FilterOptions";
 
-function Filter({ className, children, filterData = [], ...props }) {
+function Filter({
+  className,
+  children,
+  filterData = [],
+  sortByOption,
+  ...props
+}) {
   const classNameBlock = classNames(className, "filter");
   const classNameTitle = classNames(className, "filter-title");
 
@@ -12,7 +18,11 @@ function Filter({ className, children, filterData = [], ...props }) {
       <label htmlFor={className} className={classNameTitle}>
         {children}
       </label>
-      <FilterOptions filterData={filterData} className={className} />
+      <FilterOptions
+        filterData={filterData}
+        className={className}
+        sortByOption={sortByOption}
+      />
     </div>
   );
 }
