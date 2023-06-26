@@ -53,48 +53,91 @@ export function changePage(callback, sortingParams, page) {
   });
 }
 
-export function sortByRecommendedMovies(callback) {
+export function sortByOption(callback, option, value) {
+  let info;
+
+  if (option === "year") {
+    info = `рік - ${value}`;
+  }
+  if (option === "country") {
+    info = `країна - ${value}`;
+    option = "country_like";
+  }
+  if (option === "director") {
+    info = `режисер - ${value}`;
+    option = "director_like";
+  }
+  if (option === "actor") {
+    info = `актор - ${value}`;
+    option = "actors_like";
+  }
+
   callback({
     prevParams: {
-      movieType: "фільм",
+      [option]: value,
       _limit: 12,
       _page: 1,
-      _sort: "views",
+      _sort: "id",
       _order: "desc",
     },
-    prevSortInfo: { sortByRating: false, info: "рекомендовані фільми" },
+    prevSortInfo: { sortByRating: false, info },
     params: {
-      movieType: "фільм",
+      [option]: value,
       _limit: 12,
       _page: 1,
-      _sort: "views",
+      _sort: "id",
       _order: "desc",
     },
-    sortInfo: { sortByRating: false, info: "рекомендовані фільми" },
+    sortInfo: { sortByRating: false, info },
   });
-
-  return callback;
 }
 
-export function sortByRecommendedSeries(callback) {
+export function sortByRecommended(callback, type) {
+  let info;
+
+  if (type === "movie") {
+    info = "рекомендовані фільми";
+  }
+
+  if (type === "tv-series") {
+    info = "рекомендовані серіали";
+  }
+
   callback({
     prevParams: {
-      movieType: "серіал",
+      type,
       _limit: 12,
       _page: 1,
       _sort: "views",
       _order: "desc",
     },
-    prevSortInfo: { sortByRating: false, info: "рекомендовані серіали" },
+    prevSortInfo: { sortByRating: false, info },
     params: {
-      movieType: "серіал",
+      type,
       _limit: 12,
       _page: 1,
       _sort: "views",
       _order: "desc",
     },
-    sortInfo: { sortByRating: false, info: "рекомендовані серіали" },
+    sortInfo: { sortByRating: false, info },
   });
+}
 
-  return callback
-};
+export function sortByNewOnSite(callback) {
+  callback({
+    prevParams: {
+      _limit: 12,
+      _page: 1,
+      _sort: "id",
+      _order: "desc",
+    },
+    prevSortInfo: { sortByRating: false, info: "нове на сайті" },
+    params: {
+      _limit: 12,
+      _page: 1,
+      _sort: "id",
+      _order: "desc",
+    },
+    sortInfo: { sortByRating: false, info: "нове на сайті" },
+  });
+}

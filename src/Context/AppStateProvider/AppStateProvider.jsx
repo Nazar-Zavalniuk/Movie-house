@@ -3,24 +3,29 @@ import { ContextApp } from "../ContextApp";
 import useDynamicMovies from "../../Hooks/useDynamicMovies";
 import usePermanentMovies from "../../Hooks/usePermanentMovies";
 import MoviesService from "../../API/MoviesService";
+import useActors from "../../Hooks/useActors";
 
 function AppStateProvider({ children, ...props }) {
   const [sortingParams, setSortingParams] = useState({
     prevParams: {
       _limit: 12,
       _page: 1,
-      _sort: "year,id",
-      _order: "desc,desc",
+      _sort: "id",
+      _order: "desc",
     },
-    prevSortInfo: { sortByRating: false, info: "новинки" },
+    prevSortInfo: { sortByRating: false, info: "нове на сайті" },
     params: {
       _limit: 12,
       _page: 1,
-      _sort: "year,id",
-      _order: "desc,desc",
+      _sort: "id",
+      _order: "desc",
     },
-    sortInfo: { sortByRating: false, info: "новинки" },
+    sortInfo: { sortByRating: false, info: "нове на сайті" },
   });
+
+  const [actors, isActorsLoad, actorsError] = useActors(
+    MoviesService.getAllActors
+  );
 
   const [topMovies, isTopMoviesLoading, topMoviesError] = usePermanentMovies(
     MoviesService.getTopMovies,
@@ -34,19 +39,22 @@ function AppStateProvider({ children, ...props }) {
     recommendedMovies,
     isRecommendedMoviesLoading,
     recommendedMoviesError,
-  ] = usePermanentMovies(MoviesService.getRecommendedMovies, "фільм");
+  ] = usePermanentMovies(MoviesService.getRecommendedMovies, "movie");
 
   const [
     recommendedSeries,
     isRecommendedSeriesLoading,
     recommendedSeriesError,
-  ] = usePermanentMovies(MoviesService.getRecommendedMovies, "серіал");
+  ] = usePermanentMovies(MoviesService.getRecommendedMovies, "tv-series");
 
   return (
     <ContextApp.Provider
       value={{
         sortingParams,
         setSortingParams,
+        actors,
+        isActorsLoad,
+        actorsError,
         topMovies,
         isTopMoviesLoading,
         topMoviesError,

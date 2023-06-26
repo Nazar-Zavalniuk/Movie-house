@@ -2,7 +2,7 @@ import axios from "axios";
 
 class MoviesService {
   static async getAll(params) {
-    const response = await axios.get("http://localhost:3005/newMovies", {
+    const response = await axios.get("http://localhost:3005/movies", {
       params,
     });
     return response;
@@ -12,17 +12,17 @@ class MoviesService {
     const response = await axios.get("http://localhost:3005/movies", {
       params: {
         _limit: limit,
-        _sort: "year,rating",
+        _sort: "year,id",
         _order: "desc,desc",
       },
     });
     return response.data;
   }
 
-  static async getRecommendedMovies(movieType) {
+  static async getRecommendedMovies(type) {
     const response = await axios.get("http://localhost:3005/movies", {
       params: {
-        movieType: movieType,
+        type,
         _sort: "views",
         _order: "desc",
         _limit: 24,
@@ -33,6 +33,13 @@ class MoviesService {
     const shuffledMovies = filteredMovies.sort(() => Math.random() - 0.5);
     const selectedMovies = shuffledMovies.slice(0, 6);
     return selectedMovies;
+  }
+
+  static async getAllActors() {
+    const response = await axios.get("http://localhost:3005/actors");
+    const actors = response.data;
+    const actorsByAlphabet = actors.sort((a, b) => a.localeCompare(b, "uk-UA"));
+    return actorsByAlphabet;
   }
 }
 

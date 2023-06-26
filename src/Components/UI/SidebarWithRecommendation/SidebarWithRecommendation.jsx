@@ -2,21 +2,20 @@ import React, { useCallback } from "react";
 import PrimarySideBar from "../PrimarySideBar/PrimarySideBar";
 import BlockRecommendations from "../BlockRecommendations/BlockRecommendations";
 import useAppState from "../../../Context/Hook/useAppState";
-import {
-  sortByRecommendedMovies,
-  sortByRecommendedSeries,
-} from "../../../Utils/Sorting";
+import { sortByRecommended } from "../../../Utils/Sorting";
+import { scroll } from "../../../API/Scroll";
 
 function SidebarWithRecommendation({ isAuth, ...props }) {
   const { setSortingParams, recommendedMovies, recommendedSeries } =
     useAppState();
 
   const sortByMovies = useCallback(() => {
-    sortByRecommendedMovies(setSortingParams);
+    sortByRecommended(setSortingParams, "movie");
   }, [setSortingParams]);
 
   const sortBySeries = useCallback(() => {
-    sortByRecommendedSeries(setSortingParams);
+    sortByRecommended(setSortingParams, "tv-series");
+    scroll("top", 425, "smooth");
   }, [setSortingParams]);
 
   return (
