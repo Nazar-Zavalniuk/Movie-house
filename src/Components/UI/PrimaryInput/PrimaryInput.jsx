@@ -1,11 +1,11 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import "./PrimaryInput.css";
 import classNames from "classnames";
 
-function PrimaryInput({ className, ...props }) {
+const PrimaryInput = forwardRef(({ className, ...props }, ref) => {
   const classNameInput = classNames("input", className);
 
-  return <input {...props} className={classNameInput} />;
-}
+  return <input ref={ref} {...props} className={classNameInput} />;
+});
 
 export default PrimaryInput;

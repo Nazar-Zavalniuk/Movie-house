@@ -23,6 +23,8 @@ function AppStateProvider({ children, ...props }) {
     sortInfo: { sortByRating: false, info: "нове на сайті" },
   });
 
+  const [searchQueryValue, setSearchQueryValue] = useState("");
+
   const [actors, isActorsLoad, actorsError] = useActors(
     MoviesService.getAllActors
   );
@@ -52,6 +54,8 @@ function AppStateProvider({ children, ...props }) {
       value={{
         sortingParams,
         setSortingParams,
+        searchQueryValue,
+        setSearchQueryValue,
         actors,
         isActorsLoad,
         actorsError,

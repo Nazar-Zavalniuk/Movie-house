@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Homepage.css";
 import Header from "../../Components/UI/Header/Header";
 import Footer from "../../Components/UI/Footer/Footer";
@@ -10,11 +10,28 @@ import SidebarWithRecommendation from "../../Components/UI/SidebarWithRecommenda
 import PageNavigationButtons from "../../Components/UI/PageNavigationButtons/PageNavigationButtons";
 import PrimarySideBar from "../../Components/UI/PrimarySideBar/PrimarySideBar";
 import useAppState from "../../Context/Hook/useAppState";
+import NoResultsFound from "../../Components/UI/NoResultsFound/NoResultsFound";
 
 function Homepage(props) {
-  const { sortingParams } = useAppState();
-  const { sortInfo } = sortingParams;
-  const isSortByRecommended = sortInfo.info.includes("рекомендовані");
+  const {
+    sortingParams,
+    mainMovies,
+    isMainMoviesLoading,
+    setSearchQueryValue,
+  } = useAppState();
+  const isMainMoviesEmpty = mainMovies.length === 0;
+  const isMainMoviesLoaded = isMainMoviesLoading === false;
+  const { info } = sortingParams.sortInfo;
+  const isSortByRecommended = info.includes("рекомендовані");
+
+  // 'searchQueryValue' - a state that stores information about user input in
+  // the search field and is used to display the corresponding page
+  // elements containing this information in the absence of matches in the
+  // database for the query. The code below clears this state if the user is
+  // searching using the navigation elements on the page.
+  useEffect(() => {
+    if (!info.includes("результати пошуку")) setSearchQueryValue("");
+  }, [setSearchQueryValue, info]);
 
   return (
     <div className="page homepage">
@@ -22,7 +39,11 @@ function Homepage(props) {
       <TopMovies />
       <NavBar />
       <SortingPanel />
-      <MainMoviesBlock />
+      {isMainMoviesEmpty && isMainMoviesLoaded ? (
+        <NoResultsFound />
+      ) : (
+        <MainMoviesBlock />
+      )}
       <PageNavigationButtons />
       {isSortByRecommended ? <PrimarySideBar /> : <SidebarWithRecommendation />}
       <Footer />

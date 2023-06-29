@@ -1,0 +1,20 @@
+.search-info {
+  margin: 3px 6px;
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  cursor: default;
+  color: var(--color-search-info);
+  background: var(--bg-search-info);
+}
+
+.search-value {
+  margin: 5px 0;
+  display: inline-block;
+  word-break: break-all;
+  color: var(--color-search-value);
+}
+
+.search-clue {
+  font-size: 12px;
+}

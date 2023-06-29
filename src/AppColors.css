@@ -160,4 +160,9 @@
 
   /* Movie page movie */
   --bg-movpm: #000000;
+
+  /* No Results Found */
+  --color-search-info: #999;
+  --bg-search-info: #181818;
+  --color-search-value: #ccc;
 }
