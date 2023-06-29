@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import "./FilterInfo.css";
 import { BsStarFill } from "react-icons/bs";
 import classNames from "classnames";
@@ -6,7 +6,7 @@ import useAppState from "../../../Context/Hook/useAppState";
 import { sortByRating } from "../../../Utils/Sorting";
 
 function FilterInfo({ ...props }) {
-  const { sortingParams, setSortingParams } = useAppState();
+  const { sortingParams, setSortingParams, searchQueryValue } = useAppState();
   const { sortInfo } = sortingParams;
 
   const classNameStar = classNames("filter-star", {
@@ -15,6 +15,12 @@ function FilterInfo({ ...props }) {
   const starTitle = sortInfo.sortByRating
     ? "Скасувати сортування"
     : "Cортувати за рейтингом";
+  const infoTitle = useRef(null);
+
+  useEffect(() => {
+    infoTitle.current =
+      searchQueryValue !== "" ? searchQueryValue : sortInfo.info;
+  }, [searchQueryValue, sortInfo.info]);
 
   const handleToggle = useCallback(() => {
     sortByRating(setSortingParams, sortingParams);
@@ -30,7 +36,9 @@ function FilterInfo({ ...props }) {
       />
       <div className="filter-text-block">
         <div className="decor-filter-line" />
-        <div className="filter-text">{sortInfo.info}</div>
+        <div className="filter-text" title={infoTitle.current}>
+          {sortInfo.info}
+        </div>
       </div>
     </div>
   );

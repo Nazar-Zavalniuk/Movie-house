@@ -30,10 +30,20 @@ export function sortByRating(callback, sortingParams) {
       sortInfo: { ...prevSortInfo },
     });
   } else {
+    const sortParams =
+      params["_sort"] !== undefined ? "rating," + params["_sort"] : "rating";
+    const orderParams =
+      params["_order"] !== undefined ? "desc," + params["_order"] : "desc";
+
     callback({
       prevParams,
       prevSortInfo,
-      params: { ...params, _sort: "rating", _order: "desc", _page: 1 },
+      params: {
+        ...params,
+        _sort: sortParams,
+        _order: orderParams,
+        _page: 1,
+      },
       sortInfo: {
         sortByRating: true,
         info: `${sortInfo.info}, за рейтингом`,
@@ -55,9 +65,11 @@ export function changePage(callback, sortingParams, page) {
 
 export function sortByOption(callback, option, value) {
   let info;
+  let sortParameter = "year";
 
   if (option === "year") {
     info = `рік - ${value}`;
+    sortParameter = "id";
   }
   if (option === "country") {
     info = `країна - ${value}`;
@@ -77,7 +89,7 @@ export function sortByOption(callback, option, value) {
       [option]: value,
       _limit: 12,
       _page: 1,
-      _sort: "id",
+      _sort: sortParameter,
       _order: "desc",
     },
     prevSortInfo: { sortByRating: false, info },
@@ -85,7 +97,7 @@ export function sortByOption(callback, option, value) {
       [option]: value,
       _limit: 12,
       _page: 1,
-      _sort: "id",
+      _sort: sortParameter,
       _order: "desc",
     },
     sortInfo: { sortByRating: false, info },
@@ -139,5 +151,69 @@ export function sortByNewOnSite(callback) {
       _order: "desc",
     },
     sortInfo: { sortByRating: false, info: "нове на сайті" },
+  });
+}
+
+export function sortByYear(callback) {
+  callback({
+    prevParams: {
+      _limit: 12,
+      _page: 1,
+      _sort: "year",
+      _order: "desc",
+    },
+    prevSortInfo: { sortByRating: false, info: "новинки" },
+    params: {
+      _limit: 12,
+      _page: 1,
+      _sort: "year",
+      _order: "desc",
+    },
+    sortInfo: { sortByRating: false, info: "новинки" },
+  });
+}
+
+export function sortByYearAndId(callback) {
+  callback({
+    prevParams: {
+      _limit: 12,
+      _page: 1,
+      _sort: "year,id",
+      _order: "desc,desc",
+    },
+    prevSortInfo: { sortByRating: false, info: "прем'єри" },
+    params: {
+      _limit: 12,
+      _page: 1,
+      _sort: "year,id",
+      _order: "desc,desc",
+    },
+    sortInfo: { sortByRating: false, info: "прем'єри" },
+  });
+}
+
+export function sortByTitle(callback, title) {
+  title = title.length > 70 ? title.slice(0, 67) + "..." : title;
+
+  callback({
+    prevParams: {
+      title_like: title,
+      _limit: 12,
+      _page: 1,
+      _sort: "year",
+      _order: "desc",
+    },
+    prevSortInfo: {
+      sortByRating: false,
+      info: `результати пошуку - "${title}"`,
+    },
+    params: {
+      title_like: title,
+      _limit: 12,
+      _page: 1,
+      _sort: "year",
+      _order: "desc",
+    },
+    sortInfo: { sortByRating: false, info: `результати пошуку - "${title}"` },
   });
 }
