@@ -6,8 +6,8 @@ function NoResultsFound(props) {
   const { searchQueryValue } = useAppState();
   const isSearchByTitle = searchQueryValue !== "";
   const truncatedQueryValue =
-    searchQueryValue.length > 73 && isSearchByTitle
-      ? searchQueryValue.slice(0, 70) + "..."
+    searchQueryValue.length > 50 && isSearchByTitle
+      ? searchQueryValue.slice(0, 47) + "..."
       : searchQueryValue;
 
   return (

@@ -18,6 +18,7 @@ function Homepage(props) {
     mainMovies,
     isMainMoviesLoading,
     setSearchQueryValue,
+    totalPages,
   } = useAppState();
   const isMainMoviesEmpty = mainMovies.length === 0;
   const isMainMoviesLoaded = isMainMoviesLoading === false;
@@ -44,7 +45,7 @@ function Homepage(props) {
       ) : (
         <MainMoviesBlock />
       )}
-      <PageNavigationButtons />
+      {totalPages !== 1 && <PageNavigationButtons />}
       {isSortByRecommended ? <PrimarySideBar /> : <SidebarWithRecommendation />}
       <Footer />
     </div>

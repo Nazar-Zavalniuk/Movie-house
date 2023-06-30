@@ -193,7 +193,7 @@ export function sortByYearAndId(callback) {
 }
 
 export function sortByTitle(callback, title) {
-  title = title.length > 70 ? title.slice(0, 67) + "..." : title;
+  title = title.length > 40 ? title.slice(0, 37) + "..." : title;
 
   callback({
     prevParams: {
