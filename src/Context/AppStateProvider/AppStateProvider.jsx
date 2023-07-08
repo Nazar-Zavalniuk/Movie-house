@@ -6,6 +6,7 @@ import MoviesService from "../../API/MoviesService";
 import useActors from "../../Hooks/useActors";
 
 function AppStateProvider({ children, ...props }) {
+  const [numReboots, setNumReboots] = useState(0);
   const [sortingParams, setSortingParams] = useState({
     prevParams: {
       _limit: 12,
@@ -25,39 +26,51 @@ function AppStateProvider({ children, ...props }) {
 
   const [searchQueryValue, setSearchQueryValue] = useState("");
 
-  const [actors, isActorsLoad, actorsError] = useActors(
-    MoviesService.getAllActors
+  const [actors, isActorsLoading, actorsError] = useActors(
+    MoviesService.getAllActors,
+    numReboots
   );
 
   const [topMovies, isTopMoviesLoading, topMoviesError] = usePermanentMovies(
     MoviesService.getTopMovies,
-    7
+    7,
+    numReboots
   );
 
-  const [mainMovies, totalPages, isMainMoviesLoading, tainMoviesError] =
+  const [mainMovies, totalPages, isMainMoviesLoading, mainMoviesError] =
     useDynamicMovies(sortingParams.params);
 
   const [
     recommendedMovies,
     isRecommendedMoviesLoading,
     recommendedMoviesError,
-  ] = usePermanentMovies(MoviesService.getRecommendedMovies, "movie");
+  ] = usePermanentMovies(
+    MoviesService.getRecommendedMovies,
+    "movie",
+    numReboots
+  );
 
   const [
     recommendedSeries,
     isRecommendedSeriesLoading,
     recommendedSeriesError,
-  ] = usePermanentMovies(MoviesService.getRecommendedMovies, "tv-series");
+  ] = usePermanentMovies(
+    MoviesService.getRecommendedMovies,
+    "tv-series",
+    numReboots
+  );
 
   return (
     <ContextApp.Provider
       value={{
+        numReboots,
+        setNumReboots,
         sortingParams,
         setSortingParams,
         searchQueryValue,
         setSearchQueryValue,
         actors,
-        isActorsLoad,
+        isActorsLoading,
         actorsError,
         topMovies,
         isTopMoviesLoading,
@@ -65,7 +78,7 @@ function AppStateProvider({ children, ...props }) {
         mainMovies,
         totalPages,
         isMainMoviesLoading,
-        tainMoviesError,
+        mainMoviesError,
         recommendedMovies,
         isRecommendedMoviesLoading,
         recommendedMoviesError,

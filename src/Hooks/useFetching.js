@@ -7,6 +7,7 @@ function useFetching(callback) {
   async function fetching() {
     try {
       setIsLoading(true);
+      setError({ errorState: false, errorMessage: "" });
       await callback();
     } catch (e) {
       setError({ errorState: true, errorMessage: e.message });

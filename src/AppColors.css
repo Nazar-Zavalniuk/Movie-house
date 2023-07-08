@@ -165,4 +165,23 @@
   --color-search-info: #999;
   --bg-search-info: #181818;
   --color-search-value: #ccc;
+
+  /* Page error */
+  --color-warning-pe: #ff0000;
+  --bg-content-pe: #181818;
+  --color-text-pe: #999;
+  --color-static-link: #ccc;
+  --color-hover-link: #eee;
+
+  /* Big loading card */
+  --bg-animation-start-blc: #171717;
+  --bg-animation-end-blc: #080808;
+
+  /* Middle loading card */
+  --bg-animation-start-mlc: #1a1a1a;
+  --bg-animation-end-mlc: #0a0a0a;
+
+  /* Small loading card */
+  --bg-animation-start-slc: #242424;
+  --bg-animation-end-slc: #1a1a1a;
 }

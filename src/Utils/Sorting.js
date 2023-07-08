@@ -217,3 +217,22 @@ export function sortByTitle(callback, title) {
     sortInfo: { sortByRating: false, info: `результати пошуку - "${title}"` },
   });
 }
+
+export function sortByDefault(callback) {
+  callback({
+    prevParams: {
+      _limit: 12,
+      _page: 1,
+      _sort: "id",
+      _order: "desc",
+    },
+    prevSortInfo: { sortByRating: false, info: "нове на сайті" },
+    params: {
+      _limit: 12,
+      _page: 1,
+      _sort: "id",
+      _order: "desc",
+    },
+    sortInfo: { sortByRating: false, info: "нове на сайті" },
+  });
+}

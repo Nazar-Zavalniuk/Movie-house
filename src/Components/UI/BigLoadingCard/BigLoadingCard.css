@@ -1,0 +1,43 @@
+.lc-big {
+  width: 212px;
+  height: 357px;
+  font-size: 13px;
+  color: var(--color-static-bmc);
+  background: var(--bg-static-bmc);
+}
+
+.img-lc-big {
+  width: 200px;
+  height: 300px;
+  margin: 5px 6px;
+}
+
+.lcc-big {
+  padding: 0 6px;
+}
+
+.lct-big {
+  height: 15px;
+}
+
+.lcray-big {
+  margin-top: 3px;
+  height: 18px;
+}
+
+.img-lc-big,
+.lct-big,
+.lcray-big {
+  opacity: 0.7;
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background: var(--bg-animation-start-blc);
+  }
+
+  100% {
+    background: var(--bg-animation-end-blc);
+  }
+}

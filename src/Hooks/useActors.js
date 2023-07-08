@@ -1,18 +1,18 @@
 import { useState, useMemo } from "react";
 import useFetching from "./useFetching";
 
-function useActors(fetchFunc) {
+function useActors(fetchFunc, dependency) {
   const [actors, setActors] = useState([]);
-  const [fetchActors, isActorsLoad, actorsError] = useFetching(async () => {
+  const [fetchActors, isActorsLoading, actorsError] = useFetching(async () => {
     const actors = await fetchFunc();
     setActors(actors);
   });
 
   useMemo(() => {
     fetchActors();
-  }, []);
+  }, [dependency]);
 
-  return [actors, isActorsLoad, actorsError];
+  return [actors, isActorsLoading, actorsError];
 }
 
 export default useActors;

@@ -3,11 +3,11 @@ import "./Header.css";
 import SearchBar from "../SearchBar/SearchBar";
 import Logo from "../Logo/Logo";
 
-function Header(props) {
+function Header({ includesSearchBar = true, ...props }) {
   return (
     <div className="header">
       <Logo />
-      <SearchBar />
+      {includesSearchBar && <SearchBar />}
     </div>
   );
 }

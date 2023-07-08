@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Homepage.css";
 import Header from "../../Components/UI/Header/Header";
 import Footer from "../../Components/UI/Footer/Footer";
@@ -11,19 +11,27 @@ import PageNavigationButtons from "../../Components/UI/PageNavigationButtons/Pag
 import PrimarySideBar from "../../Components/UI/PrimarySideBar/PrimarySideBar";
 import useAppState from "../../Context/Hook/useAppState";
 import NoResultsFound from "../../Components/UI/NoResultsFound/NoResultsFound";
+import { Navigate } from "react-router-dom";
 
 function Homepage(props) {
   const {
     sortingParams,
     mainMovies,
-    isMainMoviesLoading,
     setSearchQueryValue,
     totalPages,
+    isActorsLoading,
+    isTopMoviesLoading,
+    isMainMoviesLoading,
+    actorsError,
+    topMoviesError,
+    mainMoviesError,
   } = useAppState();
   const isMainMoviesEmpty = mainMovies.length === 0;
   const isMainMoviesLoaded = isMainMoviesLoading === false;
   const { info } = sortingParams.sortInfo;
   const isSortByRecommended = info.includes("рекомендовані");
+  const [mostImportantErrors, setMostImportantErrors] = useState([]);
+  const [isPageLoading, setIsPageLoading] = useState([]);
 
   // 'searchQueryValue' - a state that stores information about user input in
   // the search field and is used to display the corresponding page
@@ -33,6 +41,30 @@ function Homepage(props) {
   useEffect(() => {
     if (!info.includes("результати пошуку")) setSearchQueryValue("");
   }, [setSearchQueryValue, info]);
+
+  useEffect(() => {
+    setIsPageLoading([
+      isActorsLoading,
+      isTopMoviesLoading,
+      isMainMoviesLoading,
+    ]);
+
+    setMostImportantErrors([
+      actorsError.errorState,
+      topMoviesError.errorState,
+      mainMoviesError.errorState,
+    ]);
+  }, [
+    actorsError,
+    topMoviesError,
+    mainMoviesError,
+    isActorsLoading,
+    isTopMoviesLoading,
+    isMainMoviesLoading,
+  ]);
+
+  if (mostImportantErrors.includes(true) && !isPageLoading.includes(true))
+    return <Navigate to="/error" replace />;
 
   return (
     <div className="page homepage">
@@ -45,7 +77,7 @@ function Homepage(props) {
       ) : (
         <MainMoviesBlock />
       )}
-      {totalPages !== 1 && <PageNavigationButtons />}
+      {totalPages !== 1 && isMainMoviesLoaded && <PageNavigationButtons />}
       {isSortByRecommended ? <PrimarySideBar /> : <SidebarWithRecommendation />}
       <Footer />
     </div>
