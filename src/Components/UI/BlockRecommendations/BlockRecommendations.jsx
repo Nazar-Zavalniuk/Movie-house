@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./BlockRecommendations.css";
 import { BsFillPlayFill } from "react-icons/bs";
 import SmallMovieCard from "../SmallMovieCard/SmallMovieCard";
@@ -19,13 +19,8 @@ function BlockRecommendations({ className, movies, children, ...props }) {
     className
   );
 
-  const [isCarsLoading, setIsCardsLoading] = useState(true);
-  useEffect(() => {
-    const isCarsLoading =
-      isRecommendedMoviesLoading || isRecommendedSeriesLoading;
-
-    if (!isCarsLoading) setIsCardsLoading(false);
-  }, [isRecommendedMoviesLoading, isRecommendedSeriesLoading]);
+  const isCarsLoading =
+    isRecommendedMoviesLoading || isRecommendedSeriesLoading;
 
   const cardsSkeletons = Array(6)
     .fill(null)

@@ -36,10 +36,6 @@
   color: var(--color-hover-link-f);
 }
 
-.link-to-homepage:visited {
-  color: inherit;
-}
-
 .about-site-description {
   margin-left: 3px;
   color: var(--color-f);

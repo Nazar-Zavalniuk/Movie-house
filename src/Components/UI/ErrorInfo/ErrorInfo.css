@@ -1,0 +1,26 @@
+.error-info {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-title {
+  font-size: 40px;
+  line-height: 1;
+}
+
+.error-message {
+  margin: 5px 0;
+}
+
+.list-errors {
+  padding: 0 100px;
+  list-style-position: inside;
+}
+
+.error-title,
+.error-message,
+.list-errors {
+  color: var(--color-warning-pe);
+}

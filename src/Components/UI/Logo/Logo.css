@@ -14,10 +14,6 @@
   color: var(--color-hover-logo);
 }
 
-.logo-link:visited {
-  color: inherit;
-}
-
 .logo-title {
   margin-left: 5px;
   font-size: 30px;

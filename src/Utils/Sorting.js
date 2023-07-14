@@ -192,12 +192,15 @@ export function sortByYearAndId(callback) {
   });
 }
 
-export function sortByTitle(callback, title) {
-  title = title.length > 40 ? title.slice(0, 37) + "..." : title;
+export function sortByTitle(callback, titleForRequest, titleToDisplay) {
+  const shortTitle =
+    titleToDisplay.length > 40
+      ? titleToDisplay.slice(0, 37) + "..."
+      : titleToDisplay;
 
   callback({
     prevParams: {
-      title_like: title,
+      title_like: titleForRequest,
       _limit: 12,
       _page: 1,
       _sort: "year",
@@ -205,16 +208,19 @@ export function sortByTitle(callback, title) {
     },
     prevSortInfo: {
       sortByRating: false,
-      info: `результати пошуку - "${title}"`,
+      info: `результати пошуку - "${shortTitle}"`,
     },
     params: {
-      title_like: title,
+      title_like: titleForRequest,
       _limit: 12,
       _page: 1,
       _sort: "year",
       _order: "desc",
     },
-    sortInfo: { sortByRating: false, info: `результати пошуку - "${title}"` },
+    sortInfo: {
+      sortByRating: false,
+      info: `результати пошуку - "${shortTitle}"`,
+    },
   });
 }
 

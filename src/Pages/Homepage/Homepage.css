@@ -44,8 +44,3 @@
 .footer {
   grid-area: footer;
 }
-
-.link-to-homepage:hover,
-.logo-link:hover {
-  cursor: default;
-}
