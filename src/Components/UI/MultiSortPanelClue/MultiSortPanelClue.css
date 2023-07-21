@@ -1,0 +1,9 @@
+.multi-sort-panel-clue {
+  margin: 2px 6px;
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  cursor: default;
+  color: var(--color-static-msp);
+  background: var(--bg-static-msp);
+}

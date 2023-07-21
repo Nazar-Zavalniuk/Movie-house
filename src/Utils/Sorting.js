@@ -242,3 +242,20 @@ export function sortByDefault(callback) {
     sortInfo: { sortByRating: false, info: "нове на сайті" },
   });
 }
+
+export function sortByAllOptions(callback, options) {
+  callback({
+    prevParams: {
+      ...options,
+      _limit: 12,
+      _page: 1,
+    },
+    prevSortInfo: { sortByRating: false, info: "навігатор результати пошуку" },
+    params: {
+      ...options,
+      _limit: 12,
+      _page: 1,
+    },
+    sortInfo: { sortByRating: false, info: "навігатор результати пошуку" },
+  });
+}

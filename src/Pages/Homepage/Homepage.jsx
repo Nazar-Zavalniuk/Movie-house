@@ -7,7 +7,6 @@ import NavBar from "../../Components/UI/NavBar/NavBar";
 import SortingPanel from "../../Components/UI/SortingPanel/SortingPanel";
 import MainMoviesBlock from "../../Components/UI/MainMoviesBlock/MainMoviesBlock";
 import SidebarWithRecommendation from "../../Components/UI/SidebarWithRecommendation/SidebarWithRecommendation";
-import PageNavigationButtons from "../../Components/UI/PageNavigationButtons/PageNavigationButtons";
 import PrimarySideBar from "../../Components/UI/PrimarySideBar/PrimarySideBar";
 import useAppState from "../../Context/Hook/useAppState";
 import NoResultsFound from "../../Components/UI/NoResultsFound/NoResultsFound";
@@ -18,7 +17,6 @@ function Homepage(props) {
     sortingParams,
     mainMovies,
     setSearchQueryValue,
-    totalPages,
     isActorsLoading,
     isTopMoviesLoading,
     isMainMoviesLoading,
@@ -77,7 +75,6 @@ function Homepage(props) {
       ) : (
         <MainMoviesBlock />
       )}
-      {totalPages !== 1 && isMainMoviesLoaded && <PageNavigationButtons />}
       {isSortByRecommended ? <PrimarySideBar /> : <SidebarWithRecommendation />}
       <Footer />
     </div>

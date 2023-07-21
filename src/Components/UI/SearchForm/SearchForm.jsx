@@ -4,11 +4,13 @@ import PrimaryInput from "../PrimaryInput/PrimaryInput";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
 import useAppState from "../../../Context/Hook/useAppState";
 import { sortByTitle } from "../../../Utils/Sorting";
+import { useNavigate } from "react-router-dom";
 
 function SearchForm(props) {
   const [value, setValue] = useState("Введіть назву фільму...");
   const { setSortingParams, setSearchQueryValue } = useAppState();
   const inputRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleInput = useCallback((e) => setValue(e.target.value), []);
 
@@ -49,8 +51,9 @@ function SearchForm(props) {
       setSearchQueryValue(sanitizedValue);
       setValue("Введіть назву фільму...");
       inputRef.current.blur();
+      navigate("/homepage");
     },
-    [setSortingParams, value, setSearchQueryValue, validate, sanitize]
+    [setSortingParams, value, setSearchQueryValue, validate, sanitize, navigate]
   );
 
   return (

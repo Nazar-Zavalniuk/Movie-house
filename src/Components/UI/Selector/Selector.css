@@ -1,0 +1,40 @@
+.select-multi-filter {
+  display: flex;
+}
+
+.select-mf {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 2px 2px 2px 5px;
+  font-size: 14px;
+  cursor: pointer;
+  flex: 1;
+  color: var(--color-static-msp);
+  background: var(--bg-static-msp);
+}
+
+.select-mf:hover {
+  color: var(--color-hover-msp);
+  background: var(--bg-hover-msp);
+}
+
+.select-mf:active {
+  color: var(--color-static-msp);
+  background: var(--bg-static-msp);
+}
+
+.clear-select {
+  height: 22px;
+  width: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: var(--color-static-msp);
+  background: var(--bg-static-msp);
+}
+
+.clear-select:hover {
+  color: var(--color-hover-msp);
+  background: var(--bg-hover-msp);
+}

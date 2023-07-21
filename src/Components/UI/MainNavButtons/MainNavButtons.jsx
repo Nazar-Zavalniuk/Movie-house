@@ -4,17 +4,23 @@ import { v4 as uuidv4 } from "uuid";
 import { scroll } from "../../../API/Scroll";
 import { getArrayPages } from "../../../Utils/Pages";
 
-function MainNavButtons({ totalPages, currentPage, onPageChange, ...props }) {
+function MainNavButtons({
+  totalPages,
+  currentPage,
+  onPageChange,
+  scrollParams = ["top", 425, "smooth"],
+  ...props
+}) {
   const handlePageChange = useCallback(
     (e) => {
       const page = Number(e.target.textContent);
 
       if (currentPage !== page) {
         onPageChange(page);
-        scroll("top", 425, "smooth");
+        scroll(...scrollParams);
       }
     },
-    [currentPage, onPageChange]
+    [currentPage, onPageChange, scrollParams]
   );
 
   const pages = getArrayPages(currentPage, totalPages);

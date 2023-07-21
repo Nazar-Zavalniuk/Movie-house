@@ -11,7 +11,10 @@ import { scroll } from "../../../API/Scroll";
 import useAppState from "../../../Context/Hook/useAppState";
 import { changePage } from "../../../Utils/Sorting";
 
-function PageNavigationButtons({ ...props }) {
+function PageNavigationButtons({
+  scrollParams = ["top", 425, "smooth"],
+  ...props
+}) {
   const { totalPages, sortingParams, setSortingParams } = useAppState();
   const currentPage = sortingParams.params["_page"];
 
@@ -25,30 +28,30 @@ function PageNavigationButtons({ ...props }) {
   const handlePreviousPage = useCallback(() => {
     if (currentPage > 1) {
       onPageChange(currentPage - 1);
-      scroll("top", 425, "smooth");
+      scroll(...scrollParams);
     }
-  }, [currentPage, onPageChange]);
+  }, [currentPage, onPageChange, scrollParams]);
 
   const handleNextPage = useCallback(() => {
     if (currentPage < totalPages) {
       onPageChange(currentPage + 1);
-      scroll("top", 425, "smooth");
+      scroll(...scrollParams);
     }
-  }, [currentPage, totalPages, onPageChange]);
+  }, [currentPage, totalPages, onPageChange, scrollParams]);
 
   const handleFirstPage = useCallback(() => {
     if (currentPage !== 1) {
       onPageChange(1);
-      scroll("top", 425, "smooth");
+      scroll(...scrollParams);
     }
-  }, [currentPage, onPageChange]);
+  }, [currentPage, onPageChange, scrollParams]);
 
   const handleLastPage = useCallback(() => {
     if (currentPage !== totalPages) {
       onPageChange(totalPages);
-      scroll("top", 425, "smooth");
+      scroll(...scrollParams);
     }
-  }, [currentPage, totalPages, onPageChange]);
+  }, [currentPage, totalPages, onPageChange, scrollParams]);
 
   return (
     <div className="page-navigation-buttons">
@@ -75,6 +78,7 @@ function PageNavigationButtons({ ...props }) {
         totalPages={totalPages}
         currentPage={currentPage}
         onPageChange={onPageChange}
+        scrollParams={scrollParams}
       />
       {currentPage + 4 < totalPages && totalPages > 10 && (
         <div className="decor-dots">...</div>

@@ -1,5 +1,5 @@
 import "./ListHotLinks.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
 import useAppState from "../../../Context/Hook/useAppState";
 import { useCallback } from "react";
@@ -7,16 +7,17 @@ import { sortByYear, sortByYearAndId } from "../../../Utils/Sorting";
 
 function ListHotLinks(props) {
   const { setSortingParams } = useAppState();
+  const navigate = useNavigate();
 
-  const sortByNovelties = useCallback(
-    () => sortByYear(setSortingParams),
-    [setSortingParams]
-  );
+  const sortByNovelties = useCallback(() => {
+    sortByYear(setSortingParams);
+    navigate("/homepage");
+  }, [setSortingParams, navigate]);
 
-  const sortByPremiers = useCallback(
-    () => sortByYearAndId(setSortingParams),
-    [setSortingParams]
-  );
+  const sortByPremiers = useCallback(() => {
+    sortByYearAndId(setSortingParams);
+    navigate("/homepage");
+  }, [setSortingParams, navigate]);
 
   return (
     <ul className="hot-links">
@@ -31,7 +32,7 @@ function ListHotLinks(props) {
         </PrimaryButton>
       </li>
       <li>
-        <Link to="/homepage" className="hot-link navigator">
+        <Link className="hot-link navigator" to="/navigator">
           <span className="text-link">Навігатор</span>
         </Link>
       </li>

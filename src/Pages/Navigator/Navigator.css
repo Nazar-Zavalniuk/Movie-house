@@ -1,46 +1,45 @@
-.homepage {
+.page.navigator {
   display: grid;
   grid-template-columns: 1fr 304px;
-  grid-template-rows: 100px 216px 95px 51px;
+  grid-template-rows: 100px 216px 199px;
   grid-template-areas:
     "header header"
     "top-movies top-movies"
-    "navbar navbar"
     "sorting-panel sidebar"
     "movies sidebar"
     "page-nav-buttons sidebar"
     "footer footer";
 }
 
-.page.homepage .header {
+.page.navigator .header {
   grid-area: header;
 }
 
-.page.homepage .top-movies {
+.page.navigator .top-movies {
   grid-area: top-movies;
 }
 
-.page.homepage .nav-bar {
+.page.navigator .nav-bar {
   grid-area: navbar;
 }
 
-.page.homepage .sorting-panel {
+.page.navigator .multi-sort-panel {
   grid-area: sorting-panel;
 }
 
-.page.homepage .main-movies-block {
+.page.navigator .main-movies-block {
   grid-area: movies;
 }
 
-.page.homepage .page-navigation-buttons {
+.page.navigator .page-navigation-buttons {
   grid-area: page-nav-buttons;
   align-self: end;
 }
 
-.page.homepage .side-bar {
+.page.navigator .side-bar {
   grid-area: sidebar;
 }
 
-.page.homepage .footer {
+.page.navigator .footer {
   grid-area: footer;
 }

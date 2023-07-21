@@ -184,4 +184,10 @@
   /* Small loading card */
   --bg-animation-start-slc: #242424;
   --bg-animation-end-slc: #1a1a1a;
+
+  /* Multi sort panel */
+  --color-static-msp: #999;
+  --bg-static-msp: #181818;
+  --color-hover-msp: #ccc;
+  --bg-hover-msp: #282828;
 }

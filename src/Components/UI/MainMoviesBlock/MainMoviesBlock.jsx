@@ -1,12 +1,13 @@
-import React from "react";
+import React, { Fragment } from "react";
 import "./MainMoviesBlock.css";
 import BigMovieCard from "../BigMovieCard/BigMovieCard";
 import { v4 as uuidv4 } from "uuid";
 import useAppState from "../../../Context/Hook/useAppState";
 import BigLoadingCard from "../BigLoadingCard/BigLoadingCard";
+import PageNavigationButtons from "../PageNavigationButtons/PageNavigationButtons";
 
-function MainMoviesBlock({ movies, ...props }) {
-  const { mainMovies, isMainMoviesLoading } = useAppState();
+function MainMoviesBlock({ movies, scrollParams, ...props }) {
+  const { totalPages, mainMovies, isMainMoviesLoading } = useAppState();
 
   const cardsSkeletons = Array(12)
     .fill(null)
@@ -19,9 +20,14 @@ function MainMoviesBlock({ movies, ...props }) {
   });
 
   return (
-    <div className="main-movies-block">
-      {isMainMoviesLoading ? cardsSkeletons : moviesCards}
-    </div>
+    <Fragment>
+      <div className="main-movies-block">
+        {isMainMoviesLoading ? cardsSkeletons : moviesCards}
+      </div>
+      {totalPages !== 1 && !isMainMoviesLoading && (
+        <PageNavigationButtons scrollParams={scrollParams} />
+      )}
+    </Fragment>
   );
 }
 
