@@ -3,7 +3,6 @@ import "./BlockRecommendations.css";
 import { BsFillPlayFill } from "react-icons/bs";
 import SmallMovieCard from "../SmallMovieCard/SmallMovieCard";
 import classNames from "classnames";
-import { v4 as uuidv4 } from "uuid";
 import useAppState from "../../../Context/Hook/useAppState";
 import SmallLoadingCard from "../SmallLoadingCard/SmallLoadingCard";
 
@@ -24,12 +23,12 @@ function BlockRecommendations({ className, movies, children, ...props }) {
 
   const cardsSkeletons = Array(6)
     .fill(null)
-    .map(() => {
-      return <SmallLoadingCard key={uuidv4()} />;
+    .map((_, index) => {
+      return <SmallLoadingCard key={index} />;
     });
 
-  const moviesCards = movies.map((movie) => {
-    return <SmallMovieCard movie={movie} key={uuidv4()} />;
+  const moviesCards = movies.map((movie, index) => {
+    return <SmallMovieCard movie={movie} key={index} />;
   });
 
   return (

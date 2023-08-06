@@ -1,0 +1,15 @@
+.movie-info {
+  margin: 2px 6px 0 6px;
+  background: var(--bg-body-movp);
+}
+
+.movie-info-body {
+  padding: 8px;
+}
+
+.movie-details {
+  display: grid;
+  grid-template-columns: 204px 1fr;
+  column-gap: 8px;
+  cursor: default;
+}

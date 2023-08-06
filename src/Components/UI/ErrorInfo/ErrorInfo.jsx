@@ -10,6 +10,7 @@ function ErrorInfo(props) {
     mainMoviesError,
     recommendedMoviesError,
     recommendedSeriesError,
+    currentMovieError,
   } = useAppState();
 
   const errorAddresses = [
@@ -18,6 +19,7 @@ function ErrorInfo(props) {
     "mainMoviesError",
     "recommendedMoviesError",
     "recommendedSeriesError",
+    "currentMovieError",
   ];
 
   const [errors, setErrors] = useState([]);
@@ -30,6 +32,7 @@ function ErrorInfo(props) {
       mainMoviesError,
       recommendedMoviesError,
       recommendedSeriesError,
+      currentMovieError,
     ]);
   }, [
     actorsError,
@@ -37,12 +40,13 @@ function ErrorInfo(props) {
     mainMoviesError,
     recommendedMoviesError,
     recommendedSeriesError,
+    currentMovieError,
   ]);
 
   errors.forEach((error, index) => {
     const address = errorAddresses[index];
 
-    if (error.errorMessage !== "")
+    if (error !== null && error.errorMessage !== "")
       messages.push(`${error.errorMessage} (${address})`);
   });
 

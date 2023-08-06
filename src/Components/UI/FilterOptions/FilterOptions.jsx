@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
 import "./FilterOptions.css";
-import { v4 as uuidv4 } from "uuid";
 import classNames from "classnames";
 import { sortByNewOnSite } from "../../../Utils/Sorting";
 import useAppState from "../../../Context/Hook/useAppState";
@@ -35,9 +34,9 @@ function FilterOptions({ filterData, className, sortByOption, ...props }) {
       onChange={handleSelectChange}
     >
       <option value="">...</option>
-      {filterData.map((value) => {
+      {filterData.map((value, index) => {
         return (
-          <option value={value} key={uuidv4()}>
+          <option value={value} key={index}>
             {value}
           </option>
         );

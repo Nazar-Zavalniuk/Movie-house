@@ -130,20 +130,6 @@
   --color-link-faq: #ccc;
   --color-text-faq: #aaa;
 
-  /* Movie page */
-  --bg-body-movp: #181818;
-  --bc-img-movp: #252525;
-  --bg-el-movp: #222;
-  --bg-sub-el-static-movp: #292929;
-  --bg-sub-el-hover-movp: #353535;
-  --prim-color-text-info-movp: #a5a5a5;
-  --sec-color-text-info-movp: #dadada;
-  --th-static-color-text-info-movp: #ccc;
-  --th-hover-color-text-info-movp: #eee;
-  --four-static-color-text-info-movp: #777;
-  --four-hover-color-text-info-movp: #bbb;
-  --color-fl-text-info-movp: #f00;
-
   /* Movie page movie card*/
   --color-static-movpmc: #aaa;
   --color-hover-movpmc: #ddd;
@@ -190,4 +176,39 @@
   --bg-static-msp: #181818;
   --color-hover-msp: #ccc;
   --bg-hover-msp: #282828;
+
+  /* Movie page */
+  --bg-body-movp: #181818;
+  --bc-img-movp: #252525;
+  --bg-el-movp: #222;
+  --bg-movie-window-movp: #000;
+  --bg-sub-el-static-movp: #272727;
+  --prim-bg-static-btn-movp: transparent;
+  --prim-hover-bg-btn: #333;
+  --color-fl-text-movp: #f00;
+  --prim-color-text-info-movp: #a5a5a5;
+  --sec-color-text-info-movp: #dadada;
+  --th-static-color-text-info-movp: #ccc;
+  --four-static-color-text-info-movp: #777;
+  --prim-static-color-btn: #bbb;
+  --prim-hover-color-btn: #ddd;
+  --prim-color-btn-icons: #d36d0d;
+  --color-static-expand-btn-movp: #ccc;
+  --color-hover-expand-btn-movp: #ddd;
+  --color-empty-star-movp: #959595;
+  --color-filled-star-movp: #fed70b;
+
+  /* Movie info skeleton */
+  --start-bg-img-mis: #141414;
+  --end-bg-img-mis: #1c1c1c;
+  --start-bg-text-mis: #262626;
+  --end-bg-text-mis: #595959;
+
+  /* Modal window */
+  --bg-mw: rgba(0, 0, 0, 0.4);
+  --bg-body-mw: #181818;
+  --bg-static-btn-mw: #222;
+  --bg-hover\focus-btn-mw: #333;
+  --color-static-btn-mw: #aaa;
+  --color-hover\focus-btn-mw: #ddd;
 }

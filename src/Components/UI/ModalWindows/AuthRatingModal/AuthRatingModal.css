@@ -1,0 +1,27 @@
+.auth-rating-modal .info {
+  max-width: 310px;
+  font-size: 16px;
+  text-align: center;
+  cursor: default;
+}
+
+.auth-rating-modal .modal-buttons {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.modal-buttons .btn {
+  min-height: 33px;
+  border-radius: 3px;
+  flex: 1;
+  color: var(--color-static-btn-mw);
+  background: var(--bg-static-btn-mw);
+}
+
+.modal-buttons .btn:hover,
+.modal-buttons .btn:focus {
+  color: var(--color-hover\focus-btn-mw);
+  background: var(--bg-hover\focus-btn-mw);
+}

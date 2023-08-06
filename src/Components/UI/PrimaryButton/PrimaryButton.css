@@ -5,3 +5,9 @@
 .btn:hover {
   cursor: pointer;
 }
+
+.text-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

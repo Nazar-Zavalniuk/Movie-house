@@ -1,0 +1,25 @@
+.rating {
+  padding: 10px;
+  grid-column: 1/3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 10px;
+  background: var(--bg-el-movp);
+}
+
+.rating-info {
+  font-weight: bold;
+  display: flex;
+  flex-flow: column;
+  row-gap: 6px;
+  color: var(--four-static-color-text-info-movp);
+}
+
+.rating-movie {
+  font-size: 15px;
+}
+
+.voting-info {
+  font-size: 11px;
+}

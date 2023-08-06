@@ -1,0 +1,28 @@
+.header-text.skeleton div {
+  height: 18px;
+  width: 90px;
+  border-radius: 3px;
+  animation: skeleton-loading-description 1s linear infinite alternate;
+}
+
+.text-description.skeleton div {
+  margin: 3px 0;
+  height: 14px;
+  width: 100%;
+  border-radius: 3px;
+  animation: skeleton-loading-description 1s linear infinite alternate;
+}
+
+.text-description.skeleton div:last-child {
+  width: 80%;
+}
+
+@keyframes skeleton-loading-description {
+  0% {
+    background: #262626;
+  }
+
+  100% {
+    background: #595959;
+  }
+}

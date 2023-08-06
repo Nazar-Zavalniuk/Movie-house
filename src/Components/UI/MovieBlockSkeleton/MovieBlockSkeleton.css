@@ -1,0 +1,17 @@
+.movie-footer-info.skeleton .mfi-text.skeleton {
+  height: 20px;
+  width: 100%;
+  padding: 0;
+  border-radius: 3px;
+  animation: skeleton-loading-movie-footer-info 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading-movie-footer-info {
+  0% {
+    background: var(--start-bg-text-mis);
+  }
+
+  100% {
+    background: var(--end-bg-text-mis);
+  }
+}

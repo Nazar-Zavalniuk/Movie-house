@@ -1,0 +1,19 @@
+.roll-wrapper {
+  display: flex;
+  align-items: flex-start;
+}
+
+.expanding-block {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-transition: height 0.3s ease;
+  transition: height 0.3s ease;
+}
+
+.expand-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

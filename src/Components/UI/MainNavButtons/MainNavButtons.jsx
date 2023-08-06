@@ -1,6 +1,5 @@
 import React, { useCallback } from "react";
 import "./MainNavButtons.css";
-import { v4 as uuidv4 } from "uuid";
 import { scroll } from "../../../API/Scroll";
 import { getArrayPages } from "../../../Utils/Pages";
 
@@ -25,13 +24,13 @@ function MainNavButtons({
 
   const pages = getArrayPages(currentPage, totalPages);
 
-  return pages.map((page) => (
+  return pages.map((page, index) => (
     <span
       onClick={handlePageChange}
       className={
         page === currentPage ? "page-number current-page" : "page-number"
       }
-      key={uuidv4()}
+      key={index}
     >
       {page}
     </span>

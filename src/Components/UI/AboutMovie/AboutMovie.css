@@ -1,0 +1,61 @@
+.movie-details .movie-img {
+  width: 200px;
+  height: 300px;
+  border: 2px solid var(--bc-img-movp);
+}
+
+.movie-details .details {
+  line-height: 1.4;
+}
+
+.movie-details .details-row {
+  padding: 10px;
+  display: flex;
+}
+
+.movie-details .details-row:first-child {
+  align-items: center;
+}
+
+.movie-details .details-row a {
+  color: inherit;
+}
+
+.movie-details .details-row a:hover {
+  text-decoration: none;
+}
+
+.movie-details .details-row:first-child .parameter-description {
+  font-size: 16px;
+}
+
+.movie-details .details-row:first-child .parameter-description::first-letter {
+  color: var(--color-fl-text-movp);
+}
+
+.movie-details .details-row:nth-child(odd) {
+  background: var(--bg-el-movp);
+}
+
+.movie-details .details-row .movie-parameter {
+  flex: 0 0 80px;
+}
+
+.movie-parameter {
+  color: var(--prim-color-text-info-movp);
+}
+
+.parameter-description {
+  color: var(--sec-color-text-info-movp);
+}
+
+.expand-btn.actors {
+  padding: 2px;
+  margin-left: 2px;
+  color: var(--color-static-expand-btn-movp);
+  background: var(--prim-bg-static-btn-movp);
+}
+
+.expand-btn.actors:hover {
+  color: var(--color-hover-expand-btn-movp);
+}

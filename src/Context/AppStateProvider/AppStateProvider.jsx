@@ -60,6 +60,10 @@ function AppStateProvider({ children, ...props }) {
     numReboots
   );
 
+  const [currentMovieError, setCurrentMovieError] = useState(null);
+
+  const [showAuthRatingModal, setShowAuthRatingModal] = useState(false);
+
   return (
     <ContextApp.Provider
       value={{
@@ -85,6 +89,10 @@ function AppStateProvider({ children, ...props }) {
         recommendedSeries,
         isRecommendedSeriesLoading,
         recommendedSeriesError,
+        currentMovieError,
+        setCurrentMovieError,
+        showAuthRatingModal,
+        setShowAuthRatingModal,
       }}
     >
       {children}

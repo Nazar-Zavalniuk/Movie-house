@@ -8,6 +8,11 @@ class MoviesService {
     return response;
   }
 
+  static async getById(id) {
+    const response = await axios.get(`http://localhost:3005/movies/${id}`);
+    return response.data;
+  }
+
   static async getTopMovies(limit) {
     const response = await axios.get("http://localhost:3005/movies", {
       params: {
@@ -40,6 +45,14 @@ class MoviesService {
     const actors = response.data;
     const actorsByAlphabet = actors.sort((a, b) => a.localeCompare(b, "uk-UA"));
     return actorsByAlphabet;
+  }
+
+  static async updateMovieData(movieId, data) {
+    const response = await axios.patch(
+      `http://localhost:3005/movies/${movieId}`,
+      data
+    );
+    return response.status;
   }
 }
 

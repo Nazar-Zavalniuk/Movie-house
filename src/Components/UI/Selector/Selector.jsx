@@ -1,7 +1,6 @@
 import React, { useCallback } from "react";
 import "./Selector.css";
 import classNames from "classnames";
-import { v4 as uuidv4 } from "uuid";
 import { RxCross1 } from "react-icons/rx";
 
 function Selector({
@@ -14,9 +13,9 @@ function Selector({
 }) {
   const classNameSelect = classNames(`${className}-filter`, "select-mf");
 
-  const options = data.map((value) => {
+  const options = data.map((value, index) => {
     return (
-      <option value={value} key={uuidv4()}>
+      <option value={value} key={index}>
         {value}
       </option>
     );

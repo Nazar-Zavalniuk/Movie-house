@@ -1,6 +1,5 @@
 import React, { useCallback } from "react";
 import "./NavBar.css";
-import { v4 as uuidv4 } from "uuid";
 import useAppState from "../../../Context/Hook/useAppState";
 import { sortByGenre } from "../../../Utils/Sorting";
 import { genres } from "../../../Data/DataToSort";
@@ -12,7 +11,7 @@ function NavBar({ ...props }) {
 
   const onChangeGenre = useCallback(
     (e) => {
-      const genre = e.target.value;
+      const genre = e.target.value.toLowerCase();
 
       sortByGenre(setSortingParams, genre);
       navigate("/homepage");
@@ -22,13 +21,9 @@ function NavBar({ ...props }) {
 
   return (
     <ul className="nav-bar">
-      {genres.map((genre) => {
+      {genres.map((genre, index) => {
         return (
-          <li
-            className="nav-bar-list-item"
-            key={uuidv4()}
-            onClick={onChangeGenre}
-          >
+          <li className="nav-bar-list-item" key={index} onClick={onChangeGenre}>
             <option className="nav-bar-option" value={genre}>
               {genre}
             </option>
