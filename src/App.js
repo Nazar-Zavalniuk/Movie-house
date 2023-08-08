@@ -6,12 +6,14 @@ import AppStateProvider from "./Context/AppStateProvider/AppStateProvider";
 import Error from "./Pages/Error/Error";
 import Navigator from "./Pages/Navigator/Navigator";
 import MoviePage from "./Pages/MoviePage/MoviePage";
+import Login from "./Pages/Login/Login";
 
 function App() {
   return (
     <BrowserRouter>
       <AppStateProvider>
         <Routes>
+          <Route Component={Login} path="/login" />
           <Route Component={MoviePage} exact path="/movie/:id" />
           <Route Component={Navigator} path="/navigator" />
           <Route Component={Error} path="/error" />

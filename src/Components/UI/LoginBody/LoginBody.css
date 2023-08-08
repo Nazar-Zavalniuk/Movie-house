@@ -1,0 +1,27 @@
+.login-body {
+  margin: 0 6px;
+  padding: 40px 0 0 0;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  row-gap: 16px;
+  background: var(--bg-body-prl);
+}
+
+.login-body .links {
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 16px;
+}
+
+.login-body .registration-link,
+.login-body .restore-password-link {
+  color: var(--color-body-static-prl);
+}
+
+.login-body .registration-link:hover,
+.login-body .restore-password-link:hover {
+  color: var(--color-body-hover-prl);
+}
