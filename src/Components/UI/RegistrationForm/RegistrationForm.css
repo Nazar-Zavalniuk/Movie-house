@@ -1,0 +1,58 @@
+.registration-form {
+  padding: 16px;
+  width: 288px;
+  display: flex;
+  flex-flow: column;
+  row-gap: 15px;
+  border-radius: 5px;
+  background: var(--bg-form-prl);
+}
+
+.registration-form .login,
+.registration-form .email {
+  padding: 8px 10px;
+  font-size: 16px;
+  border-radius: 3px;
+  color: var(--color-static-prli);
+}
+
+.registration-form .login:focus,
+.registration-form .email:focus {
+  outline: 1px solid var(--color-static-prli);
+}
+
+.registration-form-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.registration-form .checking-for-a-person {
+  display: flex;
+  align-items: center;
+  column-gap: 3px;
+}
+
+.registration-form .check-a-person {
+  cursor: pointer;
+}
+
+.registration-form .registration-btn {
+  padding: 8px;
+  font-weight: bold;
+  border: 1px solid var(--bc-static-prlb);
+  border-radius: 3px;
+  color: var(--color-static-prlb);
+  background: var(--bg-static-prlb);
+}
+
+.registration-form .registration-btn:hover,
+.registration-form .registration-btn:focus {
+  border-color: var(--bc-hover-prlb);
+  color: var(--color-hover-prlb);
+}
+
+.registration-form .registration-btn:active {
+  color: var(--color-active-prlb);
+  background: var(--bg-active-prlb);
+}

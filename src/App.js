@@ -7,12 +7,14 @@ import Error from "./Pages/Error/Error";
 import Navigator from "./Pages/Navigator/Navigator";
 import MoviePage from "./Pages/MoviePage/MoviePage";
 import Login from "./Pages/Login/Login";
+import Registration from "./Pages/Registration/Registration";
 
 function App() {
   return (
     <BrowserRouter>
       <AppStateProvider>
         <Routes>
+          <Route Component={Registration} path="/registration" />
           <Route Component={Login} path="/login" />
           <Route Component={MoviePage} exact path="/movie/:id" />
           <Route Component={Navigator} path="/navigator" />

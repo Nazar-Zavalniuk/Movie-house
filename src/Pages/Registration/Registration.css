@@ -1,0 +1,12 @@
+.registration-page.page {
+  display: flex;
+  flex-flow: column;
+}
+
+.registration-page .header {
+  height: 100px;
+}
+
+.registration-body {
+  flex: 1;
+}
