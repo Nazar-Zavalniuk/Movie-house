@@ -8,12 +8,14 @@ import Navigator from "./Pages/Navigator/Navigator";
 import MoviePage from "./Pages/MoviePage/MoviePage";
 import Login from "./Pages/Login/Login";
 import Registration from "./Pages/Registration/Registration";
+import RestorePassword from "./Pages/RestorePassword/RestorePassword";
 
 function App() {
   return (
     <BrowserRouter>
       <AppStateProvider>
         <Routes>
+          <Route Component={RestorePassword} path="/restore-password" />
           <Route Component={Registration} path="/registration" />
           <Route Component={Login} path="/login" />
           <Route Component={MoviePage} exact path="/movie/:id" />
