@@ -3,9 +3,11 @@ import "./MovieDescription.css";
 import { BsFillStarFill } from "react-icons/bs";
 import { FaRegClock } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useAppState from "../../../Context/Hook/useAppState";
 
 function MovieDescription({ children, MovieType, ...props }) {
-  const isAuth = false;
+  const { userName } = useAppState();
+  const isAuth = userName !== null;
   let headerText;
 
   if (MovieType === "tv-series") headerText = "Про серіал";

@@ -18,11 +18,9 @@ function MovieScore({
   titleStarRating,
   ...props
 }) {
-  const userName = "Daniel";
+  const { setShowAuthRatingModal, userName } = useAppState();
+  const isAuth = userName !== null;
   const movieId = useParams().id;
-  const isAuth = true;
-
-  const { setShowAuthRatingModal } = useAppState();
 
   const estimate = useCallback(
     (grade) => {
@@ -44,7 +42,7 @@ function MovieScore({
       setRating(newRating);
       setVotes(newVotes);
     },
-    [setRating, setVotes, votes, movieId]
+    [setRating, setVotes, votes, movieId, userName]
   );
 
   const openModalWindow = useCallback(() => {

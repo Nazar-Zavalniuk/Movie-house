@@ -2,12 +2,15 @@ import React from "react";
 import "./PrimarySideBar.css";
 import SidBarGuestLinks from "../SidBarGuestLinks/SidBarGuestLinks";
 import SideBarUserLinks from "../SideBarUserLinks/SideBarUserLinks";
+import useAppState from "../../../Context/Hook/useAppState";
 
-function PrimarySideBar({ children, isAuth = false, ...props }) {
+function PrimarySideBar({ children, ...props }) {
+  const { userName } = useAppState();
+
   return (
     <div className="side-bar">
       <div className="side-bar-links">
-        {isAuth ? <SideBarUserLinks /> : <SidBarGuestLinks />}
+        {userName !== null ? <SideBarUserLinks /> : <SidBarGuestLinks />}
       </div>
       {children}
     </div>

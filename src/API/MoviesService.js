@@ -54,6 +54,20 @@ class MoviesService {
     );
     return response.status;
   }
+
+  static async getUserByName(userName) {
+    const response = await axios.get("http://localhost:3005/users", {
+      params: {
+        userName: userName,
+      },
+    });
+    return response.data;
+  }
+
+  static async addNewUser(user) {
+    const response = await axios.post("http://localhost:3005/users", user);
+    return response.data;
+  }
 }
 
 export default MoviesService;

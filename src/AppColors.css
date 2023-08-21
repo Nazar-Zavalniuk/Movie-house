@@ -109,6 +109,7 @@
   --color-body-static-prl: #aaa;
   --bg-form-prl: #222;
   --color-body-hover-prl: #ccc;
+  --color-warning-prl: #f00;
 
   /* Page registration/login inputs*/
   --bg-static-prli: #333;
@@ -210,4 +211,12 @@
   --bg-hover\focus-btn-mw: #333;
   --color-static-btn-mw: #aaa;
   --color-hover\focus-btn-mw: #ddd;
+
+  /* Loader */
+  --first-color-loader: #0000;
+  --second-color-loader: #eeeeee;
+  --third-color-loader: #000;
+
+  /* Overlay */
+  --bg-overlay: rgba(0, 0, 0, 0.1);
 }

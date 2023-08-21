@@ -64,6 +64,8 @@ function AppStateProvider({ children, ...props }) {
 
   const [showAuthRatingModal, setShowAuthRatingModal] = useState(false);
 
+  const [userName, setUserName] = useState(null);
+
   return (
     <ContextApp.Provider
       value={{
@@ -93,6 +95,8 @@ function AppStateProvider({ children, ...props }) {
         setCurrentMovieError,
         showAuthRatingModal,
         setShowAuthRatingModal,
+        userName,
+        setUserName,
       }}
     >
       {children}

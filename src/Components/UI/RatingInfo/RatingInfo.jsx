@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import "./RatingInfo.css";
 import MovieScore from "../MovieScore/MovieScore";
+import useAppState from "../../../Context/Hook/useAppState";
 
 function RatingInfo({ movieData, ...props }) {
   const { rating, votes } = movieData;
   const [currentRating, setCurrentRating] = useState(rating);
   const [currentVotes, setCurrentVotes] = useState(votes);
 
-  const userName = "Daniel";
-  const isAuth = true;
+  const { userName } = useAppState();
+  const isAuth = userName !== null;
 
   const votedUsers = currentVotes.map((item) => item.userName);
   const NumVotes = votedUsers.length;
@@ -19,9 +20,10 @@ function RatingInfo({ movieData, ...props }) {
     ? ""
     : "Можливість оцінюваті фільм мають тільки авторизовані користувачі";
 
-  const votingInfo = votedUsers.includes(userName)
-    ? `З вами проголосувало: ${NumVotes}`
-    : `Усього проголосувало: ${NumVotes}`;
+  const votingInfo =
+    votedUsers.includes(userName) && isAuth
+      ? `З вами проголосувало: ${NumVotes}`
+      : `Усього проголосувало: ${NumVotes}`;
 
   return (
     <div className="rating">

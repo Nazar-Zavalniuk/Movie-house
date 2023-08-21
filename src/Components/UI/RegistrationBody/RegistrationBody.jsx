@@ -1,22 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "./RegistrationBody.css";
 import { Link } from "react-router-dom";
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
+import RegistrationErrorMessage from "../RegistrationErrorMessage/RegistrationErrorMessage";
 
 function RegistrationBody(props) {
+  const [userEntryError, setUserEntryError] = useState(false);
+  const [loginError, setLoginError] = useState(false);
+
   return (
     <div className="registration-body">
-      <RegistrationForm />
+      {(userEntryError || loginError) && <RegistrationErrorMessage />}
+      <RegistrationForm
+        setUserEntryError={setUserEntryError}
+        setLoginError={setLoginError}
+      />
       <div className="links">
         <Link className="login-link" to="/login">
           Вхід
-        </Link>
-        <Link
-          className="restore-password-link"
-          title="Відновлення паролю"
-          to="/restore-password"
-        >
-          Забув пароль?
         </Link>
       </div>
     </div>

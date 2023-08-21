@@ -6,7 +6,7 @@ import { sortByRecommended } from "../../../Utils/Sorting";
 import { scroll } from "../../../API/Scroll";
 import { useNavigate } from "react-router-dom";
 
-function SidebarWithRecommendation({ isAuth, ...props }) {
+function SidebarWithRecommendation({ ...props }) {
   const { setSortingParams, recommendedMovies, recommendedSeries } =
     useAppState();
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ function SidebarWithRecommendation({ isAuth, ...props }) {
   }, [setSortingParams, navigate]);
 
   return (
-    <PrimarySideBar isAuth={isAuth}>
+    <PrimarySideBar>
       <BlockRecommendations
         onClick={sortByMovies}
         className="movies"

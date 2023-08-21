@@ -4,24 +4,17 @@
   display: flex;
   flex-flow: column;
   align-items: center;
-  row-gap: 16px;
   background: var(--bg-body-prl);
 }
 
 .registration-body .links {
   font-size: 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  column-gap: 16px;
 }
 
-.registration-body .login-link,
-.registration-body .restore-password-link {
+.registration-body .login-link {
   color: var(--color-body-static-prl);
 }
 
-.registration-body .login-link:hover,
-.registration-body .restore-password-link:hover {
+.registration-body .login-link:hover {
   color: var(--color-body-hover-prl);
 }

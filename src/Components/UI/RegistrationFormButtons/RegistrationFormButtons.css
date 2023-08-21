@@ -1,0 +1,44 @@
+.registration-form-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.registration-form .checking-for-a-person {
+  display: flex;
+  align-items: center;
+  column-gap: 3px;
+}
+
+.registration-form .check-a-person {
+  cursor: pointer;
+}
+
+.registration-form .registration-btn {
+  padding: 8px;
+  font-weight: bold;
+  border: 1px solid var(--bc-static-prlb);
+  border-radius: 3px;
+  color: var(--color-static-prlb);
+  background: var(--bg-static-prlb);
+}
+
+.registration-form .registration-btn:hover,
+.registration-form .registration-btn:focus {
+  border-color: var(--bc-hover-prlb);
+  color: var(--color-hover-prlb);
+}
+
+.registration-form .registration-btn:active {
+  color: var(--color-active-prlb);
+  background: var(--bg-active-prlb);
+}
+
+.registration-form .registration-btn.disabled,
+.registration-form .registration-btn.disabled:active {
+  color: var(--color-static-prlb);
+  border-color: var(--bc-static-prlb);
+  background: var(--bg-static-prlb);
+  opacity: 0.5;
+  cursor: default;
+}

@@ -1,0 +1,18 @@
+.registration-error-message {
+  padding: 10px;
+  margin-bottom: 5px;
+  width: 300px;
+  text-align: center;
+  border-radius: 5px;
+  color: var(--color-warning-prl);
+  background: var(--bg-form-prl);
+}
+
+.registration-error-message .message-title {
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.registration-error-message .message {
+  font-size: 14px;
+}
