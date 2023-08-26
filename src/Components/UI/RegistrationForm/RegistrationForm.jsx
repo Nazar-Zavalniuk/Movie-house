@@ -29,6 +29,7 @@ function RegistrationForm({ setVerificationError, ...props }) {
       await MoviesService.addNewUser(user);
       setUserName(user.userName);
       navigate("/homepage");
+      localStorage.setItem("userName", user.userName);
     },
     [setUserName, navigate]
   );

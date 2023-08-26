@@ -34,6 +34,7 @@ function LoginForm({ setVerificationError, ...props }) {
         if (isPasswordValid) {
           setUserName(login);
           navigate("/homepage");
+          localStorage.setItem("userName", login);
         } else {
           setIsPasswordValid(false);
         }

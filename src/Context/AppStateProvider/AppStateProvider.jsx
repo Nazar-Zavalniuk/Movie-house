@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { ContextApp } from "../ContextApp";
 import useDynamicMovies from "../../Hooks/useDynamicMovies";
 import usePermanentMovies from "../../Hooks/usePermanentMovies";
@@ -65,6 +65,11 @@ function AppStateProvider({ children, ...props }) {
   const [showAuthRatingModal, setShowAuthRatingModal] = useState(false);
 
   const [userName, setUserName] = useState(null);
+
+  useLayoutEffect(() => {
+    const userName = localStorage.getItem("userName");
+    setUserName(userName);
+  }, []);
 
   return (
     <ContextApp.Provider
