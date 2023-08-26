@@ -1,0 +1,29 @@
+.login-box {
+  display: flex;
+  flex-flow: column;
+}
+
+.login-box .login-input {
+  padding: 8px 10px;
+  border-radius: 3px;
+  color: var(--color-static-prli);
+}
+
+.login-box .login-input {
+  font-size: 16px;
+}
+
+.login-box .login-input:focus {
+  outline: 1px solid var(--color-static-prli);
+}
+
+.login-box .login-input.invalid {
+  outline: 1px solid var(--color-warning-prl);
+}
+
+.login-box .login-warning-message {
+  margin-top: 4px;
+  text-align: justify;
+  line-height: 1.4;
+  color: var(--color-warning-prl);
+}

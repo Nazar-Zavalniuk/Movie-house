@@ -6,11 +6,11 @@ import classNames from "classnames";
 function RegistrationFormButtons({
   humanConfirmation,
   setHumanConfirmation,
-  isFormValid,
+  disabled,
   ...props
 }) {
   const classNameRegBtn = classNames("registration-btn", {
-    disabled: !isFormValid,
+    disabled,
   });
 
   const handleCheckboxChange = (event) => {
@@ -31,7 +31,7 @@ function RegistrationFormButtons({
       </div>
       <PrimaryButton
         className={classNameRegBtn}
-        disabled={isFormValid ? "" : "disabled"}
+        disabled={disabled ? "disabled" : ""}
       >
         Регістрация
       </PrimaryButton>

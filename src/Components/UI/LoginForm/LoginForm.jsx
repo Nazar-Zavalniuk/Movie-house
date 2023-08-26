@@ -1,91 +1,92 @@
 import React, { useCallback, useState } from "react";
 import "./LoginForm.css";
-import PrimaryInput from "../PrimaryInput/PrimaryInput";
-import PrimaryButton from "../PrimaryButton/PrimaryButton";
-import Eye from "../Eye/Eye";
+import LoginInput from "../LoginInput/LoginInput";
+import PasswordInput from "../PasswordInput/PasswordInput";
+import LoginFormButtons from "../LoginFormButtons/LoginFormButtons";
+import MoviesService from "../../../API/MoviesService";
+import PrimaryOverlay from "../PrimaryOverlay/PrimaryOverlay";
+import useAppState from "../../../Context/Hook/useAppState";
+import { useNavigate } from "react-router-dom";
 
-function LoginForm(props) {
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [isPasswordInputFocused, setIsPasswordInputFocused] = useState(false);
-  const typePasswodInput = isPasswordVisible ? "text" : "password";
-
+function LoginForm({ setVerificationError, ...props }) {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
-  const togglePasswordVisibility = useCallback(() => {
-    setIsPasswordVisible(!isPasswordVisible);
-  }, [isPasswordVisible]);
+  const [isLoginValid, setIsLoginValid] = useState(true);
+  const [isPasswordValid, setIsPasswordValid] = useState(true);
 
-  const togglePasswordVisibilityByEnter = useCallback(
+  const [verification, setVerification] = useState(false);
+  const { setUserName } = useAppState();
+  const navigate = useNavigate();
+
+  const userVerification = useCallback(async () => {
+    try {
+      setVerification(true);
+      const userArr = await MoviesService.getUserByName(login);
+      const [user] = userArr;
+      setVerification(false);
+
+      if (!user) {
+        setIsLoginValid(false);
+      } else {
+        const isPasswordValid = user.userPassword === password;
+
+        if (isPasswordValid) {
+          setUserName(login);
+          navigate("/homepage");
+        } else {
+          setIsPasswordValid(false);
+        }
+      }
+    } catch {
+      setTimeout(() => {
+        setVerificationError(true);
+        setVerification(false);
+      }, 200);
+    }
+  }, [
+    login,
+    password,
+    setVerification,
+    setVerificationError,
+    setUserName,
+    navigate,
+  ]);
+
+  const submitForm = useCallback(
     (e) => {
-      if (e.keyCode === 13) togglePasswordVisibility();
+      setVerificationError(false);
+      userVerification();
+      e.preventDefault();
     },
-    [togglePasswordVisibility]
+    [userVerification, setVerificationError]
   );
 
-  const onChangeLogin = useCallback((e) => {
-    setLogin(e.target.value);
-  }, []);
-
-  const onChangePassword = useCallback((e) => {
-    setPassword(e.target.value);
-  }, []);
-
-  const onFocusPassword = useCallback(() => {
-    setIsPasswordInputFocused(true);
-  }, []);
-
-  const onBlurPassword = useCallback(() => {
-    setIsPasswordInputFocused(false);
-  }, []);
-
-  const submitForm = useCallback((e) => {
-    e.preventDefault();
-  }, []);
+  const isOverlayActive = verification;
+  const isFormValid =
+    login !== "" && isLoginValid && password !== "" && isPasswordValid;
 
   return (
     <form className="login-form" onSubmit={submitForm}>
-      <PrimaryInput
-        className="login"
-        id="login"
-        type="text"
-        value={login}
-        placeholder="Логін"
-        tabIndex={1}
-        onChange={onChangeLogin}
+      <LoginInput
+        login={login}
+        setLogin={setLogin}
+        isLoginValid={isLoginValid}
+        setIsLoginValid={setIsLoginValid}
+        disabled={isOverlayActive}
       />
-      <div
-        className="password"
-        style={{ outline: isPasswordInputFocused ? "1px solid" : "" }}
-      >
-        <PrimaryInput
-          className="password-input"
-          id="password"
-          type={typePasswodInput}
-          value={password}
-          placeholder="Пароль"
-          tabIndex={2}
-          onChange={onChangePassword}
-          onFocus={onFocusPassword}
-          onBlur={onBlurPassword}
-        />
-        {password !== "" && (
-          <Eye
-            className="show-password-btn"
-            tabIndex={3}
-            open={isPasswordVisible}
-            onClick={togglePasswordVisibility}
-            onKeyDown={togglePasswordVisibilityByEnter}
-          />
-        )}
-      </div>
-      <div className="login-form-buttons">
-        <div className="remember-body">
-          <label htmlFor="remember">Запам'ятати мене</label>
-          <input type="checkbox" className="remember" id="remember" />
-        </div>
-        <PrimaryButton className="login-btn">Увійти</PrimaryButton>
-      </div>
+      <PasswordInput
+        password={password}
+        setPassword={setPassword}
+        isPasswordValid={isPasswordValid}
+        setIsPasswordValid={setIsPasswordValid}
+        disabled={isOverlayActive}
+      />
+      <LoginFormButtons disabled={!isFormValid || isOverlayActive} />
+      <PrimaryOverlay
+        className="overlay-login"
+        isOverlayActive={isOverlayActive}
+      />
     </form>
   );
 }

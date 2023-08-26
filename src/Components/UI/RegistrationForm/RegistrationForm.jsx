@@ -1,17 +1,15 @@
 import React, { useState, useCallback, useEffect } from "react";
 import "./RegistrationForm.css";
-import Loader from "../Loader/Loader";
-import useFetching from "../../../Hooks/useFetching";
 import MoviesService from "../../../API/MoviesService";
 import RegistrationLoginInput from "../RegistrationLoginInput/RegistrationLoginInput";
 import RegistrationPasswordInput from "../RegistrationPasswordInput/RegistrationPasswordInput";
 import { passwordValidation, loginValidation } from "../../../Utils/Validation";
-import classNames from "classnames";
 import RegistrationFormButtons from "../RegistrationFormButtons/RegistrationFormButtons";
 import useAppState from "../../../Context/Hook/useAppState";
 import { useNavigate } from "react-router-dom";
+import PrimaryOverlay from "../PrimaryOverlay/PrimaryOverlay";
 
-function RegistrationForm({ setUserEntryError, setLoginError, ...props }) {
+function RegistrationForm({ setVerificationError, ...props }) {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
@@ -23,97 +21,78 @@ function RegistrationForm({ setUserEntryError, setLoginError, ...props }) {
   const [humanConfirmation, setHumanConfirmation] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
 
-  const [isLoginAlreadyTaken, setIsLoginAlreadyTaken] = useState(false);
-  const [didTheLoginCheckSucceed, setDidTheLoginCheckSucceed] = useState(false);
+  const { setUserName } = useAppState();
+  const navigate = useNavigate();
 
-  const [fetchUserByLogin, isLoginSearchInProgress, loginError] = useFetching(
-    async () => {
-      const user = await MoviesService.getUserByName(login);
-      setIsLoginAlreadyTaken(user.length !== 0);
-      setDidTheLoginCheckSucceed(user.length === 0);
-    }
+  const addNewUser = useCallback(
+    async (user) => {
+      await MoviesService.addNewUser(user);
+      setUserName(user.userName);
+      navigate("/homepage");
+    },
+    [setUserName, navigate]
   );
 
-  useEffect(() => {
-    setLoginError(loginError.errorState);
-  }, [loginError, setLoginError]);
+  const [verification, setVerification] = useState(false);
+  const userVerification = useCallback(async () => {
+    try {
+      setVerification(true);
+      const user = await MoviesService.getUserByName(login);
+      const userAlreadyExists = user.length !== 0;
+
+      if (userAlreadyExists) {
+        setIsLoginValid(false);
+        setLoginWarningMessage("Логін вже зайнятий іншим користувачем.");
+      } else {
+        const newUser = {
+          userName: login,
+          userPassword: password,
+        };
+
+        await addNewUser(newUser);
+      }
+      setVerification(false);
+    } catch {
+      setTimeout(() => {
+        setVerificationError(true);
+        setVerification(false);
+      }, 200);
+    }
+  }, [login, password, addNewUser, setVerificationError]);
+
+  const checkForm = useCallback(() => {
+    const loginValidationResult = loginValidation(login);
+    const passwordValidationResult = passwordValidation(password);
+
+    setIsLoginValid(loginValidationResult.state);
+    setIsPasswordValid(passwordValidationResult.state);
+    setLoginWarningMessage(loginValidationResult.message);
+    setPasswordWarningMessage(passwordValidationResult.message);
+
+    return loginValidationResult.state && passwordValidationResult.state;
+  }, [login, password]);
 
   const submitForm = useCallback(
     (e) => {
-      setIsLoginAlreadyTaken(false);
       setHumanConfirmation(false);
+      setVerificationError(false);
 
-      const loginValidationResult = loginValidation(login);
-      const passwordValidationResult = passwordValidation(password);
-      const isFormValid =
-        loginValidationResult.state && passwordValidationResult.state;
-
-      setIsLoginValid(loginValidationResult.state);
-      setIsPasswordValid(passwordValidationResult.state);
-      setLoginWarningMessage(loginValidationResult.message);
-      setPasswordWarningMessage(passwordValidationResult.message);
-
+      const isFormValid = checkForm();
       if (isFormValid) {
-        fetchUserByLogin();
+        userVerification();
       }
 
       e.preventDefault();
     },
-    [login, password]
+    [checkForm, userVerification, setVerificationError]
   );
 
   useEffect(() => {
     const isFormValid = isLoginValid && isPasswordValid && humanConfirmation;
-
-    if (isFormValid) {
-      setIsFormValid(true);
-    } else {
-      setIsFormValid(false);
-    }
+    setIsFormValid(isFormValid);
   }, [isLoginValid, isPasswordValid, humanConfirmation]);
 
-  useEffect(() => {
-    if (isLoginAlreadyTaken) {
-      setIsLoginValid(false);
-      setLoginWarningMessage("Логін вже зайнятий іншим користувачем.");
-    }
-  }, [isLoginAlreadyTaken]);
-
-  const [newUserEntryInProgress, setNewUserEntryInProgress] = useState(false);
-  const { setUserName } = useAppState();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (didTheLoginCheckSucceed) {
-      const newUser = {
-        userName: login,
-        userPassword: password,
-      };
-
-      async function addNewUser() {
-        try {
-          setNewUserEntryInProgress(true);
-          setUserEntryError(false);
-          await MoviesService.addNewUser(newUser);
-          setUserName(newUser.userName);
-          navigate("/homepage");
-        } catch (error) {
-          setUserEntryError(true);
-        } finally {
-          setNewUserEntryInProgress(false);
-          setDidTheLoginCheckSucceed(false);
-        }
-      }
-
-      addNewUser();
-    }
-  }, [didTheLoginCheckSucceed]);
-
-  const isOverlayActive = isLoginSearchInProgress || newUserEntryInProgress;
-
-  const classNameOverlay = classNames("overlay", {
-    active: isOverlayActive,
-  });
+  const isOverlayActive = verification;
 
   return (
     <form className="registration-form" onSubmit={submitForm}>
@@ -138,11 +117,12 @@ function RegistrationForm({ setUserEntryError, setLoginError, ...props }) {
       <RegistrationFormButtons
         humanConfirmation={humanConfirmation}
         setHumanConfirmation={setHumanConfirmation}
-        isFormValid={isFormValid}
+        disabled={!isFormValid}
       />
-      <div className={classNameOverlay}>
-        <Loader className="loader" size="normal" />
-      </div>
+      <PrimaryOverlay
+        className="registration-overlay"
+        isOverlayActive={isOverlayActive}
+      />
     </form>
   );
 }

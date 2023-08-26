@@ -1,0 +1,44 @@
+.login-form-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-form .remember-body {
+  display: flex;
+  align-items: center;
+  column-gap: 3px;
+}
+
+.login-form .remember {
+  cursor: pointer;
+}
+
+.login-form .login-btn {
+  padding: 8px;
+  font-weight: bold;
+  border: 1px solid var(--bc-static-prlb);
+  border-radius: 3px;
+  color: var(--color-static-prlb);
+  background: var(--bg-static-prlb);
+}
+
+.login-form .login-btn:hover,
+.login-form .login-btn:focus {
+  border-color: var(--bc-hover-prlb);
+  color: var(--color-hover-prlb);
+}
+
+.login-form .login-btn:active {
+  color: var(--color-active-prlb);
+  background: var(--bg-active-prlb);
+}
+
+.login-form .login-btn.disabled,
+.login-form .login-btn.disabled:active {
+  color: var(--color-static-prlb);
+  border-color: var(--bc-static-prlb);
+  background: var(--bg-static-prlb);
+  opacity: 0.5;
+  cursor: default;
+}

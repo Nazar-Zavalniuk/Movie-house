@@ -1,29 +1,28 @@
-import React, { useCallback, useState } from "react";
-import "./RegistrationPasswordInput.css";
+import React, { useState, useCallback } from "react";
+import "./PasswordInput.css";
 import PrimaryInput from "../PrimaryInput/PrimaryInput";
-import classNames from "classnames";
 import Eye from "../Eye/Eye";
+import classNames from "classnames";
 
-function RegistrationPasswordInput({
+function PasswordInput({
   password,
   setPassword,
   isPasswordValid,
   setIsPasswordValid,
-  warningMessage,
-  setWarningMessage,
   disabled,
   ...props
 }) {
   const [isPasswordInputFocused, setIsPasswordInputFocused] = useState(false);
-  const [inputType, setInputType] = useState("password");
+  const [typeInput, setTypeInput] = useState("password");
+  const isPasswordVisible = typeInput === "text";
 
   const togglePasswordVisibility = useCallback(() => {
-    if (inputType === "password") {
-      setInputType("text");
-    } else if (inputType === "text") {
-      setInputType("password");
+    if (typeInput === "text") {
+      setTypeInput("password");
+    } else {
+      setTypeInput("text");
     }
-  }, [inputType]);
+  }, [typeInput]);
 
   const togglePasswordVisibilityByEnter = useCallback(
     (e) => {
@@ -40,21 +39,16 @@ function RegistrationPasswordInput({
   );
 
   const onFocusPassword = useCallback(() => {
+    setIsPasswordValid(true);
     setIsPasswordInputFocused(true);
-    resetEmailValidationState();
-  }, []);
+  }, [setIsPasswordValid]);
 
   const onBlurPassword = useCallback(() => {
     setIsPasswordInputFocused(false);
   }, []);
 
-  const resetEmailValidationState = useCallback(() => {
-    setIsPasswordValid(true);
-    setWarningMessage("");
-  }, [setIsPasswordValid, setWarningMessage]);
-
-  const classNamePasswordBody = classNames(
-    "password-body",
+  const classNamePasswordInputWrapper = classNames(
+    "password-input-wrapper",
     {
       focused: isPasswordInputFocused,
     },
@@ -63,11 +57,11 @@ function RegistrationPasswordInput({
 
   return (
     <div className="password-box">
-      <div className={classNamePasswordBody}>
+      <div className={classNamePasswordInputWrapper}>
         <PrimaryInput
           className="password-input"
           id="password"
-          type={inputType}
+          type={typeInput}
           value={password}
           placeholder="Пароль"
           tabIndex={2}
@@ -80,17 +74,17 @@ function RegistrationPasswordInput({
           <Eye
             className="show-password-btn"
             tabIndex={3}
-            open={inputType === "text"}
+            open={isPasswordVisible}
             onClick={togglePasswordVisibility}
             onKeyDown={togglePasswordVisibilityByEnter}
           />
         )}
       </div>
       {!isPasswordValid && (
-        <div className="warning-message">{warningMessage}</div>
+        <div className="password-warning-message">Невірний пароль.</div>
       )}
     </div>
   );
 }
 
-export default RegistrationPasswordInput;
+export default PasswordInput;
