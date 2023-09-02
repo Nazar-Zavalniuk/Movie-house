@@ -1,11 +1,15 @@
 import React from "react";
-import "./ErrorNotifier.css";
+import "./ErrorNotifierForForm.css";
 import classNames from "classnames";
 
-function ErrorNotifier({ visible = true, ...props }) {
-  const classNameRegErrorMsg = classNames("registration-error-message", {
-    visible,
-  });
+function ErrorNotifierForForm({ className, visible = true, ...props }) {
+  const classNameRegErrorMsg = classNames(
+    "error-notifier-for-form",
+    className,
+    {
+      visible,
+    }
+  );
 
   return (
     <div className={classNameRegErrorMsg}>
@@ -15,4 +19,4 @@ function ErrorNotifier({ visible = true, ...props }) {
   );
 }
 
-export default ErrorNotifier;
+export default ErrorNotifierForForm;

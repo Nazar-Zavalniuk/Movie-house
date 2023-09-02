@@ -1,0 +1,33 @@
+.app-notifier {
+  display: inline-flex;
+  position: fixed;
+  cursor: default;
+  bottom: 15px;
+  right: 15px;
+  z-index: 999;
+}
+
+.app-notifier .change-password-success-notifier {
+  padding: 10px;
+  border-radius: 5px 15px 0 15px;
+  color: var(--color-success-notifier);
+  background: var(--bg-notifier);
+  border: 1px solid var(--color-success-notifier);
+  z-index: 999;
+}
+
+.app-notifier .change-password-error-notifier {
+  padding: 10px;
+  border-radius: 5px 15px 0 15px;
+  color: var(--color-error-notifier);
+  background: var(--bg-notifier);
+  border: 1px solid var(--color-error-notifier);
+}
+
+.app-notifier .change-password-notifier-title {
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 5px;
+}

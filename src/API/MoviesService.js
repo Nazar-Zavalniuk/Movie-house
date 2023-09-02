@@ -68,6 +68,14 @@ class MoviesService {
     const response = await axios.post("http://localhost:3005/users", user);
     return response.data;
   }
+
+  static async updateUserData(userId, data) {
+    const response = await axios.patch(
+      `http://localhost:3005/users/${userId}`,
+      data
+    );
+    return response.data;
+  }
 }
 
 export default MoviesService;

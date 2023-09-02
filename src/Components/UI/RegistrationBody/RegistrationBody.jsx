@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import "./RegistrationBody.css";
 import { Link } from "react-router-dom";
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
-import ErrorNotifier from "../ErrorNotifier/ErrorNotifier";
+import ErrorNotifierForForm from "../ErrorNotifierForForm/ErrorNotifierForForm";
 
 function RegistrationBody(props) {
   const [verificationError, setVerificationError] = useState(false);
 
   return (
     <div className="registration-body">
-      <ErrorNotifier visible={verificationError} />
+      <ErrorNotifierForForm visible={verificationError} />
       <RegistrationForm setVerificationError={setVerificationError} />
       <div className="links">
         <Link className="login-link" to="/login">

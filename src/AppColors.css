@@ -219,4 +219,13 @@
 
   /* Overlay */
   --bg-overlay: rgba(0, 0, 0, 0.1);
+
+  /* App Notifier */
+  --color-success-notifier: #00a900;
+  --color-error-notifier: #f00;
+  --bg-notifier: #000;
+
+  /* Page user settings */
+  --bg-body-pus: #181818;
+  --bc-avatar: #353535;
 }

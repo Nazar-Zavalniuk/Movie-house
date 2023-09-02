@@ -1,9 +1,10 @@
-.registration-error-message {
+.error-notifier-for-form {
   padding: 10px;
   margin-bottom: 5px;
   width: 300px;
   text-align: center;
   border-radius: 5px;
+  cursor: default;
   opacity: 0;
   transform: scale(0.5);
   transition: 0.2s;
@@ -11,16 +12,17 @@
   background: var(--bg-form-prl);
 }
 
-.registration-error-message .message-title {
+.error-notifier-for-form .message-title {
   margin-bottom: 5px;
   font-size: 16px;
 }
 
-.registration-error-message .message {
+.error-notifier-for-form .message {
   font-size: 14px;
 }
 
-.registration-error-message.visible {
+.error-notifier-for-form.visible {
   opacity: 1;
   transform: scale(1);
+  transition: 0.2s;
 }

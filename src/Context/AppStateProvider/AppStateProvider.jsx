@@ -71,6 +71,9 @@ function AppStateProvider({ children, ...props }) {
     setUserName(userName);
   }, []);
 
+  const [passwordChangeError, setPasswordChangeError] = useState(false);
+  const [isPasswordUpdated, setIsPasswordUpdated] = useState(false);
+
   return (
     <ContextApp.Provider
       value={{
@@ -102,6 +105,10 @@ function AppStateProvider({ children, ...props }) {
         setShowAuthRatingModal,
         userName,
         setUserName,
+        isPasswordUpdated,
+        setIsPasswordUpdated,
+        passwordChangeError,
+        setPasswordChangeError,
       }}
     >
       {children}

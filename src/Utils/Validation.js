@@ -41,3 +41,19 @@ export const passwordValidation = (string) => {
     return { message: "", state: true };
   }
 };
+
+export const newPasswordValidation = (newPassword, oldPassword) => {
+  if (newPassword.length < 8) {
+    return {
+      message: "Пароль повинен мати щонайменше 8 символів.",
+      state: false,
+    };
+  } else if (newPassword === oldPassword) {
+    return {
+      message: "Новий пароль не повинен співпадати зі старим.",
+      state: false,
+    };
+  } else {
+    return { message: "", state: true };
+  }
+};
