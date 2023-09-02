@@ -1,12 +1,12 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import "./LoginForm.css";
 import LoginInput from "../LoginInput/LoginInput";
-import PasswordInput from "../PasswordInput/PasswordInput";
 import LoginFormButtons from "../LoginFormButtons/LoginFormButtons";
 import MoviesService from "../../../API/MoviesService";
 import PrimaryOverlay from "../PrimaryOverlay/PrimaryOverlay";
 import useAppState from "../../../Context/Hook/useAppState";
 import { useNavigate } from "react-router-dom";
+import PrimaryPasswordInput from "../PrimaryPasswordInput/PrimaryPasswordInput";
 
 function LoginForm({ setVerificationError, ...props }) {
   const [login, setLogin] = useState("");
@@ -14,6 +14,8 @@ function LoginForm({ setVerificationError, ...props }) {
 
   const [isLoginValid, setIsLoginValid] = useState(true);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
+
+  const [passwordWarningMessage, setPasswordWarningMessage] = useState("");
 
   const [verification, setVerification] = useState(false);
   const { setUserName } = useAppState();
@@ -37,6 +39,7 @@ function LoginForm({ setVerificationError, ...props }) {
           localStorage.setItem("userName", login);
         } else {
           setIsPasswordValid(false);
+          setPasswordWarningMessage("Невірний пароль.");
         }
       }
     } catch {
@@ -54,9 +57,15 @@ function LoginForm({ setVerificationError, ...props }) {
     navigate,
   ]);
 
+  const [showPassword, setShowPassword] = useState(false);
+  const passwordInputRef = useRef(null);
+
   const submitForm = useCallback(
     (e) => {
       setVerificationError(false);
+      setShowPassword(false);
+      passwordInputRef.current.blur();
+
       userVerification();
       e.preventDefault();
     },
@@ -76,12 +85,20 @@ function LoginForm({ setVerificationError, ...props }) {
         setIsLoginValid={setIsLoginValid}
         disabled={isOverlayActive}
       />
-      <PasswordInput
+      <PrimaryPasswordInput
         password={password}
         setPassword={setPassword}
+        showPassword={showPassword}
+        setShowPassword={setShowPassword}
         isPasswordValid={isPasswordValid}
         setIsPasswordValid={setIsPasswordValid}
+        warningMessage={passwordWarningMessage}
+        setWarningMessage={setPasswordWarningMessage}
         disabled={isOverlayActive}
+        placeholder="Пароль"
+        tabIndexInput={2}
+        tabIndexShowPassBtn={3}
+        ref={passwordInputRef}
       />
       <LoginFormButtons disabled={!isFormValid || isOverlayActive} />
       <PrimaryOverlay

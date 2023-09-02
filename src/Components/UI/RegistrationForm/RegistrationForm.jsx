@@ -2,12 +2,12 @@ import React, { useState, useCallback, useEffect } from "react";
 import "./RegistrationForm.css";
 import MoviesService from "../../../API/MoviesService";
 import RegistrationLoginInput from "../RegistrationLoginInput/RegistrationLoginInput";
-import RegistrationPasswordInput from "../RegistrationPasswordInput/RegistrationPasswordInput";
 import { passwordValidation, loginValidation } from "../../../Utils/Validation";
 import RegistrationFormButtons from "../RegistrationFormButtons/RegistrationFormButtons";
 import useAppState from "../../../Context/Hook/useAppState";
 import { useNavigate } from "react-router-dom";
 import PrimaryOverlay from "../PrimaryOverlay/PrimaryOverlay";
+import PrimaryPasswordInput from "../PrimaryPasswordInput/PrimaryPasswordInput";
 
 function RegistrationForm({ setVerificationError, ...props }) {
   const [login, setLogin] = useState("");
@@ -48,6 +48,8 @@ function RegistrationForm({ setVerificationError, ...props }) {
         const newUser = {
           userName: login,
           userPassword: password,
+          favorite: [],
+          watchLater: [],
         };
 
         await addNewUser(newUser);
@@ -73,10 +75,14 @@ function RegistrationForm({ setVerificationError, ...props }) {
     return loginValidationResult.state && passwordValidationResult.state;
   }, [login, password]);
 
+  const [showPassword, setShowPassword] = useState(false);
+
   const submitForm = useCallback(
     (e) => {
       setHumanConfirmation(false);
       setVerificationError(false);
+
+      setShowPassword(false);
 
       const isFormValid = checkForm();
       if (isFormValid) {
@@ -106,14 +112,19 @@ function RegistrationForm({ setVerificationError, ...props }) {
         setWarningMessage={setLoginWarningMessage}
         disabled={isOverlayActive}
       />
-      <RegistrationPasswordInput
+      <PrimaryPasswordInput
         password={password}
         setPassword={setPassword}
+        showPassword={showPassword}
+        setShowPassword={setShowPassword}
         isPasswordValid={isPasswordValid}
         setIsPasswordValid={setIsPasswordValid}
         warningMessage={passwordWarningMessage}
         setWarningMessage={setPasswordWarningMessage}
         disabled={isOverlayActive}
+        tabIndexInput={2}
+        tabIndexShowPassBtn={3}
+        placeholder="Пароль"
       />
       <RegistrationFormButtons
         humanConfirmation={humanConfirmation}

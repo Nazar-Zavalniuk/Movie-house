@@ -73,8 +73,8 @@ function ChangePasswordForm({
 
   const [showOldPassword, setShowOldPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
-  const oldPasswordRef = useRef();
-  const newPasswordRef = useRef();
+  const oldPasswordRef = useRef(null);
+  const newPasswordRef = useRef(null);
 
   const submitForm = useCallback(
     (e) => {
