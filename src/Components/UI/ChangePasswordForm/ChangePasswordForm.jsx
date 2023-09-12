@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import "./ChangePasswordForm.css";
 import PrimaryPasswordInput from "../PrimaryPasswordInput/PrimaryPasswordInput";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
-import useAppState from "../../../Context/Hook/useAppState";
+import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 import MovieService from "../../../API/MoviesService";
 import classNames from "classnames";
 import MoviesService from "../../../API/MoviesService";

@@ -3,7 +3,7 @@ import "./AuthRatingModal.css";
 import PrimaryModalWindow from "../PrimaryModalWindow/PrimaryModalWindow";
 import PrimaryButton from "../../PrimaryButton/PrimaryButton";
 import { useNavigate } from "react-router-dom";
-import useAppState from "../../../../Context/Hook/useAppState";
+import { useAppState } from "../../../../Context/AppStateProvider/AppStateProvider";
 
 function AuthRatingModal({ ...props }) {
   const { showAuthRatingModal, setShowAuthRatingModal } = useAppState();

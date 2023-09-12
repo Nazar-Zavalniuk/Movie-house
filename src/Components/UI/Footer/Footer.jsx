@@ -2,18 +2,16 @@ import React, { useCallback } from "react";
 import "./Footer.css";
 import { ReactComponent as UkrainianEmblem } from "../../../Images/ukrainian_emblem.svg";
 import { Link } from "react-router-dom";
-import useAppState from "../../../Context/Hook/useAppState";
-import { sortByDefault } from "../../../Utils/Sorting";
 import { scroll } from "../../../API/Scroll";
+import useRebootHomepage from "../../../Hooks/useRebootHomepage";
 
 function Footer(props) {
-  const { numReboots, setNumReboots, setSortingParams } = useAppState();
+  const rebootHomepage = useRebootHomepage();
 
-  const reloadHomepageAndScrollToStartPage = useCallback(() => {
-    setNumReboots(numReboots + 1);
-    sortByDefault(setSortingParams);
+  const rebootHomepageAndScrollToStartPage = useCallback(() => {
+    rebootHomepage();
     scroll("top", 0, "auto");
-  }, [numReboots, setNumReboots, setSortingParams]);
+  }, [rebootHomepage]);
 
   return (
     <div className="footer">
@@ -29,7 +27,7 @@ function Footer(props) {
         <Link
           className="link-to-homepage"
           to="/homepage"
-          onClick={reloadHomepageAndScrollToStartPage}
+          onClick={rebootHomepageAndScrollToStartPage}
         >
           Будинок кіно
         </Link>

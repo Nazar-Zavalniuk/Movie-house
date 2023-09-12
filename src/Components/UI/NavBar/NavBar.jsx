@@ -1,22 +1,28 @@
 import React, { useCallback } from "react";
 import "./NavBar.css";
-import useAppState from "../../../Context/Hook/useAppState";
-import { sortByGenre } from "../../../Utils/Sorting";
+import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 import { genres } from "../../../Data/DataToSort";
 import { useNavigate } from "react-router-dom";
 
 function NavBar({ ...props }) {
-  const { setSortingParams } = useAppState();
+  const { setSearchParams, setSearchInfo } = useAppState();
   const navigate = useNavigate();
 
   const onChangeGenre = useCallback(
     (e) => {
       const genre = e.target.value.toLowerCase();
 
-      sortByGenre(setSortingParams, genre);
+      setSearchParams({
+        genre_like: genre,
+        _sort: "year,id",
+        _order: "desc,desc",
+        _limit: 12,
+        _page: 1,
+      });
+      setSearchInfo({ sortByRating: false, info: `жанр - ${genre}` });
       navigate("/homepage");
     },
-    [setSortingParams, navigate]
+    [setSearchParams, setSearchInfo, navigate]
   );
 
   return (

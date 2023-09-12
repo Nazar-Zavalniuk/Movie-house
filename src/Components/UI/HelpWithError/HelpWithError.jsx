@@ -1,22 +1,16 @@
-import React, { useCallback } from "react";
+import React from "react";
 import "./HelpWithError.css";
 import { Link } from "react-router-dom";
-import useAppState from "../../../Context/Hook/useAppState";
-import { sortByDefault } from "../../../Utils/Sorting";
+import useRebootHomepage from "../../../Hooks/useRebootHomepage";
 
 function HelpWithError(props) {
-  const { numReboots, setNumReboots, setSortingParams } = useAppState();
-
-  const reloadHomepage = useCallback(() => {
-    setNumReboots(numReboots + 1);
-    sortByDefault(setSortingParams);
-  }, [numReboots, setNumReboots, setSortingParams]);
+  const rebootHomepage = useRebootHomepage();
 
   return (
     <div className="help-with-error">
       Спробуйте повернутись{" "}
       <Link
-        onClick={reloadHomepage}
+        onClick={rebootHomepage}
         className="back-to-homepage"
         to="/homepage"
       >

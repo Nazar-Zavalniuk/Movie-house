@@ -1,26 +1,31 @@
 import React, { useCallback } from "react";
 import PrimarySideBar from "../PrimarySideBar/PrimarySideBar";
 import BlockRecommendations from "../BlockRecommendations/BlockRecommendations";
-import useAppState from "../../../Context/Hook/useAppState";
-import { sortByRecommended } from "../../../Utils/Sorting";
+import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
+import { getSearchParams } from "../../../Utils/Sorting";
 import { scroll } from "../../../API/Scroll";
 import { useNavigate } from "react-router-dom";
+import { useMoviesState } from "../../../Context/MoviesStateProvider/MoviesStateProvider";
 
 function SidebarWithRecommendation({ ...props }) {
-  const { setSortingParams, recommendedMovies, recommendedSeries } =
-    useAppState();
+  const { setSearchParams, setSearchInfo } = useAppState();
+  const { recommendedMovies, recommendedSeries } = useMoviesState();
   const navigate = useNavigate();
 
   const sortByMovies = useCallback(() => {
-    sortByRecommended(setSortingParams, "movie");
+    setSearchParams(getSearchParams("views", "desc", 12, 1, ["type", "movie"]));
+    setSearchInfo({ sortByRating: false, info: "рекомендовані фільми" });
     navigate("/homepage");
-  }, [setSortingParams, navigate]);
+  }, [setSearchParams, setSearchInfo, navigate]);
 
   const sortBySeries = useCallback(() => {
-    sortByRecommended(setSortingParams, "tv-series");
+    setSearchParams(
+      getSearchParams("views", "desc", 12, 1, ["type", "tv-series"])
+    );
+    setSearchInfo({ sortByRating: false, info: "рекомендовані серіали" });
     navigate("/homepage");
     scroll("top", 425, "smooth");
-  }, [setSortingParams, navigate]);
+  }, [setSearchParams, setSearchInfo, navigate]);
 
   return (
     <PrimarySideBar>

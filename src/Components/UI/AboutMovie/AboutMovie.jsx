@@ -3,7 +3,7 @@ import "./AboutMovie.css";
 import { Link } from "react-router-dom";
 import { convertStringToLinksAndSetSearchFunction } from "../../../Utils/Conversion";
 import { sortByOption, sortByGenre } from "../../../Utils/Sorting";
-import useAppState from "../../../Context/Hook/useAppState";
+import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 import MovieDescription from "../MovieDescription/MovieDescription";
 import RollWrapper from "../RollWrapper/RollWrapper";
 

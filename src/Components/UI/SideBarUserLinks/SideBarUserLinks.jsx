@@ -2,7 +2,7 @@ import React from "react";
 import "./SideBarUserLinks.css";
 import PrimaryLinkAsButton from "../PrimaryLinkAsButton/PrimaryLinkAsButton";
 import { FaUser } from "react-icons/fa";
-import useAppState from "../../../Context/Hook/useAppState";
+import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 
 function SideBarUserLinks(props) {
   const { userName } = useAppState();

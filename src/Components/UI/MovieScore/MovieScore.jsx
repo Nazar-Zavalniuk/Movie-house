@@ -5,7 +5,7 @@ import ReactStars from "react-rating-stars-component";
 import { calculateRating } from "../../../Utils/Calculate";
 import { useParams } from "react-router-dom";
 import MoviesService from "../../../API/MoviesService";
-import useAppState from "../../../Context/Hook/useAppState";
+import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 
 function MovieScore({
   numberOfStars = 10,

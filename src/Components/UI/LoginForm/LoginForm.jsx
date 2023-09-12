@@ -4,7 +4,7 @@ import LoginInput from "../LoginInput/LoginInput";
 import LoginFormButtons from "../LoginFormButtons/LoginFormButtons";
 import MoviesService from "../../../API/MoviesService";
 import PrimaryOverlay from "../PrimaryOverlay/PrimaryOverlay";
-import useAppState from "../../../Context/Hook/useAppState";
+import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 import { useNavigate } from "react-router-dom";
 import PrimaryPasswordInput from "../PrimaryPasswordInput/PrimaryPasswordInput";
 

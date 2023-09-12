@@ -1,13 +1,12 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import "./MultiFilter.css";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
 import { directors, countries, years, genres } from "../../../Data/DataToSort";
-import useAppState from "../../../Context/Hook/useAppState";
+import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 import Selector from "../Selector/Selector";
-import { sortByAllOptions } from "../../../Utils/Sorting";
 
-function MultiFilter({ setIsFilterOptionsSet, ...props }) {
-  const { actors, sortingParams, setSortingParams } = useAppState();
+function MultiFilter({ setIsFilterOptionsSet, setIsFirstPageLoad, ...props }) {
+  const { actors, setSearchParams, setSearchInfo } = useAppState();
 
   const [genre, setGenre] = useState("");
   const [actor, setActor] = useState("");
@@ -16,49 +15,38 @@ function MultiFilter({ setIsFilterOptionsSet, ...props }) {
   const [year, setYear] = useState("");
 
   const search = useCallback(
-    (e) => {
+    async (e) => {
       e.preventDefault();
 
-      const options = {
-        genre_like: genre,
-        actors_like: actor,
-        director_like: director,
-        country_like: country,
-        year: year,
-      };
+      const isFilterOptionSet = (option) => option !== "";
 
-      function removeEmptyProperties(obj) {
-        const filteredEntries = Object.entries(obj).filter(
-          ([key, value]) => value !== ""
-        );
-        return Object.fromEntries(filteredEntries);
-      }
+      const filterOptions = [genre, actor, director, country, year];
+      const isFilterOptionsSet = filterOptions.some(isFilterOptionSet);
 
-      const filteredOptions = removeEmptyProperties(options);
-
-      function isEmptyObject(obj) {
-        return Object.keys(obj).length === 0;
-      }
-
-      const optionsIsSet = !isEmptyObject(filteredOptions);
-
-      if (optionsIsSet) {
-        sortByAllOptions(setSortingParams, filteredOptions);
+      if (isFilterOptionsSet) {
+        setSearchParams({
+          genre_like: genre !== "" ? genre : null,
+          actors_like: actor !== "" ? actor : null,
+          director_like: director !== "" ? director : null,
+          country_like: country !== "" ? country : null,
+          year: year !== "" ? year : null,
+          _limit: 12,
+          _page: 1,
+        });
+        setSearchInfo({
+          sortByRating: false,
+          info: "навігатор результати пошуку",
+        });
         setIsFilterOptionsSet(true);
       } else {
-        setSortingParams({
-          ...sortingParams,
-          prevSortInfo: {
-            sortByRating: false,
-            info: "навігатор результати пошуку",
-          },
-          sortInfo: {
-            sortByRating: false,
-            info: "навігатор результати пошуку",
-          },
+        setSearchInfo({
+          sortByRating: false,
+          info: "навігатор",
         });
         setIsFilterOptionsSet(false);
       }
+
+      setIsFirstPageLoad(false);
     },
     [
       genre,
@@ -66,20 +54,12 @@ function MultiFilter({ setIsFilterOptionsSet, ...props }) {
       director,
       country,
       year,
-      sortingParams,
-      setSortingParams,
       setIsFilterOptionsSet,
+      setSearchParams,
+      setSearchInfo,
+      setIsFirstPageLoad,
     ]
   );
-
-  useEffect(() => {
-    setGenre("");
-    setActor("");
-    setDirector("");
-    setCountry("");
-    setYear("");
-    setIsFilterOptionsSet(false);
-  }, []);
 
   return (
     <form className="multi-filter" onSubmit={search}>

@@ -1,54 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./ErrorInfo.css";
-import useAppState from "../../../Context/Hook/useAppState";
+import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 import { v4 as uuidv4 } from "uuid";
 
 function ErrorInfo(props) {
-  const {
-    actorsError,
-    topMoviesError,
-    mainMoviesError,
-    recommendedMoviesError,
-    recommendedSeriesError,
-    currentMovieError,
-  } = useAppState();
+  const { appError } = useAppState();
 
-  const errorAddresses = [
-    "actorsError",
-    "topMoviesError",
-    "mainMoviesError",
-    "recommendedMoviesError",
-    "recommendedSeriesError",
-    "currentMovieError",
-  ];
-
-  const [errors, setErrors] = useState([]);
   const messages = [];
 
-  useEffect(() => {
-    setErrors([
-      actorsError,
-      topMoviesError,
-      mainMoviesError,
-      recommendedMoviesError,
-      recommendedSeriesError,
-      currentMovieError,
-    ]);
-  }, [
-    actorsError,
-    topMoviesError,
-    mainMoviesError,
-    recommendedMoviesError,
-    recommendedSeriesError,
-    currentMovieError,
-  ]);
-
-  errors.forEach((error, index) => {
-    const address = errorAddresses[index];
-
-    if (error !== null && error.errorMessage !== "")
-      messages.push(`${error.errorMessage} (${address})`);
-  });
+  if (appError) {
+    appError.forEach((error) => {
+      if (error.errorMessage !== "") {
+        messages.push(`${error.errorMessage} (${error.from})`);
+      }
+    });
+  }
 
   return (
     <div className="error-info">

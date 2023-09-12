@@ -1,30 +1,68 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useState } from "react";
 import "./FilterInfo.css";
 import { BsStarFill } from "react-icons/bs";
 import classNames from "classnames";
-import useAppState from "../../../Context/Hook/useAppState";
-import { sortByRating } from "../../../Utils/Sorting";
+import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 
 function FilterInfo({ ...props }) {
-  const { sortingParams, setSortingParams, searchQueryValue } = useAppState();
-  const { sortInfo } = sortingParams;
+  const {
+    searchParams,
+    setSearchParams,
+    searchQueryValue,
+    searchInfo,
+    setSearchInfo,
+    isRatingSortUnavailable,
+    setShowRatingSortWarning,
+  } = useAppState();
+  const { sortByRating, info } = searchInfo;
 
-  const classNameStar = classNames("filter-star", {
-    active: sortInfo.sortByRating,
-  });
-  const starTitle = sortInfo.sortByRating
-    ? "Скасувати сортування"
-    : "Cортувати за рейтингом";
-  const infoTitle = useRef(null);
+  const [prevSearchParams, setPrevSearchParams] = useState(null);
+  const [prevSearchInfo, setPrevSearchInfo] = useState(null);
 
-  useEffect(() => {
-    infoTitle.current =
-      searchQueryValue !== "" ? searchQueryValue : sortInfo.info;
-  }, [searchQueryValue, sortInfo.info]);
+  const { _sort, _order } = searchParams;
 
   const handleToggle = useCallback(() => {
-    sortByRating(setSortingParams, sortingParams);
-  }, [setSortingParams, sortingParams]);
+    if (isRatingSortUnavailable) {
+      setShowRatingSortWarning(true);
+      return;
+    }
+
+    if (!sortByRating) {
+      setPrevSearchParams(searchParams);
+      setPrevSearchInfo(searchInfo);
+
+      const newSearchParams = {
+        ...searchParams,
+        _sort: _sort ? `rating,${_sort}` : "rating",
+        _order: _order ? `desc,${_order}` : "desc",
+        _page: 1,
+      };
+
+      setSearchParams(newSearchParams);
+      setSearchInfo({ sortByRating: true, info: `${info}, за рейтингом` });
+    } else {
+      setSearchParams({ ...prevSearchParams, _page: 1 });
+      setSearchInfo(prevSearchInfo);
+      setPrevSearchParams(null);
+      setPrevSearchInfo(null);
+    }
+  }, [
+    prevSearchInfo,
+    prevSearchParams,
+    searchInfo,
+    searchParams,
+    setSearchInfo,
+    setSearchParams,
+    isRatingSortUnavailable,
+    setShowRatingSortWarning,
+  ]);
+
+  const classNameStar = classNames("filter-star", {
+    active: sortByRating,
+  });
+  const starTitle = sortByRating
+    ? "Скасувати сортування за рейтингом"
+    : "Cортувати за рейтингом";
 
   return (
     <div className="filter-info">
@@ -36,8 +74,12 @@ function FilterInfo({ ...props }) {
       />
       <div className="filter-text-block">
         <div className="decor-filter-line" />
-        <div className="filter-text" title={infoTitle.current}>
-          {sortInfo.info}
+        <div className="filter-text" title={info}>
+          {searchQueryValue !== "" && searchQueryValue.length > 50
+            ? `результати пошуку - "${searchQueryValue.slice(0, 47)}..."${
+                sortByRating ? ", за рейтингом" : ""
+              }`
+            : info}
         </div>
       </div>
     </div>

@@ -12,7 +12,7 @@
   column-gap: 5px;
 }
 
-.modal-buttons .btn {
+.auth-rating-modal .modal-buttons .btn {
   min-height: 33px;
   border-radius: 3px;
   flex: 1;
@@ -20,8 +20,8 @@
   background: var(--bg-static-btn-mw);
 }
 
-.modal-buttons .btn:hover,
-.modal-buttons .btn:focus {
+.auth-rating-modal .modal-buttons .btn:hover,
+.auth-rating-modal .modal-buttons .btn:focus {
   color: var(--color-hover\focus-btn-mw);
   background: var(--bg-hover\focus-btn-mw);
 }

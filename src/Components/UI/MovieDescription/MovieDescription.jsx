@@ -3,7 +3,7 @@ import "./MovieDescription.css";
 import { BsFillStarFill } from "react-icons/bs";
 import { FaRegClock } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import useAppState from "../../../Context/Hook/useAppState";
+import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 
 function MovieDescription({ children, MovieType, ...props }) {
   const { userName } = useAppState();

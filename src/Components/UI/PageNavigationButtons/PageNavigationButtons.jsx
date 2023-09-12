@@ -8,21 +8,21 @@ import {
 } from "react-icons/fa";
 import MainNavButtons from "../MainNavButtons/MainNavButtons";
 import { scroll } from "../../../API/Scroll";
-import useAppState from "../../../Context/Hook/useAppState";
-import { changePage } from "../../../Utils/Sorting";
+import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 
 function PageNavigationButtons({
+  totalPages,
   scrollParams = ["top", 425, "smooth"],
   ...props
 }) {
-  const { totalPages, sortingParams, setSortingParams } = useAppState();
-  const currentPage = sortingParams.params["_page"];
+  const { searchParams, setSearchParams } = useAppState();
+  const currentPage = searchParams["_page"];
 
   const onPageChange = useCallback(
     (page) => {
-      changePage(setSortingParams, sortingParams, page);
+      setSearchParams({ ...searchParams, _page: page });
     },
-    [setSortingParams, sortingParams]
+    [setSearchParams, searchParams]
   );
 
   const handlePreviousPage = useCallback(() => {

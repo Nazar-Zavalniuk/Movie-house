@@ -1,66 +1,36 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
-import { ContextApp } from "../ContextApp";
-import useDynamicMovies from "../../Hooks/useDynamicMovies";
-import usePermanentMovies from "../../Hooks/usePermanentMovies";
-import MoviesService from "../../API/MoviesService";
-import useActors from "../../Hooks/useActors";
+import React, {
+  useLayoutEffect,
+  useState,
+  createContext,
+  useContext,
+  useCallback,
+} from "react";
+import useActors from "../../Hooks/useFetchingActors";
 
-function AppStateProvider({ children, ...props }) {
+const ContextApp = createContext(null);
+
+export function AppStateProvider({ children, ...props }) {
   const [numReboots, setNumReboots] = useState(0);
-  const [sortingParams, setSortingParams] = useState({
-    prevParams: {
-      _limit: 12,
-      _page: 1,
-      _sort: "id",
-      _order: "desc",
-    },
-    prevSortInfo: { sortByRating: false, info: "нове на сайті" },
-    params: {
-      _limit: 12,
-      _page: 1,
-      _sort: "id",
-      _order: "desc",
-    },
-    sortInfo: { sortByRating: false, info: "нове на сайті" },
+  const [searchParams, setSearchParams] = useState({
+    _sort: "id",
+    _order: "desc",
+    _limit: 12,
+    _page: 1,
+  });
+
+  const [searchInfo, setSearchInfo] = useState({
+    sortByRating: false,
+    info: "нове на сайті",
   });
 
   const [searchQueryValue, setSearchQueryValue] = useState("");
 
-  const [actors, isActorsLoading, actorsError] = useActors(
-    MoviesService.getAllActors,
-    numReboots
-  );
+  const [fetchActors, actors, isActorsLoading, actorsError, setActorsError] =
+    useActors();
 
-  const [topMovies, isTopMoviesLoading, topMoviesError] = usePermanentMovies(
-    MoviesService.getTopMovies,
-    7,
-    numReboots
-  );
-
-  const [mainMovies, totalPages, isMainMoviesLoading, mainMoviesError] =
-    useDynamicMovies(sortingParams.params);
-
-  const [
-    recommendedMovies,
-    isRecommendedMoviesLoading,
-    recommendedMoviesError,
-  ] = usePermanentMovies(
-    MoviesService.getRecommendedMovies,
-    "movie",
-    numReboots
-  );
-
-  const [
-    recommendedSeries,
-    isRecommendedSeriesLoading,
-    recommendedSeriesError,
-  ] = usePermanentMovies(
-    MoviesService.getRecommendedMovies,
-    "tv-series",
-    numReboots
-  );
-
-  const [currentMovieError, setCurrentMovieError] = useState(null);
+  const clearActorsErrors = useCallback(() => {
+    setActorsError({ errorState: false, errorMessage: "" });
+  }, [setActorsError]);
 
   const [showAuthRatingModal, setShowAuthRatingModal] = useState(false);
 
@@ -74,33 +44,22 @@ function AppStateProvider({ children, ...props }) {
   const [passwordChangeError, setPasswordChangeError] = useState(false);
   const [isPasswordUpdated, setIsPasswordUpdated] = useState(false);
 
+  const [isRatingSortUnavailable, setIsRatingSortUnavailable] = useState(false);
+  const [showRatingSortWarning, setShowRatingSortWarning] = useState(false);
+
+  const [appError, setAppError] = useState(null);
+
   return (
     <ContextApp.Provider
       value={{
         numReboots,
         setNumReboots,
-        sortingParams,
-        setSortingParams,
         searchQueryValue,
         setSearchQueryValue,
+        fetchActors,
         actors,
         isActorsLoading,
         actorsError,
-        topMovies,
-        isTopMoviesLoading,
-        topMoviesError,
-        mainMovies,
-        totalPages,
-        isMainMoviesLoading,
-        mainMoviesError,
-        recommendedMovies,
-        isRecommendedMoviesLoading,
-        recommendedMoviesError,
-        recommendedSeries,
-        isRecommendedSeriesLoading,
-        recommendedSeriesError,
-        currentMovieError,
-        setCurrentMovieError,
         showAuthRatingModal,
         setShowAuthRatingModal,
         userName,
@@ -109,6 +68,17 @@ function AppStateProvider({ children, ...props }) {
         setIsPasswordUpdated,
         passwordChangeError,
         setPasswordChangeError,
+        searchParams,
+        setSearchParams,
+        searchInfo,
+        setSearchInfo,
+        isRatingSortUnavailable,
+        setIsRatingSortUnavailable,
+        showRatingSortWarning,
+        setShowRatingSortWarning,
+        appError,
+        setAppError,
+        clearActorsErrors,
       }}
     >
       {children}
@@ -116,4 +86,6 @@ function AppStateProvider({ children, ...props }) {
   );
 }
 
-export default AppStateProvider;
+export function useAppState() {
+  return useContext(ContextApp);
+}

@@ -2,7 +2,7 @@ import React from "react";
 import "./PrimarySideBar.css";
 import SidBarGuestLinks from "../SidBarGuestLinks/SidBarGuestLinks";
 import SideBarUserLinks from "../SideBarUserLinks/SideBarUserLinks";
-import useAppState from "../../../Context/Hook/useAppState";
+import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 
 function PrimarySideBar({ children, ...props }) {
   const { userName } = useAppState();

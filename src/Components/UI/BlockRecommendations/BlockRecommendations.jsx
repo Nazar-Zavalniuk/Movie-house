@@ -3,12 +3,12 @@ import "./BlockRecommendations.css";
 import { BsFillPlayFill } from "react-icons/bs";
 import SmallMovieCard from "../SmallMovieCard/SmallMovieCard";
 import classNames from "classnames";
-import useAppState from "../../../Context/Hook/useAppState";
 import SmallLoadingCard from "../SmallLoadingCard/SmallLoadingCard";
+import { useMoviesState } from "../../../Context/MoviesStateProvider/MoviesStateProvider";
 
 function BlockRecommendations({ className, movies, children, ...props }) {
   const { isRecommendedMoviesLoading, isRecommendedSeriesLoading } =
-    useAppState();
+    useMoviesState();
   const classNameBlock = classNames("recommended", className, "block");
   const classNameTitle = classNames("recommended", className, "title");
   const classNameTitleText = classNames("recommended", className, "title-text");

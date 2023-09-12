@@ -1,14 +1,14 @@
 import axios from "axios";
 
 class MoviesService {
-  static async getAll(params) {
+  static async getAllMovies(params) {
     const response = await axios.get("http://localhost:3005/movies", {
       params,
     });
     return response;
   }
 
-  static async getById(id) {
+  static async getMovieById(id) {
     const response = await axios.get(`http://localhost:3005/movies/${id}`);
     return response.data;
   }

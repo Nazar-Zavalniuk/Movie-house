@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./RatingInfo.css";
 import MovieScore from "../MovieScore/MovieScore";
-import useAppState from "../../../Context/Hook/useAppState";
+import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 
 function RatingInfo({ movieData, ...props }) {
   const { rating, votes } = movieData;

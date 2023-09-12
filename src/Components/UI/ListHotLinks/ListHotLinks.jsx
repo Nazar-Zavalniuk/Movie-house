@@ -1,23 +1,40 @@
 import "./ListHotLinks.css";
 import { Link, useNavigate } from "react-router-dom";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";
-import useAppState from "../../../Context/Hook/useAppState";
+import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 import { useCallback } from "react";
-import { sortByYear, sortByYearAndId } from "../../../Utils/Sorting";
 
 function ListHotLinks(props) {
-  const { setSortingParams } = useAppState();
+  const { setSearchParams, setSearchInfo } = useAppState();
   const navigate = useNavigate();
 
   const sortByNovelties = useCallback(() => {
-    sortByYear(setSortingParams);
+    setSearchParams({
+      _sort: "year",
+      _order: "desc",
+      _limit: 12,
+      _page: 1,
+    });
+    setSearchInfo({
+      sortByRating: false,
+      info: "новинки",
+    });
     navigate("/homepage");
-  }, [setSortingParams, navigate]);
+  }, [setSearchParams, setSearchInfo, navigate]);
 
   const sortByPremiers = useCallback(() => {
-    sortByYearAndId(setSortingParams);
+    setSearchParams({
+      _sort: "year,id",
+      _order: "desc,desc",
+      _limit: 12,
+      _page: 1,
+    });
+    setSearchInfo({
+      sortByRating: false,
+      info: "прем'єри",
+    });
     navigate("/homepage");
-  }, [setSortingParams, navigate]);
+  }, [setSearchParams, setSearchInfo, navigate]);
 
   return (
     <ul className="hot-links">

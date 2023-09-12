@@ -1,11 +1,11 @@
 import React from "react";
 import "./TopMovies.css";
 import MiddleMovieCard from "../MiddleMovieCard/MiddleMovieCard";
-import useAppState from "../../../Context/Hook/useAppState";
 import MiddleLoadingCard from "../MiddleLoadingCard/MiddleLoadingCard";
+import { useMoviesState } from "../../../Context/MoviesStateProvider/MoviesStateProvider";
 
 function TopMovies({ ...props }) {
-  const { topMovies, isTopMoviesLoading } = useAppState();
+  const { topMovies, isTopMoviesLoading } = useMoviesState();
 
   const cardsSkeletons = Array(7)
     .fill(null)

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import "./MoviePage.css";
 import Header from "../../Components/UI/Header/Header";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import TopMovies from "../../Components/UI/TopMovies/TopMovies";
 import NavBar from "../../Components/UI/NavBar/NavBar";
 import PrimarySideBar from "../../Components/UI/PrimarySideBar/PrimarySideBar";
@@ -11,18 +11,25 @@ import MoviesService from "../../API/MoviesService";
 import useFetching from "../../Hooks/useFetching";
 import { scroll } from "../../API/Scroll";
 import MovieInfoSkeleton from "../../Components/UI/MovieInfoSkeleton/MovieInfoSkeleton";
-import useAppState from "../../Context/Hook/useAppState";
+import { useAppState } from "../../Context/AppStateProvider/AppStateProvider";
 import AuthRatingModal from "../../Components/UI/ModalWindows/AuthRatingModal/AuthRatingModal";
+import { useMoviesState } from "../../Context/MoviesStateProvider/MoviesStateProvider";
 
 function MoviePage(props) {
-  const { setCurrentMovieError, topMoviesError } = useAppState();
+  const { setAppError } = useAppState();
+  const { fetchTopMovies, topMovies, topMoviesError } = useMoviesState();
+
+  useEffect(() => {
+    if (topMovies.length === 0) fetchTopMovies();
+  }, []);
+
   const movieId = useParams().id;
 
   const [movieData, setMovieData] = useState(null);
   const [fetchMovieData, isMovieDataLoading, movieError] = useFetching(
     async () => {
-      const response = await MoviesService.getById(movieId);
-      setMovieData(response);
+      const data = await MoviesService.getMovieById(movieId);
+      setMovieData(data);
     }
   );
 
@@ -30,17 +37,23 @@ function MoviePage(props) {
     fetchMovieData();
   }, [movieId]);
 
-  const [thereAreErrors, setThereAreErrors] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    setCurrentMovieError(movieError);
-    setThereAreErrors(topMoviesError.errorState || movieError.errorState);
-  }, [movieError, setCurrentMovieError, topMoviesError.errorState]);
+    const loadingError = movieError.errorState || topMoviesError.errorState;
+
+    if (loadingError) {
+      const appError = [
+        { ...topMoviesError, from: "MoviePage - topMovies" },
+        { ...movieError, from: "MoviePage - movieData" },
+      ];
+
+      setAppError(appError);
+      navigate("/error");
+    }
+  }, [movieError, navigate, setAppError, topMoviesError]);
 
   useLayoutEffect(() => scroll("top", 0, "auto"), [movieData]);
-
-  if (thereAreErrors && !isMovieDataLoading)
-    return <Navigate to="/error" replace />;
 
   return (
     <div className="movie-page page">

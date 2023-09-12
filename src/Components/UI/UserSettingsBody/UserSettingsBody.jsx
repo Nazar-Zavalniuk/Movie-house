@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import "./UserSettingsBody.css";
-import useAppState from "../../../Context/Hook/useAppState";
+import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 import ChangePasswordForm from "../ChangePasswordForm/ChangePasswordForm";
 import { FaUser } from "react-icons/fa";
 import PrimaryButton from "../PrimaryButton/PrimaryButton";

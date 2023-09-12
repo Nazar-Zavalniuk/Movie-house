@@ -3,11 +3,18 @@ import "./MultiSortPanel.css";
 import FilterInfo from "../FilterInfo/FilterInfo";
 import MultiFilter from "../MultiFilter/MultiFilter";
 
-function MultiSortPanel({ setIsFilterOptionsSet, ...props }) {
+function MultiSortPanel({
+  setIsFilterOptionsSet,
+  setIsFirstPageLoad,
+  ...props
+}) {
   return (
     <div className="multi-sort-panel">
       <FilterInfo />
-      <MultiFilter setIsFilterOptionsSet={setIsFilterOptionsSet} />
+      <MultiFilter
+        setIsFilterOptionsSet={setIsFilterOptionsSet}
+        setIsFirstPageLoad={setIsFirstPageLoad}
+      />
     </div>
   );
 }

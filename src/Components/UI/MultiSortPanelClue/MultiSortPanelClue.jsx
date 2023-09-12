@@ -6,7 +6,11 @@ function MultiSortPanelClue({ isFirstPageLoad, ...props }) {
     ? "Оберіть параметри для пошуку фільмів..."
     : "Вкажіть хоча б один параметр для пошуку";
 
-  return <div className="multi-sort-panel-clue">{clueText}</div>;
+  return (
+    <div className="multi-sort-panel-clue">
+      <div className="multi-sort-panel-clue-body">{clueText}</div>
+    </div>
+  );
 }
 
 export default MultiSortPanelClue;
