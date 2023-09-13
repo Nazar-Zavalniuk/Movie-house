@@ -1,11 +1,14 @@
 import React, { Fragment, useCallback } from "react";
 import "./AboutMovie.css";
 import { Link } from "react-router-dom";
-import { convertStringToLinksAndSetSearchFunction } from "../../../Utils/Conversion";
-import { sortByOption, sortByGenre } from "../../../Utils/Sorting";
-import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 import MovieDescription from "../MovieDescription/MovieDescription";
 import RollWrapper from "../RollWrapper/RollWrapper";
+import useSortByCountry from "../../../Hooks/useSortByCountry";
+import useSortByGenre from "../../../Hooks/useSortByGenre";
+import useSortByDirector from "../../../Hooks/useSortByDirector";
+import useSortByActor from "../../../Hooks/useSortByActor";
+import useSortByYear from "../../../Hooks/useSortByYear";
+import useLinks from "../../../Hooks/useLinks";
 
 function AboutMovie({ movieData, ...props }) {
   const {
@@ -21,42 +24,27 @@ function AboutMovie({ movieData, ...props }) {
     type,
   } = movieData;
 
-  const { setSortingParams } = useAppState();
+  const sortByCountry = useSortByCountry();
+  const countriesLinks = useLinks(country, sortByCountry);
 
-  const conuntriesLinks = convertStringToLinksAndSetSearchFunction(
-    country,
-    sortByOption,
-    setSortingParams,
-    "country"
-  );
-  const genresLinks = convertStringToLinksAndSetSearchFunction(
-    genre,
-    sortByGenre,
-    setSortingParams
-  );
-  const directorsLinks =
-    director !== null
-      ? convertStringToLinksAndSetSearchFunction(
-          director,
-          sortByOption,
-          setSortingParams,
-          "director"
-        )
-      : "інформація відсутня";
-  const actorsLinks =
-    actors !== null
-      ? convertStringToLinksAndSetSearchFunction(
-          actors,
-          sortByOption,
-          setSortingParams,
-          "actor"
-        )
-      : "інформація відсутня";
+  const sortByGenre = useSortByGenre();
+  const genresLinks = useLinks(genre, sortByGenre);
 
-  const searchByYear = useCallback((e) => {
-    const year = e.target.textContent;
-    sortByOption(setSortingParams, "year", year);
-  }, []);
+  const sortByDirector = useSortByDirector();
+  const directorsLinks = useLinks(director, sortByDirector);
+
+  const sortByActor = useSortByActor();
+  const actorsLinks = useLinks(actors, sortByActor);
+
+  const sortByYearDefaultFunc = useSortByYear();
+  const sortByYear = useCallback(
+    (e) => {
+      const year = e.target.textContent;
+
+      sortByYearDefaultFunc(year);
+    },
+    [sortByYearDefaultFunc]
+  );
 
   return (
     <Fragment>
@@ -69,14 +57,14 @@ function AboutMovie({ movieData, ...props }) {
         <div className="details-row">
           <div className="movie-parameter">Рік</div>
           <div className="parameter-description">
-            <Link to="/homepage" onClick={searchByYear}>
+            <Link to="/homepage" onClick={sortByYear}>
               {year}
             </Link>
           </div>
         </div>
         <div className="details-row">
           <div className="movie-parameter">Країна(и)</div>
-          <div className="parameter-description">{conuntriesLinks}</div>
+          <div className="parameter-description">{countriesLinks}</div>
         </div>
         <div className="details-row">
           <div className="movie-parameter">Жанр(и)</div>
@@ -88,12 +76,16 @@ function AboutMovie({ movieData, ...props }) {
         </div>
         <div className="details-row">
           <div className="movie-parameter">Режисер(и)</div>
-          <div className="parameter-description">{directorsLinks}</div>
+          <div className="parameter-description">
+            {directorsLinks ? directorsLinks : "інформація відсутня"}
+          </div>
         </div>
         <div className="details-row">
           <div className="movie-parameter">Актор(и)</div>
           <div className="parameter-description">
-            <RollWrapper className="actors">{actorsLinks}</RollWrapper>
+            <RollWrapper className="actors">
+              {actorsLinks ? actorsLinks : "інформація відсутня"}
+            </RollWrapper>
           </div>
         </div>
       </div>

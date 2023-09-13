@@ -1,41 +1,27 @@
 import { useAppState } from "../Context/AppStateProvider/AppStateProvider";
 import { useCallback } from "react";
 import { useMoviesState } from "../Context/MoviesStateProvider/MoviesStateProvider";
+import useSortByDefault from "./useSortByDefault";
 
 function useRebootHomepage() {
-  const {
-    numReboots,
-    setNumReboots,
-    setSearchParams,
-    setSearchInfo,
-    clearActorsErrors,
-    setAppError,
-  } = useAppState();
+  const { numReboots, setNumReboots, clearActorsErrors, setAppError } =
+    useAppState();
 
   const { clearMoviesErrors } = useMoviesState();
+  const sortByDefault = useSortByDefault();
 
   const rebootHomepage = useCallback(() => {
     setNumReboots(numReboots + 1);
-    setSearchParams({
-      _sort: "id",
-      _order: "desc",
-      _limit: 12,
-      _page: 1,
-    });
-    setSearchInfo({
-      sortByRating: false,
-      info: "нове на сайті",
-    });
+    sortByDefault();
     clearMoviesErrors();
     clearActorsErrors();
     setAppError(null);
   }, [
-    clearActorsErrors,
-    clearMoviesErrors,
-    numReboots,
     setNumReboots,
-    setSearchInfo,
-    setSearchParams,
+    numReboots,
+    sortByDefault,
+    clearMoviesErrors,
+    clearActorsErrors,
     setAppError,
   ]);
 

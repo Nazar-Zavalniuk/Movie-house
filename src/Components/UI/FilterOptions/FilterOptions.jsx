@@ -2,13 +2,16 @@ import React, { useCallback, useEffect, useState } from "react";
 import "./FilterOptions.css";
 import classNames from "classnames";
 import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
+import useSortByDefault from "../../../Hooks/useSortByDefault";
 
 function FilterOptions({ filterData, className, sortByOption, ...props }) {
   const classNameSelect = classNames(className, "select");
 
   const [selectedOption, setSelectedOption] = useState("");
-  const { searchInfo, setSearchInfo, setSearchParams } = useAppState();
+  const { searchInfo } = useAppState();
   const { info } = searchInfo;
+
+  const sortByDefault = useSortByDefault();
 
   useEffect(() => {
     if (!info.includes(selectedOption)) setSelectedOption("");
@@ -20,20 +23,9 @@ function FilterOptions({ filterData, className, sortByOption, ...props }) {
       setSelectedOption(value);
 
       if (value !== "") sortByOption(value);
-      else {
-        setSearchParams({
-          _sort: "id",
-          _order: "desc",
-          _limit: 12,
-          _page: 1,
-        });
-        setSearchInfo({
-          sortByRating: false,
-          info: "нове на сайті",
-        });
-      }
+      else sortByDefault();
     },
-    [sortByOption, setSearchParams, setSelectedOption, setSearchInfo]
+    [sortByDefault, sortByOption]
   );
 
   return (
