@@ -1,9 +1,10 @@
 import { useAppState } from "../Context/AppStateProvider/AppStateProvider";
 import { useMoviesState } from "../Context/MoviesStateProvider/MoviesStateProvider";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import useFetchingMainMovies from "./useFetchingMainMovies";
 import MoviesService from "../API/MoviesService";
 import { useNavigate } from "react-router-dom";
+import useSortByDefault from "./useSortByDefault";
 
 function useHomepage() {
   const {
@@ -63,10 +64,13 @@ function useHomepage() {
     if (!info.includes("результати пошуку")) setSearchQueryValue("");
   }, [setSearchQueryValue, info]);
 
-  useEffect(() => {
+  const sortByDefault = useSortByDefault();
+
+  useLayoutEffect(() => {
     return () => {
       setSearchQueryValue("");
       setNumReboots(0);
+      sortByDefault();
     };
   }, [setSearchQueryValue]);
 

@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import "./PageNavigationButtons.css";
 import {
   FaAngleLeft,
@@ -7,67 +7,37 @@ import {
   FaAngleDoubleRight,
 } from "react-icons/fa";
 import MainNavButtons from "../MainNavButtons/MainNavButtons";
-import { scroll } from "../../../API/Scroll";
-import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
+import usePageNavigationButtons from "../../../Hooks/usePageNavigationButtons";
 
 function PageNavigationButtons({
   totalPages,
   scrollParams = ["top", 425, "smooth"],
   ...props
 }) {
-  const { searchParams, setSearchParams } = useAppState();
-  const currentPage = searchParams["_page"];
-
-  const onPageChange = useCallback(
-    (page) => {
-      setSearchParams({ ...searchParams, _page: page });
-    },
-    [setSearchParams, searchParams]
-  );
-
-  const handlePreviousPage = useCallback(() => {
-    if (currentPage > 1) {
-      onPageChange(currentPage - 1);
-      scroll(...scrollParams);
-    }
-  }, [currentPage, onPageChange, scrollParams]);
-
-  const handleNextPage = useCallback(() => {
-    if (currentPage < totalPages) {
-      onPageChange(currentPage + 1);
-      scroll(...scrollParams);
-    }
-  }, [currentPage, totalPages, onPageChange, scrollParams]);
-
-  const handleFirstPage = useCallback(() => {
-    if (currentPage !== 1) {
-      onPageChange(1);
-      scroll(...scrollParams);
-    }
-  }, [currentPage, onPageChange, scrollParams]);
-
-  const handleLastPage = useCallback(() => {
-    if (currentPage !== totalPages) {
-      onPageChange(totalPages);
-      scroll(...scrollParams);
-    }
-  }, [currentPage, totalPages, onPageChange, scrollParams]);
+  const [
+    currentPage,
+    onPageChange,
+    goToPreviousPage,
+    goToNextPage,
+    goToFirstPage,
+    goToLastPage,
+  ] = usePageNavigationButtons(totalPages, scrollParams);
 
   return (
     <div className="page-navigation-buttons">
       {currentPage >= 7 && totalPages > 10 && (
         <FaAngleDoubleLeft
-          onClick={handleFirstPage}
+          onClick={goToFirstPage}
           size={15}
-          className="additional-buttons"
+          className="go-to-first-page-btn"
           title="Повернутися на першу сторінку"
         />
       )}
       {currentPage > 1 && totalPages >= 3 && (
         <FaAngleLeft
-          onClick={handlePreviousPage}
+          onClick={goToPreviousPage}
           size={15}
-          className="additional-buttons"
+          className="go-to-previous-page-btn"
           title="Повернутися на попередню сторінку"
         />
       )}
@@ -85,17 +55,17 @@ function PageNavigationButtons({
       )}
       {currentPage !== totalPages && totalPages >= 3 && (
         <FaAngleRight
-          onClick={handleNextPage}
+          onClick={goToNextPage}
           size={15}
-          className="additional-buttons"
+          className="go-to-next-page-btn"
           title="Перейти на наступну сторінку"
         />
       )}
       {currentPage + 4 < totalPages && totalPages > 10 && (
         <FaAngleDoubleRight
-          onClick={handleLastPage}
+          onClick={goToLastPage}
           size={15}
-          className="additional-buttons"
+          className="go-to-last-page-btn"
           title="Перейти на останню сторінку"
         />
       )}

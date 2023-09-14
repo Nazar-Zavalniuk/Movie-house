@@ -7,14 +7,20 @@
   column-gap: 4px;
 }
 
-.additional-buttons {
+.go-to-first-page-btn,
+.go-to-previous-page-btn,
+.go-to-next-page-btn,
+.go-to-last-page-btn {
   padding: 5.5px;
   cursor: pointer;
   color: var(--color-static-pnb);
   background: var(--bg-static-pnb);
 }
 
-.additional-buttons:hover {
+.go-to-first-page-btn:hover,
+.go-to-previous-page-btn:hover,
+.go-to-next-page-btn:hover,
+.go-to-last-page-btn:hover {
   color: var(--color-hover-pnb);
   background: var(--bg-hover-pnb);
 }
