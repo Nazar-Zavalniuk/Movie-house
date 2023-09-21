@@ -1,10 +1,10 @@
 import React, { useCallback, useState, useRef } from "react";
 import "./SearchForm.css";
-import PrimaryInput from "../PrimaryInput/PrimaryInput";
-import PrimaryButton from "../PrimaryButton/PrimaryButton";
-import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
+import PrimaryInput from "../../Inputs/PrimaryInput/PrimaryInput";
+import PrimaryButton from "../../Buttons/PrimaryButton/PrimaryButton";
+import { useAppState } from "../../../../Context/AppStateProvider/AppStateProvider";
 import { useNavigate } from "react-router-dom";
-import { sanitize, validate } from "../../../Utils/Cleaning";
+import { sanitize, validate } from "../../../../Utils/Cleaning";
 
 function SearchForm(props) {
   const [value, setValue] = useState("Введіть назву фільму...");

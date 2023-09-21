@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./RollWrapper.css";
 import classNames from "classnames";
-import PrimaryButton from "../PrimaryButton/PrimaryButton";
+import PrimaryButton from "../Buttons/PrimaryButton/PrimaryButton";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 function RollWrapper({

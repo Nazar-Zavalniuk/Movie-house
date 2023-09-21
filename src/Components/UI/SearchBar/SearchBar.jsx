@@ -1,6 +1,6 @@
 import React from "react";
 import "./SearchBar.css";
-import SearchForm from "../SearchForm/SearchForm";
+import SearchForm from "../Forms/SearchForm/SearchForm";
 import ListHotLinks from "../ListHotLinks/ListHotLinks";
 
 function SearchBar(props) {

@@ -2,7 +2,7 @@ import React from "react";
 import "./MovieBlock.css";
 import { BsPlayCircle } from "react-icons/bs";
 import { useLocation } from "react-router-dom";
-import CopyButton from "../CopyButton/CopyButton";
+import CopyButton from "../Buttons/CopyButton/CopyButton";
 
 function MovieBlock({ movieData, ...props }) {
   const { title } = movieData;

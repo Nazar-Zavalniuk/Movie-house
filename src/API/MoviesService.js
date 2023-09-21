@@ -61,7 +61,7 @@ class MoviesService {
         userName: userName,
       },
     });
-    return response.data;
+    return response.data[0];
   }
 
   static async addNewUser(user) {

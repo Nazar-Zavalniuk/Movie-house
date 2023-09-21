@@ -1,9 +1,9 @@
 import React from "react";
 import "./BlockRecommendations.css";
 import { BsFillPlayFill } from "react-icons/bs";
-import SmallMovieCard from "../SmallMovieCard/SmallMovieCard";
+import SmallMovieCard from "../Cards/SmallMovieCard/SmallMovieCard";
 import classNames from "classnames";
-import SmallLoadingCard from "../SmallLoadingCard/SmallLoadingCard";
+import SmallLoadingCard from "../Cards/SmallLoadingCard/SmallLoadingCard";
 import { useMoviesState } from "../../../Context/MoviesStateProvider/MoviesStateProvider";
 
 function BlockRecommendations({ className, movies, children, ...props }) {

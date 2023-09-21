@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 import "./MainMoviesBlock.css";
-import BigMovieCard from "../BigMovieCard/BigMovieCard";
-import BigLoadingCard from "../BigLoadingCard/BigLoadingCard";
-import PageNavigationButtons from "../PageNavigationButtons/PageNavigationButtons";
+import BigMovieCard from "../Cards/BigMovieCard/BigMovieCard";
+import BigLoadingCard from "../Cards/BigLoadingCard/BigLoadingCard";
+import PageNavigationButtons from "../Buttons/PageNavigationButtons/PageNavigationButtons";
 
 function MainMoviesBlock({
   movies = [],

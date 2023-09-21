@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import "./MultiFilter.css";
-import PrimaryButton from "../PrimaryButton/PrimaryButton";
+import PrimaryButton from "../Buttons/PrimaryButton/PrimaryButton";
 import { directors, countries, years, genres } from "../../../Data/DataToSort";
 import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 import Selector from "../Selector/Selector";

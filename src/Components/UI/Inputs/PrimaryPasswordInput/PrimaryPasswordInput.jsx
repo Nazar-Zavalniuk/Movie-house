@@ -1,7 +1,7 @@
 import React, { forwardRef, useState, useCallback } from "react";
 import "./PrimaryPasswordInput.css";
 import PrimaryInput from "../PrimaryInput/PrimaryInput";
-import Eye from "../Eye/Eye";
+import Eye from "../../Eye/Eye";
 import classNames from "classnames";
 
 const PrimaryPasswordInput = forwardRef(

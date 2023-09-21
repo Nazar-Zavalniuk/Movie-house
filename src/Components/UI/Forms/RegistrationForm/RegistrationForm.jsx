@@ -1,13 +1,16 @@
 import React, { useState, useCallback, useEffect } from "react";
 import "./RegistrationForm.css";
-import MoviesService from "../../../API/MoviesService";
-import RegistrationLoginInput from "../RegistrationLoginInput/RegistrationLoginInput";
-import { passwordValidation, loginValidation } from "../../../Utils/Validation";
-import RegistrationFormButtons from "../RegistrationFormButtons/RegistrationFormButtons";
-import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
+import MoviesService from "../../../../API/MoviesService";
+import RegistrationLoginInput from "../../Inputs/RegistrationLoginInput/RegistrationLoginInput";
+import {
+  passwordValidation,
+  loginValidation,
+} from "../../../../Utils/Validation";
+import RegistrationFormButtons from "../../Buttons/RegistrationFormButtons/RegistrationFormButtons";
+import { useAppState } from "../../../../Context/AppStateProvider/AppStateProvider";
 import { useNavigate } from "react-router-dom";
-import PrimaryOverlay from "../PrimaryOverlay/PrimaryOverlay";
-import PrimaryPasswordInput from "../PrimaryPasswordInput/PrimaryPasswordInput";
+import PrimaryOverlay from "../../PrimaryOverlay/PrimaryOverlay";
+import PrimaryPasswordInput from "../../Inputs/PrimaryPasswordInput/PrimaryPasswordInput";
 
 function RegistrationForm({ setVerificationError, ...props }) {
   const [login, setLogin] = useState("");
@@ -39,17 +42,14 @@ function RegistrationForm({ setVerificationError, ...props }) {
     try {
       setVerification(true);
       const user = await MoviesService.getUserByName(login);
-      const userAlreadyExists = user.length !== 0;
 
-      if (userAlreadyExists) {
+      if (user) {
         setIsLoginValid(false);
         setLoginWarningMessage("Логін вже зайнятий іншим користувачем.");
       } else {
         const newUser = {
           userName: login,
           userPassword: password,
-          favorite: [],
-          watchLater: [],
         };
 
         await addNewUser(newUser);

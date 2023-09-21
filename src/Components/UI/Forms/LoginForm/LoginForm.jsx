@@ -1,12 +1,12 @@
 import React, { useCallback, useRef, useState } from "react";
 import "./LoginForm.css";
-import LoginInput from "../LoginInput/LoginInput";
-import LoginFormButtons from "../LoginFormButtons/LoginFormButtons";
-import MoviesService from "../../../API/MoviesService";
-import PrimaryOverlay from "../PrimaryOverlay/PrimaryOverlay";
-import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
+import LoginInput from "../../Inputs/LoginInput/LoginInput";
+import LoginFormButtons from "../../Buttons/LoginFormButtons/LoginFormButtons";
+import MoviesService from "../../../../API/MoviesService";
+import PrimaryOverlay from "../../PrimaryOverlay/PrimaryOverlay";
+import { useAppState } from "../../../../Context/AppStateProvider/AppStateProvider";
 import { useNavigate } from "react-router-dom";
-import PrimaryPasswordInput from "../PrimaryPasswordInput/PrimaryPasswordInput";
+import PrimaryPasswordInput from "../../Inputs/PrimaryPasswordInput/PrimaryPasswordInput";
 
 function LoginForm({ setVerificationError, ...props }) {
   const [login, setLogin] = useState("");
@@ -24,8 +24,7 @@ function LoginForm({ setVerificationError, ...props }) {
   const userVerification = useCallback(async () => {
     try {
       setVerification(true);
-      const userArr = await MoviesService.getUserByName(login);
-      const [user] = userArr;
+      const user = await MoviesService.getUserByName(login);
       setVerification(false);
 
       if (!user) {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PrimaryButton from "../PrimaryButton/PrimaryButton";
+import PrimaryButton from "../../Buttons/PrimaryButton/PrimaryButton";
 import { HiClipboardCopy, HiClipboardCheck } from "react-icons/hi";
 import classNames from "classnames";
 

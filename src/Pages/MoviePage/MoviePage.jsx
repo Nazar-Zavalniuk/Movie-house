@@ -10,7 +10,7 @@ import MovieInfo from "../../Components/UI/MovieInfo/MovieInfo";
 import MoviesService from "../../API/MoviesService";
 import useFetching from "../../Hooks/useFetching";
 import { scroll } from "../../API/Scroll";
-import MovieInfoSkeleton from "../../Components/UI/MovieInfoSkeleton/MovieInfoSkeleton";
+import MovieInfoSkeleton from "../../Components/UI/Skeletons/MovieInfoSkeleton/MovieInfoSkeleton";
 import { useAppState } from "../../Context/AppStateProvider/AppStateProvider";
 import AuthRatingModal from "../../Components/UI/ModalWindows/AuthRatingModal/AuthRatingModal";
 import { useMoviesState } from "../../Context/MoviesStateProvider/MoviesStateProvider";

@@ -1,7 +1,7 @@
 import React from "react";
 import "./PrimaryOverlay.css";
 import classNames from "classnames";
-import Loader from "../Loader/Loader";
+import Loader from "../Loaders/Loader/Loader";
 
 function PrimaryOverlay({
   className,

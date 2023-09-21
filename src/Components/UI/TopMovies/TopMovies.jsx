@@ -1,7 +1,7 @@
 import React from "react";
 import "./TopMovies.css";
-import MiddleMovieCard from "../MiddleMovieCard/MiddleMovieCard";
-import MiddleLoadingCard from "../MiddleLoadingCard/MiddleLoadingCard";
+import MiddleMovieCard from "../Cards/MiddleMovieCard/MiddleMovieCard";
+import MiddleLoadingCard from "../Cards/MiddleLoadingCard/MiddleLoadingCard";
 import { useMoviesState } from "../../../Context/MoviesStateProvider/MoviesStateProvider";
 
 function TopMovies({ ...props }) {

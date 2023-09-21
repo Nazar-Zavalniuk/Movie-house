@@ -9,7 +9,7 @@ import MoviePage from "./Pages/MoviePage/MoviePage";
 import Login from "./Pages/Login/Login";
 import Registration from "./Pages/Registration/Registration";
 import UserSettings from "./Pages/UserSettings/UserSettings";
-import AppNotifier from "./Components/UI/AppNotifier/AppNotifier";
+import AppNotifier from "./Components/UI/Notifiers/AppNotifier/AppNotifier";
 import { MoviesStateProvider } from "./Context/MoviesStateProvider/MoviesStateProvider";
 
 function App() {

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./AppNotifier.css";
 import Notifier from "../Notifier/Notifier";
 import { IoMdNotificationsOutline } from "react-icons/io";
-import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
+import { useAppState } from "../../../../Context/AppStateProvider/AppStateProvider";
 
 function AppNotifier(props) {
   const {

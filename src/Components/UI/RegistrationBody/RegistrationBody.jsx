@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./RegistrationBody.css";
 import { Link } from "react-router-dom";
-import RegistrationForm from "../RegistrationForm/RegistrationForm";
-import ErrorNotifierForForm from "../ErrorNotifierForForm/ErrorNotifierForForm";
+import RegistrationForm from "../Forms/RegistrationForm/RegistrationForm";
+import ErrorNotifierForForm from "../Notifiers/ErrorNotifierForForm/ErrorNotifierForForm";
 
 function RegistrationBody(props) {
   const [verificationError, setVerificationError] = useState(false);

@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import "./ChangePasswordForm.css";
-import PrimaryPasswordInput from "../PrimaryPasswordInput/PrimaryPasswordInput";
-import PrimaryButton from "../PrimaryButton/PrimaryButton";
-import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
-import MovieService from "../../../API/MoviesService";
+import PrimaryPasswordInput from "../../Inputs/PrimaryPasswordInput/PrimaryPasswordInput";
+import PrimaryButton from "../../Buttons/PrimaryButton/PrimaryButton";
+import { useAppState } from "../../../../Context/AppStateProvider/AppStateProvider";
+import MovieService from "../../../../API/MoviesService";
 import classNames from "classnames";
-import MoviesService from "../../../API/MoviesService";
-import { newPasswordValidation } from "../../../Utils/Validation";
+import MoviesService from "../../../../API/MoviesService";
+import { newPasswordValidation } from "../../../../Utils/Validation";
 
 function ChangePasswordForm({
   passwordValidationInProgress,
@@ -30,8 +30,7 @@ function ChangePasswordForm({
   const passwordsValidation = useCallback(async () => {
     try {
       setPasswordValidationInProgress(true);
-      const userArr = await MovieService.getUserByName(userName);
-      const [user] = userArr;
+      const user = await MovieService.getUserByName(userName);
 
       if (user.userPassword !== oldPassword) {
         setIsOldPasswordValid(false);

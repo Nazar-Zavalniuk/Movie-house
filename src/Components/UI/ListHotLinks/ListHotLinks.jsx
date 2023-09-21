@@ -1,6 +1,6 @@
 import "./ListHotLinks.css";
 import { Link, useNavigate } from "react-router-dom";
-import PrimaryButton from "../PrimaryButton/PrimaryButton";
+import PrimaryButton from "../Buttons/PrimaryButton/PrimaryButton";
 import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 import { useCallback } from "react";
 

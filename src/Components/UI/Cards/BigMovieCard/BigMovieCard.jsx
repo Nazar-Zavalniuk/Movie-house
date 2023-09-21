@@ -1,7 +1,7 @@
 import React from "react";
 import "./BigMovieCard.css";
 import { Link } from "react-router-dom";
-import StaticStarRating from "../StaticStarRating/StaticStarRating";
+import StaticStarRating from "../../StaticStarRating/StaticStarRating";
 
 function BigMovieCard({ movie, ...props }) {
   const { title, year, coverImage, rating, id } = movie;

@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from "react";
 import "./RatingSortWarningModal.css";
 import PrimaryModalWindow from "../PrimaryModalWindow/PrimaryModalWindow";
-import PrimaryButton from "../../PrimaryButton/PrimaryButton";
+import PrimaryButton from "../../Buttons/PrimaryButton/PrimaryButton";
 import { useAppState } from "../../../../Context/AppStateProvider/AppStateProvider";
 
 function RatingSortWarningModal({ children, ...props }) {

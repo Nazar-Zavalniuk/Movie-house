@@ -1,6 +1,6 @@
 import React from "react";
 import "./LoginFormButtons.css";
-import PrimaryButton from "../PrimaryButton/PrimaryButton";
+import PrimaryButton from "../../Buttons/PrimaryButton/PrimaryButton";
 import classNames from "classnames";
 
 function LoginFormButtons({ disabled, ...props }) {

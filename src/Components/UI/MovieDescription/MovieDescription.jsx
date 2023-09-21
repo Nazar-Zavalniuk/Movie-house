@@ -18,7 +18,7 @@ function MovieDescription({ children, MovieType, ...props }) {
     <div className="description">
       <div className="description-header">
         <div className="header-text">{headerText}</div>
-        {isAuth && (
+        {/* {isAuth && (
           <Fragment>
             <Link to="/watch-later">
               <FaRegClock className="description-icons" size={16} />
@@ -29,7 +29,7 @@ function MovieDescription({ children, MovieType, ...props }) {
               <span>Обране</span>
             </Link>
           </Fragment>
-        )}
+        )} */}
       </div>
       <div className="text-description">{children}</div>
     </div>

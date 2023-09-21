@@ -7,7 +7,7 @@ import {
   FaAngleDoubleRight,
 } from "react-icons/fa";
 import MainNavButtons from "../MainNavButtons/MainNavButtons";
-import usePageNavigationButtons from "../../../Hooks/usePageNavigationButtons";
+import usePageNavigationButtons from "../../../../Hooks/usePageNavigationButtons";
 
 function PageNavigationButtons({
   totalPages,

@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from "react";
 import "./AuthRatingModal.css";
 import PrimaryModalWindow from "../PrimaryModalWindow/PrimaryModalWindow";
-import PrimaryButton from "../../PrimaryButton/PrimaryButton";
+import PrimaryButton from "../../Buttons/PrimaryButton/PrimaryButton";
 import { useNavigate } from "react-router-dom";
 import { useAppState } from "../../../../Context/AppStateProvider/AppStateProvider";
 
