@@ -36,6 +36,15 @@ function ListHotLinks(props) {
     navigate("/homepage");
   }, [setSearchParams, setSearchInfo, navigate]);
 
+  const getRandomMovieId = useCallback(() => {
+    return Math.floor(Math.random() * 148) + 1;
+  }, []);
+
+  const goToRandomMovie = useCallback(() => {
+    const randomMovieId = getRandomMovieId();
+    navigate(`/movie/${randomMovieId}`);
+  }, [getRandomMovieId, navigate]);
+
   return (
     <ul className="hot-links">
       <li>
@@ -54,9 +63,9 @@ function ListHotLinks(props) {
         </Link>
       </li>
       <li>
-        <Link to="/movie/:id" className="hot-link random">
-          <span className="text-link">Випадковий</span>
-        </Link>
+        <PrimaryButton className="hot-link random" onClick={goToRandomMovie}>
+          Випадковий
+        </PrimaryButton>
       </li>
     </ul>
   );

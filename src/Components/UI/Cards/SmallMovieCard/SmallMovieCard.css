@@ -1,7 +1,12 @@
-.ml-small {
-  width: 127px;
+.small-card-wrapper {
+  width: 125px;
   height: 203px;
-  margin: 3px;
+  position: relative;
+}
+
+.ml-small {
+  width: 125px;
+  height: 203px;
   font-size: 11px;
   display: inline-block;
   text-decoration: none;
@@ -27,4 +32,19 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.small-card-btn {
+  padding: 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: brown;
+  background: var(--bg-static-smc);
+  z-index: 3;
+}
+
+.small-card-btn:hover {
+  color: red;
+  background: #222;
 }

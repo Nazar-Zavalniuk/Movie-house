@@ -21,6 +21,8 @@ function BlockRecommendations({ className, movies, children, ...props }) {
   const isCarsLoading =
     isRecommendedMoviesLoading || isRecommendedSeriesLoading;
 
+  const thereAreNoMovies = movies.length === 0 && !isCarsLoading;
+
   const cardsSkeletons = Array(6)
     .fill(null)
     .map((_, index) => {
@@ -37,9 +39,11 @@ function BlockRecommendations({ className, movies, children, ...props }) {
         <span className={classNameTitleText}>{children}</span>
         <BsFillPlayFill className={classNameImg} />
       </div>
-      <div className={classNameMovieCardBlock}>
-        {isCarsLoading ? cardsSkeletons : moviesCards}
-      </div>
+      {!thereAreNoMovies && (
+        <div className={classNameMovieCardBlock}>
+          {isCarsLoading ? cardsSkeletons : moviesCards}
+        </div>
+      )}
     </div>
   );
 }

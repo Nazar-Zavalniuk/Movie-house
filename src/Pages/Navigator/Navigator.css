@@ -19,10 +19,6 @@
   grid-area: top-movies;
 }
 
-.page.navigator .nav-bar {
-  grid-area: navbar;
-}
-
 .page.navigator .multi-sort-panel {
   grid-area: sorting-panel;
 }
