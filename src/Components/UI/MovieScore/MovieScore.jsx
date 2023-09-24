@@ -1,25 +1,22 @@
 import React, { useCallback } from "react";
 import "./MovieScore.css";
-import { BsStarFill, BsStarHalf } from "react-icons/bs";
-import ReactStars from "react-rating-stars-component";
 import { calculateRating } from "../../../Utils/Calculate";
 import { useParams } from "react-router-dom";
 import MoviesService from "../../../API/MoviesService";
 import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
+import RatingStars from "../RatingStars/RatingStars";
 
 function MovieScore({
-  numberOfStars = 10,
   sizeStar,
   rating,
   setRating,
   votes,
   setVotes,
   hasTheRightToVote,
-  titleStarRating,
+  titleRatingStars,
   ...props
 }) {
   const { setShowAuthRatingModal, userName } = useAppState();
-  const isAuth = userName !== null;
   const movieId = useParams().id;
 
   const estimate = useCallback(
@@ -46,42 +43,21 @@ function MovieScore({
   );
 
   const openModalWindow = useCallback(() => {
-    if (!isAuth) {
+    if (!userName) {
       setShowAuthRatingModal(true);
     }
-  }, [isAuth, setShowAuthRatingModal]);
+  }, [userName, setShowAuthRatingModal]);
 
   return (
-    <div
-      className="star-rating"
-      title={titleStarRating}
+    <RatingStars
+      className="movie-rating-stars"
+      title={titleRatingStars}
+      sizeStar={sizeStar}
+      rating={rating}
+      edit={hasTheRightToVote}
+      onChange={estimate}
       onClick={openModalWindow}
-    >
-      {hasTheRightToVote ? (
-        <ReactStars
-          count={numberOfStars}
-          isHalf={true}
-          value={rating}
-          edit={true}
-          onChange={estimate}
-          key="stars to rate"
-          emptyIcon={<BsStarFill className="empty-star" size={sizeStar} />}
-          halfIcon={<BsStarHalf className="filled-star" size={sizeStar} />}
-          filledIcon={<BsStarFill className="filled-star" size={sizeStar} />}
-        />
-      ) : (
-        <ReactStars
-          count={numberOfStars}
-          isHalf={true}
-          value={rating}
-          edit={false}
-          key="read-only stars"
-          emptyIcon={<BsStarFill className="empty-star" size={sizeStar} />}
-          halfIcon={<BsStarHalf className="filled-star" size={sizeStar} />}
-          filledIcon={<BsStarFill className="filled-star" size={sizeStar} />}
-        />
-      )}
-    </div>
+    />
   );
 }
 

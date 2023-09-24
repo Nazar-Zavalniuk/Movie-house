@@ -16,7 +16,7 @@ function RatingInfo({ movieData, ...props }) {
 
   const hasTheRightToVote = !votedUsers.includes(userName) && isAuth;
 
-  const titleStarRating = isAuth
+  const titleRatingStars = isAuth
     ? ""
     : "Можливість оцінюваті фільм мають тільки авторизовані користувачі";
 
@@ -34,7 +34,7 @@ function RatingInfo({ movieData, ...props }) {
         votes={currentVotes}
         setVotes={setCurrentVotes}
         hasTheRightToVote={hasTheRightToVote}
-        titleStarRating={titleStarRating}
+        titleRatingStars={titleRatingStars}
       />
       <div className="rating-info">
         <div className="rating-movie">Рейтинг: {currentRating.toFixed(2)}</div>

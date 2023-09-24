@@ -1,0 +1,17 @@
+.rating-stars {
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.star.empty {
+  color: var(--bg-empty-star-bmc);
+}
+
+.star.filled {
+  color: var(--bg-filled-star-bmc);
+}

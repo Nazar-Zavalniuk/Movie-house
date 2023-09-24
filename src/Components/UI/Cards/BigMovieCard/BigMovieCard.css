@@ -36,14 +36,6 @@
   align-items: flex-start;
 }
 
-.ml-big svg.star.empty {
-  color: var(--bg-empty-star-bmc);
-}
-
-.ml-big svg.star.filled {
-  color: var(--bg-filled-star-bmc);
-}
-
 .production-year {
   font-size: 15px;
   font-weight: bold;

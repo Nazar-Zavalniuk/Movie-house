@@ -1,12 +1,3 @@
-.star-rating .empty-star {
-  color: var(--color-empty-star-movp);
-}
-
-.star-rating .filled-star {
-  color: var(--color-filled-star-movp);
-}
-
-.star-rating .empty-star,
-.star-rating .filled-star {
-  margin: 0 3px;
+.movie-rating-stars {
+  column-gap: 3px;
 }

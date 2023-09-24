@@ -1,7 +1,7 @@
 import React from "react";
 import "./BigMovieCard.css";
 import { Link } from "react-router-dom";
-import StaticStarRating from "../../StaticStarRating/StaticStarRating";
+import RatingStars from "../../RatingStars/RatingStars";
 
 function BigMovieCard({ movie, ...props }) {
   const { title, year, coverImage, rating, id } = movie;
@@ -20,7 +20,7 @@ function BigMovieCard({ movie, ...props }) {
       />
       <span className="movie-title mt-big">{title}</span>
       <div className="rating-and-year">
-        <StaticStarRating numberOfStars={10} sizeStar={15} rating={rating} />
+        <RatingStars numberOfStars={10} sizeStar={15} rating={rating} />
         <span className="production-year">{year}</span>
       </div>
     </Link>
