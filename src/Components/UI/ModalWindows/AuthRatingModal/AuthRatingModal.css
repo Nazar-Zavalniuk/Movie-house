@@ -16,12 +16,12 @@
   min-height: 33px;
   border-radius: 3px;
   flex: 1;
-  color: var(--color-static-btn-mw);
-  background: var(--bg-static-btn-mw);
+  color: var(--seveth-text-color-btn);
+  background: var(--secondary-bg-color-btn);
 }
 
 .auth-rating-modal .modal-buttons .btn:hover,
 .auth-rating-modal .modal-buttons .btn:focus {
-  color: var(--color-hover\focus-btn-mw);
-  background: var(--bg-hover\focus-btn-mw);
+  color: var(--main-text-color-btn);
+  background: var(--main-bg-color-btn);
 }

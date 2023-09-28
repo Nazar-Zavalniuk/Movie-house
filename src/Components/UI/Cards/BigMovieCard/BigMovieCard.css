@@ -6,13 +6,13 @@
   text-decoration: none;
   text-align: center;
   transition: 0.2s;
-  color: var(--color-static-bmc);
-  background: var(--bg-static-bmc);
+  color: var(--static-text-color-bmc);
+  background: var(--static-bg-color-bmc);
 }
 
 .ml-big:hover {
-  color: var(--color-hover-bmc);
-  background: var(--bg-hover-bmc);
+  color: var(--hover-text-color-bmc);
+  background: var(--hover-bg-color-bmc);
 }
 
 .imc-big {
@@ -41,5 +41,5 @@
   font-weight: bold;
   font-style: italic;
   line-height: 1;
-  color: var(--color-rel-year-bmc);
+  color: var(--release-year-color-bmc);
 }

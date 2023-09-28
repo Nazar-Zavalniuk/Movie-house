@@ -7,13 +7,13 @@
   text-decoration: none;
   text-align: center;
   transition: 0.2s;
-  color: var(--color-static-mmc);
-  background: var(--bg-static-mmc);
+  color: var(--static-text-color-mmc);
+  background: var(--static-bg-color-mmc);
 }
 
 .ml-middle:hover {
-  color: var(--color-hover-mmc);
-  background: var(--bg-hover-mmc);
+  color: var(--hover-text-color-mmc);
+  background: var(--hover-bg-color-mmc);
 }
 
 .imc-middle {

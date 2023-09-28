@@ -7,11 +7,11 @@
   justify-content: center;
   align-items: flex-end;
   text-decoration: none;
-  color: var(--color-static-logo);
+  color: var(--main-static-text-color);
 }
 
 .logo-link:hover {
-  color: var(--color-hover-logo);
+  color: var(--main-hover-text-color);
 }
 
 .logo-title {

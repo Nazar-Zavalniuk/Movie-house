@@ -8,15 +8,15 @@
   font-size: 16px;
   text-align: center;
   cursor: default;
-  color: var(--color-search-info);
-  background: var(--bg-search-info);
+  color: var(--third-static-text-color);
+  background: var(--bg-color-of-first-level-elements);
 }
 
 .search-value {
   margin: 5px 0;
   display: inline-block;
   word-break: break-word;
-  color: var(--color-search-value);
+  color: var(--secondary-static-text-color);
 }
 
 .search-clue {

@@ -12,13 +12,13 @@
   text-decoration: none;
   text-align: center;
   transition: 0.2s;
-  color: var(--color-static-smc);
-  background: var(--bg-static-smc);
+  color: var(--static-text-color-smc);
+  background: var(--static-bg-color-smc);
 }
 
 .ml-small:hover {
-  color: var(--color-hover-smc);
-  background: var(--bg-hover-smc);
+  color: var(--hover-text-color-smc);
+  background: var(--hover-bg-color-smc);
 }
 
 .imc-small {
@@ -39,12 +39,12 @@
   position: absolute;
   top: 0;
   right: 0;
-  color: brown;
-  background: var(--bg-static-smc);
+  color: var(--static-color-btn-smc);
+  background: var(--static-bg-color-btn-smc);
   z-index: 3;
 }
 
 .small-card-btn:hover {
-  color: red;
-  background: #222;
+  color: var(--hover-color-btn-smc);
+  background: var(--hover-bg-color-btn-smc);
 }

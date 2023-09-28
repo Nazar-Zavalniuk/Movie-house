@@ -1,19 +1,19 @@
 .page-number {
   padding: 5px;
   cursor: pointer;
-  color: var(--color-static-pnb);
-  background: var(--bg-static-pnb);
-  border: solid 1px var(--bg-static-pnb);
+  color: var(--static-number-color-pnb);
+  background: var(--static-bg-color-pnb);
+  border: solid 1px var(--default-border-color-pnb);
 }
 
 .page-number:hover {
-  color: var(--color-hover-pnb);
-  background: var(--bg-hover-pnb);
+  color: var(--hover-number-color-pnb);
+  background: var(--hover-bg-color-pnb);
 }
 
 .current-page,
 .current-page:hover {
-  color: var(--color-current-pnb);
-  background: var(--bg-current-pnb);
-  border-color: var(--bc-current-pnb);
+  color: var(--current-page-number-color-pnb);
+  background: var(--current-page-bg-color-pnb);
+  border-color: var(--current-page-border-color-pnb);
 }

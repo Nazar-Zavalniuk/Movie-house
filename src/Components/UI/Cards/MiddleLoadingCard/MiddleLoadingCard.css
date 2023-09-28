@@ -4,8 +4,8 @@
   margin: 2px;
   font-size: 11px;
   display: inline-block;
-  color: var(--color-static-mmc);
-  background: var(--bg-static-mmc);
+  color: var(--static-text-color-mmc);
+  background: var(--static-bg-color-mmc);
 }
 
 .img-lc-middle {
@@ -28,10 +28,10 @@
 
 @keyframes skeleton-loading {
   0% {
-    background: var(--bg-animation-start-mlc);
+    background: var(--animation-start-bg-color-mlc);
   }
 
   100% {
-    background: var(--bg-animation-end-mlc);
+    background: var(--animation-end-bg-color-mlc);
   }
 }

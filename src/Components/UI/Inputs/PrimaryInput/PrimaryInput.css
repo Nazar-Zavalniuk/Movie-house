@@ -1,5 +1,5 @@
 .input {
   font-family: inherit;
-  color: var(--color-static-prli);
-  background: var(--bg-static-prli);
+  color: var(--fourth-text-color-input);
+  background: var(--secondary-bg-color-input);
 }

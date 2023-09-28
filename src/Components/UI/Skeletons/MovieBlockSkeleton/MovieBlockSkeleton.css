@@ -8,10 +8,10 @@
 
 @keyframes skeleton-loading-movie-footer-info {
   0% {
-    background: var(--start-bg-text-mis);
+    background: var(--start-text-bg-color-mis);
   }
 
   100% {
-    background: var(--end-bg-text-mis);
+    background: var(--end-text-bg-color-mis);
   }
 }

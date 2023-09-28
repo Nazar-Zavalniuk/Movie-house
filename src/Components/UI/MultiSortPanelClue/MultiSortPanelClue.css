@@ -8,6 +8,6 @@
   font-size: 16px;
   text-align: center;
   cursor: default;
-  color: var(--color-static-msp);
-  background: var(--bg-static-msp);
+  color: var(--third-static-text-color);
+  background: var(--bg-color-of-first-level-elements);
 }

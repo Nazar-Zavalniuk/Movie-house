@@ -7,20 +7,20 @@
   padding: 8px 10px;
   font-size: 16px;
   border-radius: 3px;
-  color: var(--color-static-prli);
+  color: var(--fourth-text-color-input);
 }
 
 .registration-form .login:focus {
-  outline: 1px solid var(--color-static-prli);
+  outline: 1px solid var(--main-outline-color-input);
 }
 
 .registration-form .login.invalid {
-  outline: 1px solid var(--color-warning-prl);
+  outline: 1px solid var(--warning-color);
 }
 
 .registration-form .login-box .warning-message {
   margin-top: 4px;
   text-align: justify;
   line-height: 1.4;
-  color: var(--color-warning-prl);
+  color: var(--warning-color);
 }

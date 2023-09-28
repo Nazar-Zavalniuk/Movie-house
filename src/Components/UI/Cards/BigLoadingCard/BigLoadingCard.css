@@ -2,8 +2,8 @@
   width: 212px;
   height: 357px;
   font-size: 13px;
-  color: var(--color-static-bmc);
-  background: var(--bg-static-bmc);
+  color: var(--static-text-color-bmc);
+  background: var(--static-bg-color-bmc);
 }
 
 .img-lc-big {
@@ -34,10 +34,10 @@
 
 @keyframes skeleton-loading {
   0% {
-    background: var(--bg-animation-start-blc);
+    background: var(--animation-start-bg-color-blc);
   }
 
   100% {
-    background: var(--bg-animation-end-blc);
+    background: var(--animation-end-bg-color-blc);
   }
 }

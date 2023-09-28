@@ -3,18 +3,18 @@
   height: 22px;
   display: flex;
   align-items: center;
-  background: var(--bg-filter);
+  background: var(--bg-color-of-first-level-elements);
 }
 
 .filter-star {
   margin-left: 6px;
   cursor: pointer;
   transition: color ease 0.2s 0s;
-  color: var(--color-fs-inactive);
+  color: var(--filled-star-color);
 }
 
 .filter-star.active {
-  color: var(--color-fs-active);
+  color: var(--focus-star-color);
 }
 
 .filter-star:hover {
@@ -33,7 +33,7 @@
   width: 109px;
   height: 1px;
   order: 1;
-  background: var(--bg-decor-filter-line);
+  background: var(--decor-line-bg-color-sp);
 }
 
 .filter-text {
@@ -44,5 +44,5 @@
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: default;
-  color: var(--color-filter-info);
+  color: var(--fifth-static-text-color);
 }

@@ -4,10 +4,10 @@
 
 @keyframes skeleton-loading-img {
   0% {
-    background: var(--start-bg-img-mis);
+    background: var(--start-img-bg-color-mis);
   }
 
   100% {
-    background: var(--end-bg-img-mis);
+    background: var(--end-img-bg-color-mis);
   }
 }

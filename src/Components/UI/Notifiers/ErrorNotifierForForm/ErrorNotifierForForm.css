@@ -8,8 +8,8 @@
   opacity: 0;
   transform: scale(0.5);
   transition: 0.2s;
-  color: var(--color-warning-prl);
-  background: var(--bg-form-prl);
+  color: var(--warning-color);
+  background: var(--bg-color-of-second-level-elements);
 }
 
 .error-notifier-for-form .message-title {

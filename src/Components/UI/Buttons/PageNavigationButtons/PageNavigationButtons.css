@@ -13,21 +13,21 @@
 .go-to-last-page-btn {
   padding: 5.5px;
   cursor: pointer;
-  color: var(--color-static-pnb);
-  background: var(--bg-static-pnb);
+  color: var(--static-number-color-pnb);
+  background: var(--static-bg-color-pnb);
 }
 
 .go-to-first-page-btn:hover,
 .go-to-previous-page-btn:hover,
 .go-to-next-page-btn:hover,
 .go-to-last-page-btn:hover {
-  color: var(--color-hover-pnb);
-  background: var(--bg-hover-pnb);
+  color: var(--hover-number-color-pnb);
+  background: var(--hover-bg-color-pnb);
 }
 
 .decor-dots {
   padding: 6px;
   cursor: default;
-  color: var(--color-static-pnb);
-  background: var(--bg-static-pnb);
+  color: var(--static-number-color-pnb);
+  background: var(--static-bg-color-pnb);
 }

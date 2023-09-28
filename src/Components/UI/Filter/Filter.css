@@ -4,12 +4,12 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  color: var(--color-filter);
-  background: var(--bg-filter);
+  color: var(--third-static-text-color);
+  background: var(--bg-color-of-first-level-elements);
 }
 
 .filter:hover {
-  color: var(--color-hover-filter);
+  color: var(--main-hover-text-color);
 }
 
 .filter-title {

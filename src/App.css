@@ -18,7 +18,7 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  background: var(--bg-page-mp);
+  background: var(--page-bg-color);
 }
 
 .page {
@@ -26,6 +26,6 @@
   min-height: calc(100vh - 30px); /* Content Height - Security Padding */
   font-family: Verdana, Geneva, sans-serif;
   font-size: 12px;
-  color: var(--page-color-mp);
-  background-color: var(--bg-wrapper-mp);
+  color: var(--main-static-text-color);
+  background-color: var(--wrapper-bg-color);
 }

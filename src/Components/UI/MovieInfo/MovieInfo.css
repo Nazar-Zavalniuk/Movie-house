@@ -1,6 +1,6 @@
 .movie-info {
   margin: 2px 6px 0 6px;
-  background: var(--bg-body-movp);
+  background: var(--bg-color-of-first-level-elements);
 }
 
 .movie-info-body {

@@ -3,7 +3,7 @@
   display: grid;
   grid-template: 37px / 1fr;
   justify-items: center;
-  background: var(--bg-f);
+  background: var(--bg-color-of-first-level-elements);
 }
 
 .support-ukraine {
@@ -29,14 +29,14 @@
 
 .link-to-homepage {
   text-decoration: none;
-  color: var(--color-static-link-f);
+  color: var(--main-static-text-color);
 }
 
 .link-to-homepage:hover {
-  color: var(--color-hover-link-f);
+  color: var(--secondary-hover-text-color);
 }
 
 .about-site-description {
   margin-left: 3px;
-  color: var(--color-f);
+  color: var(--fifth-static-text-color);
 }

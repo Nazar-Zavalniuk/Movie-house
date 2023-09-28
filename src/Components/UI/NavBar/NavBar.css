@@ -10,13 +10,13 @@
   list-style: none;
   cursor: pointer;
   text-transform: uppercase;
-  color: var(--color-static-nbb);
-  background: var(--bg-static-nbb);
+  color: var(--third-static-text-color);
+  background: var(--bg-color-of-first-level-elements);
 }
 
 .nav-bar-list-item:hover {
-  color: var(--color-hover-nbb);
-  background: var(--bg-hover-nbb);
+  color: var(--main-text-color-btn);
+  background: var(--main-bg-color-btn);
 }
 
 .nav-bar-option {

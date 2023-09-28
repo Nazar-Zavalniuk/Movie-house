@@ -1,216 +1,108 @@
 :root {
-  /* Main page */
-  --bg-page-mp: #000;
-  --bg-wrapper-mp: #111111;
-  --page-color-mp: #aaa;
+  --page-bg-color: #000;
+  --wrapper-bg-color: #111111;
+  --main-static-text-color: #aaa;
+  --secondary-static-text-color: #ccc;
+  --third-static-text-color: #999;
+  --fourth-static-text-color: #ddd;
+  --fifth-static-text-color: #777;
+  --sixth-static-text-color: #a5a5a5;
+  --seventh-static-text-color: #dadada;
+  --main-hover-text-color: #ccc;
+  --secondary-hover-text-color: #ddd;
+  --third-hover-text-color: #eee;
+  --bg-color-of-first-level-elements: #181818;
+  --bg-color-of-second-level-elements: #222;
+  --bg-color-of-third-level-elements: #272727;
+  --movie-window-bg-color: #000;
+  --main-border-color-img: #252525;
+  --warning-color: #f00;
+  --main-red-color: #f00;
+  --secondary-red-color: #a20811;
+  --just-gray: #a5a5a566;
 
-  /* Logo */
-  --color-static-logo: #aaa;
-  --color-hover-logo: #ccc;
+  /* Stars */
+  --empty-star-color: #959595;
+  --filled-star-color: #fed70b;
+  --focus-star-color: #bf090e;
 
-  /* List hot links */
-  --color-static-lhl: #aaa;
-  --color-hover-lhl: #ccc;
-  --bc-lhl: #a5a5a566;
+  /* Big movie card */
+  --static-bg-color-bmc: #222;
+  --hover-bg-color-bmc: #353535;
+  --static-text-color-bmc: #bbb;
+  --hover-text-color-bmc: #eee;
+  --release-year-color-bmc: #bf090e;
+
+  /* Middle movie card */
+  --static-bg-color-mmc: #222;
+  --hover-bg-color-mmc: #353535;
+  --static-text-color-mmc: #aaa;
+  --hover-text-color-mmc: #ddd;
+
+  /* Small movie card */
+  --static-bg-color-smc: #292929;
+  --hover-bg-color-smc: #353535;
+  --static-text-color-smc: #aaa;
+  --hover-text-color-smc: #ddd;
+  --static-color-btn-smc: #a52a2a;
+  --hover-color-btn-smc: #f00;
+  --static-bg-color-btn-smc: #292929;
+  --hover-bg-color-btn-smc: #222;
+
+  /* Big loading card */
+  --animation-start-bg-color-blc: #171717;
+  --animation-end-bg-color-blc: #080808;
+
+  /* Middle loading card */
+  --animation-start-bg-color-mlc: #1a1a1a;
+  --animation-end-bg-color-mlc: #0a0a0a;
+
+  /* Small loading card */
+  --animation-start-bg-color-slc: #242424;
+  --animation-end-bg-color-slc: #1a1a1a;
 
   /* Sorting panel */
-  --bg-filter: #191919;
-  --color-filter: #999;
-  --color-hover-filter: #ccc;
-  --color-fs-inactive: #fed70b;
-  --color-fs-active: #bf090e;
-  --bg-decor-filter-line: linear-gradient(
+  --hover-bg-color-sp: #282828;
+  --decor-line-bg-color-sp: linear-gradient(
     90deg,
     rgba(24, 24, 24, 0.8) 0%,
     rgba(238, 2, 2, 0.35) 100%
   );
-  --color-filter-info: #777;
+
+  /* Buttons */
+  --main-bg-color-btn: #333;
+  --secondary-bg-color-btn: #222;
+  --third-bg-color-btn: #21759b;
+  --main-border-color-btn: #181818;
+  --secondary-border-color-btn: #444;
+  --main-text-color-btn: #ddd;
+  --secondary-text-color-btn: #eee;
+  --third-text-color-btn: #eaf2fa;
+  --fourth-text-color-btn: #fff;
+  --fifth-text-color-btn: #bbb;
+  --sixth-text-color-btn: #d36d0d;
+  --seveth-text-color-btn: #aaa;
 
   /* Page navigation buttons */
-  --bg-static-pnb: #333;
-  --bg-hover-pnb: #454545;
-  --bg-current-pnb: #000;
-  --bc-current-pnb: #555;
-  --color-static-pnb: #ccc;
-  --color-hover-pnb: #fff;
-  --color-current-pnb: #7f7e7e;
+  --static-bg-color-pnb: #333;
+  --hover-bg-color-pnb: #454545;
+  --default-border-color-pnb: #333;
+  --current-page-bg-color-pnb: #000;
+  --current-page-border-color-pnb: #555;
+  --static-number-color-pnb: #ccc;
+  --hover-number-color-pnb: #fff;
+  --current-page-number-color-pnb: #7f7e7e;
 
-  /* Big movie card */
-  --bg-empty-star-bmc: #959595;
-  --bg-filled-star-bmc: #fed70b;
-  --bg-static-bmc: #222;
-  --bg-hover-bmc: #353535;
-  --color-static-bmc: #bbb;
-  --color-hover-bmc: #eee;
-  --color-rel-year-bmc: #bf090e;
-
-  /* Middle movie card */
-  --bg-static-mmc: #222;
-  --bg-hover-mmc: #353535;
-  --color-static-mmc: #aaa;
-  --color-hover-mmc: #ddd;
-
-  /* Small movie card */
-  --bg-static-smc: #292929;
-  --bg-hover-smc: #353535;
-  --color-static-smc: #aaa;
-  --color-hover-smc: #ddd;
-
-  /* Nav bar buttons */
-  --bg-static-nbb: #181818;
-  --bg-hover-nbb: #333;
-  --color-static-nbb: #999;
-  --color-hover-nbb: #ddd;
-
-  /* Search button */
-  --bg-static-sb: #333;
-  --color-static-sb: #fff;
-  --color-hover-sb: #ddd;
-
-  /* Serch input */
-  --bg-static-si: #080808;
-  --bc-hover-si: #484848;
-  --bc-static-si: #333;
-  --color-static-si: #ddd;
-  --color-hover-si: #888;
-  --color-focus-si: #fff;
-
-  /* Side bar */
-  --bg-sb: #181818;
-
-  /* Side bar buttons */
-  --bg-static-sbb: #222;
-  --bg-hover-sbb: #333;
-  --color-static-sbb: #aaa;
-  --color-hover-sbb: #ddd;
-
-  /* Side bar recommendations */
-  --bg-sbr: #222;
-
-  /* Side bar recommendations links */
-  --color-static-sbrl: #aaa;
-  --color-hover-sbrl: #ccc;
-  --color-img-sbrl: #a20811;
-
-  /* Side bar recomendations movie card */
-  --bg-static-sbrms: #292929;
-  --bg-hover-sbrms: #353535;
-  --color-static-sbrms: #aaa;
-  --color-hover-sbrms: #ddd;
-
-  /* Footer */
-  --bg-f: #181818;
-  --color-f: #777;
-  --color-static-link-f: #aaa;
-  --color-hover-link-f: #ddd;
-
-  /* Page registration/login */
-  --bg-body-prl: #181818;
-  --color-body-static-prl: #aaa;
-  --bg-form-prl: #222;
-  --color-body-hover-prl: #ccc;
-  --color-warning-prl: #f00;
-
-  /* Page registration/login inputs*/
-  --bg-static-prli: #333;
-  --color-static-prli: #eee;
-
-  /* Page registration/login buttons*/
-  --bg-static-prlb: #333;
-  --color-static-prlb: #ddd;
-  --bc-static-prlb: #181818;
-  --bc-hover-prlb: #444;
-  --color-hover-prlb: #eee;
-  --bg-active-prlb: #21759b;
-  --color-active-prlb: #eaf2fa;
-
-  /* Page faq */
-  --bg-title-faq: #333;
-  --color-title-faq: #ccc;
-  --color-link-faq: #ccc;
-  --color-text-faq: #aaa;
-
-  /* Movie page movie card*/
-  --color-static-movpmc: #aaa;
-  --color-hover-movpmc: #ddd;
-
-  /* Movie page buttons*/
-  --bg-hover-movpb: #333;
-  --color-hover-movpb: #333;
-  --color-static-movpb: #bbb;
-
-  /* Movie page comments*/
-  --bg-user-name-movpc: #292929;
-  --color-user-name-movpc: #ccc;
-  --color-user-com-movpc: #aaa;
-
-  /* Movie page movie */
-  --bg-movpm: #000000;
-
-  /* No Results Found */
-  --color-search-info: #999;
-  --bg-search-info: #181818;
-  --color-search-value: #ccc;
-
-  /* Page error */
-  --color-warning-pe: #ff0000;
-  --bg-content-pe: #181818;
-  --color-text-pe: #999;
-  --color-static-link: #ccc;
-  --color-hover-link: #eee;
-
-  /* Big loading card */
-  --bg-animation-start-blc: #171717;
-  --bg-animation-end-blc: #080808;
-
-  /* Middle loading card */
-  --bg-animation-start-mlc: #1a1a1a;
-  --bg-animation-end-mlc: #0a0a0a;
-
-  /* Small loading card */
-  --bg-animation-start-slc: #242424;
-  --bg-animation-end-slc: #1a1a1a;
-
-  /* Multi sort panel */
-  --color-static-msp: #999;
-  --bg-static-msp: #181818;
-  --color-hover-msp: #ccc;
-  --bg-hover-msp: #282828;
-
-  /* Movie page */
-  --bg-body-movp: #181818;
-  --bc-img-movp: #252525;
-  --bg-el-movp: #222;
-  --bg-movie-window-movp: #000;
-  --bg-sub-el-static-movp: #272727;
-  --prim-bg-static-btn-movp: transparent;
-  --prim-hover-bg-btn: #333;
-  --color-fl-text-movp: #f00;
-  --prim-color-text-info-movp: #a5a5a5;
-  --sec-color-text-info-movp: #dadada;
-  --th-static-color-text-info-movp: #ccc;
-  --four-static-color-text-info-movp: #777;
-  --prim-static-color-btn: #bbb;
-  --prim-hover-color-btn: #ddd;
-  --prim-color-btn-icons: #d36d0d;
-  --color-static-expand-btn-movp: #ccc;
-  --color-hover-expand-btn-movp: #ddd;
-  --color-empty-star-movp: #959595;
-  --color-filled-star-movp: #fed70b;
-
-  /* Movie info skeleton */
-  --start-bg-img-mis: #141414;
-  --end-bg-img-mis: #1c1c1c;
-  --start-bg-text-mis: #262626;
-  --end-bg-text-mis: #595959;
-
-  /* Modal window */
-  --bg-mw: rgba(0, 0, 0, 0.4);
-  --bg-body-mw: #181818;
-  --bg-static-btn-mw: #222;
-  --bg-hover\focus-btn-mw: #333;
-  --color-static-btn-mw: #aaa;
-  --color-hover\focus-btn-mw: #ddd;
+  /* Inputs */
+  --main-bg-color-input: #080808;
+  --secondary-bg-color-input: #333;
+  --main-border-color-input: #484848;
+  --secondary-border-color-input: #333;
+  --main-text-color-input: #ddd;
+  --secondary-text-color-input: #888;
+  --third-text-color-input: #fff;
+  --fourth-text-color-input: #eee;
+  --main-outline-color-input: #eee;
 
   /* Loader */
   --first-color-loader: #0000;
@@ -218,14 +110,22 @@
   --third-color-loader: #000;
 
   /* Overlay */
-  --bg-overlay: rgba(0, 0, 0, 0.1);
+  --overlay-bg-color: rgba(0, 0, 0, 0.1);
 
   /* App Notifier */
-  --color-success-notifier: #00a900;
-  --color-error-notifier: #f00;
-  --bg-notifier: #000;
+  --success-notifier-color: #00a900;
+  --error-notifier-color: #f00;
+  --notifier-bg-color: #000;
 
-  /* Page user settings */
-  --bg-body-pus: #181818;
-  --bc-avatar: #353535;
+  /* Modal window */
+  --modal-window-bg-color: rgba(0, 0, 0, 0.4);
+
+  /* Movie info skeleton */
+  --start-img-bg-color-mis: #141414;
+  --end-img-bg-color-mis: #1c1c1c;
+  --start-text-bg-color-mis: #262626;
+  --end-text-bg-color-mis: #595959;
+
+  /* Avatar */
+  --avatar-border-color: #353535;
 }

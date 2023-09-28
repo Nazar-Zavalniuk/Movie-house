@@ -9,18 +9,18 @@
   font-size: 14px;
   cursor: pointer;
   flex: 1;
-  color: var(--color-static-msp);
-  background: var(--bg-static-msp);
+  color: var(--third-static-text-color);
+  background: var(--bg-color-of-first-level-elements);
 }
 
 .select-mf:hover {
-  color: var(--color-hover-msp);
-  background: var(--bg-hover-msp);
+  color: var(--main-hover-text-color);
+  background: var(--bg-color-of-third-level-elements);
 }
 
 .select-mf:active {
-  color: var(--color-static-msp);
-  background: var(--bg-static-msp);
+  color: var(--third-static-text-color);
+  background: var(--bg-color-of-first-level-elements);
 }
 
 .clear-select {
@@ -30,11 +30,11 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  color: var(--color-static-msp);
-  background: var(--bg-static-msp);
+  color: var(--third-static-text-color);
+  background: var(--bg-color-of-first-level-elements);
 }
 
 .clear-select:hover {
-  color: var(--color-hover-msp);
-  background: var(--bg-hover-msp);
+  color: var(--main-hover-text-color);
+  background: var(--bg-color-of-third-level-elements);
 }

@@ -4,7 +4,7 @@
   display: flex;
   flex-flow: column;
   align-items: center;
-  background: var(--bg-body-prl);
+  background: var(--bg-color-of-first-level-elements);
 }
 
 .login-body .links {
@@ -12,9 +12,9 @@
 }
 
 .login-body .registration-link {
-  color: var(--color-body-static-prl);
+  color: var(--main-static-text-color);
 }
 
 .login-body .registration-link:hover {
-  color: var(--color-body-hover-prl);
+  color: var(--main-hover-text-color);
 }

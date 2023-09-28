@@ -1,7 +1,7 @@
 .side-bar {
   margin: 2px 6px 0 0;
   width: 298px;
-  background: var(--bg-sb);
+  background: var(--bg-color-of-first-level-elements);
 }
 
 .side-bar-links {
@@ -9,11 +9,11 @@
 }
 
 .link-btn {
-  color: var(--color-static-sbb);
-  background: var(--bg-static-sbb);
+  color: var(--main-static-text-color);
+  background: var(--bg-color-of-second-level-elements);
 }
 
 .link-btn:hover {
-  color: var(--color-hover-sbb);
-  background: var(--bg-hover-sbb);
+  color: var(--secondary-hover-text-color);
+  background: var(--main-bg-color-btn);
 }

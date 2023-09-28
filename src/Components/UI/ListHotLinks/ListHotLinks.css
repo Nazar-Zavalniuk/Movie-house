@@ -5,7 +5,7 @@
 
 .hot-links li {
   list-style: none;
-  border-right: 1px solid var(--bc-lhl);
+  border-right: 1px solid var(--just-gray);
 }
 
 .hot-links li:last-child {
@@ -21,12 +21,12 @@
   margin: 0 10px;
   padding: 2px 3px;
   text-decoration: none;
-  color: var(--color-static-lhl);
+  color: var(--main-static-text-color);
 }
 
 .hot-link:hover,
 .hot-links .btn:hover {
-  color: var(--color-hover-lhl);
+  color: var(--main-hover-text-color);
 }
 
 .hot-links .btn {

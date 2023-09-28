@@ -9,9 +9,9 @@
 }
 
 .star.empty {
-  color: var(--bg-empty-star-bmc);
+  color: var(--empty-star-color);
 }
 
 .star.filled {
-  color: var(--bg-filled-star-bmc);
+  color: var(--filled-star-color);
 }

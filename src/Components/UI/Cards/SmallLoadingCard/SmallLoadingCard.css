@@ -3,8 +3,8 @@
   height: 203px;
   margin: 3px;
   display: inline-block;
-  color: var(--color-static-smc);
-  background: var(--bg-static-smc);
+  color: var(--static-text-color-smc);
+  background: var(--static-bg-color-smc);
 }
 
 .img-lc-small {
@@ -27,10 +27,10 @@
 
 @keyframes skeleton-loading {
   0% {
-    background: var(--bg-animation-start-slc);
+    background: var(--animation-start-bg-color-slc);
   }
 
   100% {
-    background: var(--bg-animation-end-slc);
+    background: var(--animation-end-bg-color-slc);
   }
 }

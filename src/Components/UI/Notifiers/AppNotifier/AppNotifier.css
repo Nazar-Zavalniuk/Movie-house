@@ -10,18 +10,18 @@
 .app-notifier .change-password-success-notifier {
   padding: 10px;
   border-radius: 5px 15px 0 15px;
-  color: var(--color-success-notifier);
-  background: var(--bg-notifier);
-  border: 1px solid var(--color-success-notifier);
+  color: var(--success-notifier-color);
+  background: var(--notifier-bg-color);
+  border: 1px solid var(--success-notifier-color);
   z-index: 999;
 }
 
 .app-notifier .change-password-error-notifier {
   padding: 10px;
   border-radius: 5px 15px 0 15px;
-  color: var(--color-error-notifier);
-  background: var(--bg-notifier);
-  border: 1px solid var(--color-error-notifier);
+  color: var(--error-notifier-color);
+  background: var(--notifier-bg-color);
+  border: 1px solid var(--error-notifier-color);
 }
 
 .app-notifier .change-password-notifier-title {

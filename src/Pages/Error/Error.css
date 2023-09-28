@@ -18,5 +18,5 @@
   align-items: center;
   row-gap: 10px;
   flex: 1;
-  background: var(--bg-content-pe);
+  background: var(--bg-color-of-first-level-elements);
 }

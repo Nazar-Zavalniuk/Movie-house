@@ -22,5 +22,5 @@
 .error-title,
 .error-message,
 .list-errors {
-  color: var(--color-warning-pe);
+  color: var(--warning-color);
 }

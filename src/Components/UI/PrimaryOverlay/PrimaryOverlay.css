@@ -12,7 +12,7 @@
   align-items: center;
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
-  background: var(--bg-overlay);
+  background: var(--overlay-bg-color);
   transition: 0.2s ease;
 }
 

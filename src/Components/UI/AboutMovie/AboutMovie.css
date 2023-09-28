@@ -1,7 +1,7 @@
 .movie-details .movie-img {
   width: 200px;
   height: 300px;
-  border: 2px solid var(--bc-img-movp);
+  border: 2px solid var(--main-border-color-img);
 }
 
 .movie-details .details {
@@ -30,11 +30,11 @@
 }
 
 .movie-details .details-row:first-child .parameter-description::first-letter {
-  color: var(--color-fl-text-movp);
+  color: var(--main-red-color);
 }
 
 .movie-details .details-row:nth-child(odd) {
-  background: var(--bg-el-movp);
+  background: var(--bg-color-of-second-level-elements);
 }
 
 .movie-details .details-row .movie-parameter {
@@ -42,20 +42,20 @@
 }
 
 .movie-parameter {
-  color: var(--prim-color-text-info-movp);
+  color: var(--sixth-static-text-color);
 }
 
 .parameter-description {
-  color: var(--sec-color-text-info-movp);
+  color: var(--seventh-static-text-color);
 }
 
 .expand-btn.actors {
   padding: 2px;
   margin-left: 2px;
-  color: var(--color-static-expand-btn-movp);
-  background: var(--prim-bg-static-btn-movp);
+  color: var(--secondary-static-text-color);
+  background: transparent;
 }
 
 .expand-btn.actors:hover {
-  color: var(--color-hover-expand-btn-movp);
+  color: var(--secondary-hover-text-color);
 }

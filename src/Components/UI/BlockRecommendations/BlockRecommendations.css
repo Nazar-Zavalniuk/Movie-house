@@ -1,7 +1,7 @@
 .recommended.block {
   margin: 0 8px 5px;
   width: 282px;
-  background: var(--bg-sbr);
+  background: var(--bg-color-of-second-level-elements);
 }
 
 .recommended.title {
@@ -11,16 +11,16 @@
   justify-content: center;
   align-items: flex-end;
   cursor: pointer;
-  color: var(--color-static-sbrl);
+  color: var(--main-static-text-color);
 }
 
 .recommended.title:hover {
-  color: var(--color-hover-sbrl);
+  color: var(--main-hover-text-color);
 }
 
 .recommended.img {
   margin-left: 1px;
-  color: var(--color-img-sbrl);
+  color: var(--secondary-red-color);
 }
 
 .recommended-movie-cards {
