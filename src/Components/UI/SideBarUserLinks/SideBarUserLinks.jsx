@@ -15,13 +15,13 @@ function SideBarUserLinks(props) {
           {userName}
         </div>
       </PrimaryLinkAsButton>
-      <PrimaryLinkAsButton className="faq-user" link="/faq">
+      <PrimaryLinkAsButton className="faq-user" link="/temporary-page">
         ?
       </PrimaryLinkAsButton>
-      <PrimaryLinkAsButton className="watch-later" link="/watch-later">
+      <PrimaryLinkAsButton className="watch-later" link="/temporary-page">
         На потім
       </PrimaryLinkAsButton>
-      <PrimaryLinkAsButton className="favorite" link="/favorite">
+      <PrimaryLinkAsButton className="favorite" link="/temporary-page">
         Обране
       </PrimaryLinkAsButton>
     </div>

@@ -5,6 +5,7 @@ import Login from "../Pages/Login/Login";
 import MoviePage from "../Pages/MoviePage/MoviePage";
 import Navigator from "../Pages/Navigator/Navigator";
 import Error from "../Pages/Error/Error";
+import TemporaryPage from "../Pages/TemporaryPage/TemporaryPage";
 
 export const privateRoutes = [
   { path: "/user-settings", component: UserSettings, exact: true },
@@ -12,6 +13,7 @@ export const privateRoutes = [
   { path: "/movie/:id", component: MoviePage, exact: true },
   { path: "/navigator", component: Navigator, exact: true },
   { path: "/error", component: Error, exact: true },
+  { path: "/temporary-page", component: TemporaryPage, exact: true },
 ];
 
 export const publicRoutes = [
@@ -21,4 +23,5 @@ export const publicRoutes = [
   { path: "/movie/:id", component: MoviePage, exact: true },
   { path: "/navigator", component: Navigator, exact: true },
   { path: "/error", component: Error, exact: true },
+  { path: "/temporary-page", component: TemporaryPage, exact: true },
 ];

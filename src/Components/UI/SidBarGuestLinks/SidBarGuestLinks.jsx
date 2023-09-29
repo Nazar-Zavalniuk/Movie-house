@@ -11,7 +11,7 @@ function SidBarGuestLinks(props) {
       <PrimaryLinkAsButton className="login" link="/login">
         Вхід
       </PrimaryLinkAsButton>
-      <PrimaryLinkAsButton className="faq-guest" link="/faq">
+      <PrimaryLinkAsButton className="faq-guest" link="/temporary-page">
         ?
       </PrimaryLinkAsButton>
     </div>
