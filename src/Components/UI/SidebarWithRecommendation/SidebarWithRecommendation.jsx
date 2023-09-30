@@ -3,7 +3,7 @@ import PrimarySideBar from "../PrimarySideBar/PrimarySideBar";
 import BlockRecommendations from "../BlockRecommendations/BlockRecommendations";
 import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 import { getSearchParams } from "../../../Utils/Sorting";
-import { scroll } from "../../../API/Scroll";
+import { scroll } from "../../../Utils/Scroll";
 import { useNavigate } from "react-router-dom";
 import { useMoviesState } from "../../../Context/MoviesStateProvider/MoviesStateProvider";
 

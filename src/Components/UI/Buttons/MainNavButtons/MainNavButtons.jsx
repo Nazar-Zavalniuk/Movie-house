@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import "./MainNavButtons.css";
-import { scroll } from "../../../../API/Scroll";
+import { scroll } from "../../../../Utils/Scroll";
 import { getArrayPages } from "../../../../Utils/Pages";
 
 function MainNavButtons({

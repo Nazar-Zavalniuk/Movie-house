@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import "./Footer.css";
 import { ReactComponent as UkrainianEmblem } from "../../../Images/ukrainian_emblem.svg";
 import { Link } from "react-router-dom";
-import { scroll } from "../../../API/Scroll";
+import { scroll } from "../../../Utils/Scroll";
 import useRebootHomepage from "../../../Hooks/useRebootHomepage";
 
 function Footer(props) {

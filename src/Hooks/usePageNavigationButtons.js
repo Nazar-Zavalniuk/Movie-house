@@ -1,6 +1,6 @@
 import { useAppState } from "../Context/AppStateProvider/AppStateProvider";
 import { useCallback } from "react";
-import { scroll } from "../API/Scroll";
+import { scroll } from "../Utils/Scroll";
 
 function usePageNavigationButtons(totalPages, scrollParams) {
   const { searchParams, setSearchParams } = useAppState();
