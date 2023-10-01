@@ -1,0 +1,41 @@
+.page.navigator {
+  display: grid;
+  grid-template-columns: 1fr 304px;
+  grid-template-rows: 100px 216px 199px;
+  grid-template-areas:
+    "header header"
+    "top-movies top-movies"
+    "sorting-panel sidebar"
+    "movies sidebar"
+    "page-nav-buttons sidebar"
+    "footer footer";
+}
+
+.page.navigator .header {
+  grid-area: header;
+}
+
+.page.navigator .top-movies {
+  grid-area: top-movies;
+}
+
+.page.navigator .multi-sort-panel {
+  grid-area: sorting-panel;
+}
+
+.page.navigator .main-movies-block {
+  grid-area: movies;
+}
+
+.page.navigator .page-navigation-buttons {
+  grid-area: page-nav-buttons;
+  align-self: end;
+}
+
+.page.navigator .side-bar {
+  grid-area: sidebar;
+}
+
+.page.navigator .footer {
+  grid-area: footer;
+}

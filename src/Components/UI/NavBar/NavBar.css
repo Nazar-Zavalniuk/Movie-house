@@ -1,0 +1,28 @@
+.nav-bar {
+  margin: 3px 6px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: 27px;
+  gap: 4px;
+}
+
+.nav-bar-list-item {
+  list-style: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: var(--third-static-text-color);
+  background: var(--bg-color-of-first-level-elements);
+}
+
+.nav-bar-list-item:hover {
+  color: var(--main-text-color-btn);
+  background: var(--main-bg-color-btn);
+}
+
+.nav-bar-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}

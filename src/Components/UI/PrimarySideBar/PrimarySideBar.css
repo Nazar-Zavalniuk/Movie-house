@@ -1,0 +1,19 @@
+.side-bar {
+  margin: 2px 6px 0 0;
+  width: 298px;
+  background: var(--bg-color-of-first-level-elements);
+}
+
+.side-bar-links {
+  padding: 8px 8px 5px;
+}
+
+.link-btn {
+  color: var(--main-static-text-color);
+  background: var(--bg-color-of-second-level-elements);
+}
+
+.link-btn:hover {
+  color: var(--secondary-hover-text-color);
+  background: var(--main-bg-color-btn);
+}

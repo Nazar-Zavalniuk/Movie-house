@@ -1,0 +1,28 @@
+.error-notifier-for-form {
+  padding: 10px;
+  margin-bottom: 5px;
+  width: 300px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: default;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: 0.2s;
+  color: var(--warning-color);
+  background: var(--bg-color-of-second-level-elements);
+}
+
+.error-notifier-for-form .message-title {
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.error-notifier-for-form .message {
+  font-size: 14px;
+}
+
+.error-notifier-for-form.visible {
+  opacity: 1;
+  transform: scale(1);
+  transition: 0.2s;
+}

@@ -1,0 +1,13 @@
+.multi-sort-panel-clue {
+  min-height: 1409px;
+}
+
+.multi-sort-panel-clue-body {
+  margin: 2px 6px;
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  cursor: default;
+  color: var(--third-static-text-color);
+  background: var(--bg-color-of-first-level-elements);
+}

@@ -1,0 +1,36 @@
+.lc-small {
+  width: 127px;
+  height: 203px;
+  margin: 3px;
+  display: inline-block;
+  color: var(--static-text-color-smc);
+  background: var(--static-bg-color-smc);
+}
+
+.img-lc-small {
+  width: 113px;
+  height: 165px;
+  margin: 7px 7px 8px;
+  opacity: 0.7;
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+.lcc-small {
+  padding: 0 7px;
+}
+
+.lct-small {
+  height: 11px;
+  opacity: 0.7;
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background: var(--animation-start-bg-color-slc);
+  }
+
+  100% {
+    background: var(--animation-end-bg-color-slc);
+  }
+}

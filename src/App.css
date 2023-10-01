@@ -1,0 +1,31 @@
+@import url("AppColors.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+}
+
+.body.no-scroll {
+  overflow: hidden;
+}
+
+#root {
+  padding: 15px;
+  min-width: 960px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--page-bg-color);
+}
+
+.page {
+  width: 960px;
+  min-height: calc(100vh - 30px); /* Content Height - Security Padding */
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 12px;
+  color: var(--main-static-text-color);
+  background-color: var(--wrapper-bg-color);
+}

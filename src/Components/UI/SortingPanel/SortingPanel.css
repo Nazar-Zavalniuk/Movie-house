@@ -1,0 +1,10 @@
+.sorting-panel {
+  margin: 2px 0 0 6px;
+  width: 650px;
+}
+
+.filter-panel {
+  width: 644px;
+  display: grid;
+  grid-template: 20px / 197px 197px 150px 100px;
+}

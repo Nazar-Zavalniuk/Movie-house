@@ -1,0 +1,12 @@
+.user-settings.page {
+  display: flex;
+  flex-flow: column;
+}
+
+.user-settings.page .header {
+  height: 100px;
+}
+
+.user-settings.page .user-settings-body {
+  flex: 1;
+}

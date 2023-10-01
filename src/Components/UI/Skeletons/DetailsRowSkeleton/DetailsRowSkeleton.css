@@ -1,0 +1,16 @@
+.movie-details .details-row .parameter-description.skeleton {
+  min-height: 16.8px;
+  flex: 1;
+  border-radius: 3px;
+  animation: skeleton-loading-details-row 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading-details-row {
+  0% {
+    background: var(--start-text-bg-color-mis);
+  }
+
+  100% {
+    background: var(--end-text-bg-color-mis);
+  }
+}

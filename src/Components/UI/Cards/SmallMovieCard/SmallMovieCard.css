@@ -1,0 +1,50 @@
+.small-card-wrapper {
+  width: 125px;
+  height: 203px;
+  position: relative;
+}
+
+.ml-small {
+  width: 125px;
+  height: 203px;
+  font-size: 11px;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  transition: 0.2s;
+  color: var(--static-text-color-smc);
+  background: var(--static-bg-color-smc);
+}
+
+.ml-small:hover {
+  color: var(--hover-text-color-smc);
+  background: var(--hover-bg-color-smc);
+}
+
+.imc-small {
+  margin: 7px 7px 8px;
+}
+
+.mt-small {
+  padding: 0 7px;
+  width: 113px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.small-card-btn {
+  padding: 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--static-color-btn-smc);
+  background: var(--static-bg-color-btn-smc);
+  z-index: 3;
+}
+
+.small-card-btn:hover {
+  color: var(--hover-color-btn-smc);
+  background: var(--hover-bg-color-btn-smc);
+}

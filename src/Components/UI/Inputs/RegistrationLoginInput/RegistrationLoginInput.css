@@ -1,0 +1,26 @@
+.registration-form .login-box {
+  display: flex;
+  flex-flow: column;
+}
+
+.registration-form .login {
+  padding: 8px 10px;
+  font-size: 16px;
+  border-radius: 3px;
+  color: var(--fourth-text-color-input);
+}
+
+.registration-form .login:focus {
+  outline: 1px solid var(--main-outline-color-input);
+}
+
+.registration-form .login.invalid {
+  outline: 1px solid var(--warning-color);
+}
+
+.registration-form .login-box .warning-message {
+  margin-top: 4px;
+  text-align: justify;
+  line-height: 1.4;
+  color: var(--warning-color);
+}

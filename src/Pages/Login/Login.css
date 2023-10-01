@@ -1,0 +1,12 @@
+.login.page {
+  display: flex;
+  flex-flow: column;
+}
+
+.login.page .header {
+  height: 100px;
+}
+
+.login-body {
+  flex: 1;
+}

@@ -1,0 +1,45 @@
+.ml-big {
+  width: 212px;
+  height: 357px;
+  font-size: 13px;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  transition: 0.2s;
+  color: var(--static-text-color-bmc);
+  background: var(--static-bg-color-bmc);
+}
+
+.ml-big:hover {
+  color: var(--hover-text-color-bmc);
+  background: var(--hover-bg-color-bmc);
+}
+
+.imc-big {
+  margin: 5px 6px;
+}
+
+.mt-big {
+  padding: 0 6px;
+  width: 200px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rating-and-year {
+  margin-top: 3px;
+  padding: 0 6px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.production-year {
+  font-size: 15px;
+  font-weight: bold;
+  font-style: italic;
+  line-height: 1;
+  color: var(--release-year-color-bmc);
+}

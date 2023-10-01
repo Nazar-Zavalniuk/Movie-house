@@ -1,0 +1,17 @@
+.temporary-page {
+  display: flex;
+  flex-flow: column;
+}
+
+.temporary-page .header {
+  height: 100px;
+}
+
+.temporary-page .message {
+  margin: 0 6px;
+  padding: 60px 30px;
+  font-size: 32px;
+  text-align: center;
+  flex: 1;
+  background: #181818;
+}

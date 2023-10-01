@@ -1,0 +1,22 @@
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  background: var(--overlay-bg-color);
+  transition: 0.2s ease;
+}
+
+.overlay.active {
+  pointer-events: all;
+  opacity: 1;
+}

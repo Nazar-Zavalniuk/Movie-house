@@ -1,0 +1,22 @@
+.help-with-error {
+  font-size: 14px;
+  text-align: center;
+  cursor: default;
+  color: var(--third-static-text-color);
+}
+
+.back-to-homepage {
+  color: var(--secondary-static-text-color);
+  text-decoration: none;
+}
+
+.back-to-homepage:hover {
+  color: var(--third-hover-text-color);
+}
+
+.support-email {
+  margin: 0 3px;
+  display: inline-block;
+  line-height: 1.4;
+  color: var(--secondary-static-text-color);
+}

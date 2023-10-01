@@ -1,0 +1,15 @@
+.registration-form {
+  padding: 16px;
+  margin-bottom: 15px;
+  width: 288px;
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  row-gap: 15px;
+  border-radius: 5px;
+  background: var(--bg-color-of-second-level-elements);
+}
+
+.registration-form .registration-overlay {
+  border-radius: 5px;
+}

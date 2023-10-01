@@ -1,0 +1,20 @@
+.registration-body {
+  margin: 0 6px;
+  padding: 40px 0 0 0;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  background: var(--bg-color-of-first-level-elements);
+}
+
+.registration-body .links {
+  font-size: 14px;
+}
+
+.registration-body .login-link {
+  color: var(--main-static-text-color);
+}
+
+.registration-body .login-link:hover {
+  color: var(--main-hover-text-color);
+}

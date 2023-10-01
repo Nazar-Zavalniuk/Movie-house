@@ -1,0 +1,22 @@
+.body-error {
+  min-height: calc(100vh - 30px); /* Content Height - Security Padding */
+  display: flex;
+  flex-flow: column;
+}
+
+.body-error .header {
+  height: 100px;
+}
+
+.error-info-body {
+  padding: 10px;
+  margin: 0 6px;
+  font-size: 20px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  row-gap: 10px;
+  flex: 1;
+  background: var(--bg-color-of-first-level-elements);
+}

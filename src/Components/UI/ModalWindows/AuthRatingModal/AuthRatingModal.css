@@ -1,0 +1,27 @@
+.auth-rating-modal .info {
+  max-width: 310px;
+  font-size: 16px;
+  text-align: center;
+  cursor: default;
+}
+
+.auth-rating-modal .modal-buttons {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.auth-rating-modal .modal-buttons .btn {
+  min-height: 33px;
+  border-radius: 3px;
+  flex: 1;
+  color: var(--seveth-text-color-btn);
+  background: var(--secondary-bg-color-btn);
+}
+
+.auth-rating-modal .modal-buttons .btn:hover,
+.auth-rating-modal .modal-buttons .btn:focus {
+  color: var(--main-text-color-btn);
+  background: var(--main-bg-color-btn);
+}

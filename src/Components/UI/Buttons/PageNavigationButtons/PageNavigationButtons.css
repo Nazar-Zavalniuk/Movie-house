@@ -1,0 +1,33 @@
+.page-navigation-buttons {
+  margin: 6px 6px 0;
+  width: 644px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 4px;
+}
+
+.go-to-first-page-btn,
+.go-to-previous-page-btn,
+.go-to-next-page-btn,
+.go-to-last-page-btn {
+  padding: 5.5px;
+  cursor: pointer;
+  color: var(--static-number-color-pnb);
+  background: var(--static-bg-color-pnb);
+}
+
+.go-to-first-page-btn:hover,
+.go-to-previous-page-btn:hover,
+.go-to-next-page-btn:hover,
+.go-to-last-page-btn:hover {
+  color: var(--hover-number-color-pnb);
+  background: var(--hover-bg-color-pnb);
+}
+
+.decor-dots {
+  padding: 6px;
+  cursor: default;
+  color: var(--static-number-color-pnb);
+  background: var(--static-bg-color-pnb);
+}

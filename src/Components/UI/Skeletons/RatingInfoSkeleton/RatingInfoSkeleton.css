@@ -1,0 +1,30 @@
+.star-rating.skeleton {
+  height: 38px;
+  width: 410px;
+  border-radius: 3px;
+  animation: skeleton-loading-rating-info 1s linear infinite alternate;
+}
+
+.rating-movie.skeleton {
+  height: 17px;
+  width: 137px;
+  border-radius: 3px;
+  animation: skeleton-loading-rating-info 1s linear infinite alternate;
+}
+
+.voting-info.skeleton {
+  height: 12px;
+  width: 137px;
+  border-radius: 3px;
+  animation: skeleton-loading-rating-info 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading-rating-info {
+  0% {
+    background: var(--start-text-bg-color-mis);
+  }
+
+  100% {
+    background: var(--end-text-bg-color-mis);
+  }
+}

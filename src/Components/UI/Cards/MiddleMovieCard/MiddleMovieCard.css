@@ -1,0 +1,30 @@
+.ml-middle {
+  width: 132px;
+  height: 207px;
+  margin: 2px;
+  font-size: 11px;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  transition: 0.2s;
+  color: var(--static-text-color-mmc);
+  background: var(--static-bg-color-mmc);
+}
+
+.ml-middle:hover {
+  color: var(--hover-text-color-mmc);
+  background: var(--hover-bg-color-mmc);
+}
+
+.imc-middle {
+  margin: 5px 6px 8px;
+}
+
+.mt-middle {
+  padding: 0 6px;
+  width: 120px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

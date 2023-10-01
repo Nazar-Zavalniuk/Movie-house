@@ -1,0 +1,65 @@
+.loader-small {
+  width: 25px;
+  height: 25px;
+  -webkit-mask: repeating-conic-gradient(
+      var(--first-color-loader) 0deg,
+      var(--third-color-loader) 1deg 20deg,
+      var(--first-color-loader) 21deg 36deg
+    ),
+    radial-gradient(
+      farthest-side,
+      var(--first-color-loader) calc(100% - 4.5px),
+      var(--third-color-loader) calc(100% - 4px)
+    );
+}
+
+.loader-normal {
+  width: 50px;
+  height: 50px;
+  -webkit-mask: repeating-conic-gradient(
+      var(--first-color-loader) 0deg,
+      var(--third-color-loader) 1deg 20deg,
+      var(--first-color-loader) 21deg 36deg
+    ),
+    radial-gradient(
+      farthest-side,
+      var(--first-color-loader) calc(100% - 9px),
+      var(--third-color-loader) calc(100% - 8px)
+    );
+}
+
+.loader-large {
+  width: 100px;
+  height: 100px;
+  -webkit-mask: repeating-conic-gradient(
+      var(--first-color-loader) 0deg,
+      var(--third-color-loader) 1deg 20deg,
+      var(--first-color-loader) 21deg 36deg
+    ),
+    radial-gradient(
+      farthest-side,
+      var(--first-color-loader) calc(100% - 18px),
+      var(--third-color-loader) calc(100% - 16px)
+    );
+}
+
+.loader-small,
+.loader-normal,
+.loader-large {
+  border-radius: 50%;
+  padding: 1px;
+  background: conic-gradient(
+      var(--first-color-loader) 10%,
+      var(--second-color-loader)
+    )
+    content-box;
+  -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
+  animation: s4 1s infinite steps(10);
+}
+
+@keyframes s4 {
+  to {
+    transform: rotate(1turn);
+  }
+}

@@ -1,0 +1,13 @@
+.movie-details .movie-img.skeleton {
+  animation: skeleton-loading-img 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading-img {
+  0% {
+    background: var(--start-img-bg-color-mis);
+  }
+
+  100% {
+    background: var(--end-img-bg-color-mis);
+  }
+}

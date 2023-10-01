@@ -1,0 +1,48 @@
+.filter-info {
+  margin-top: 4px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  background: var(--bg-color-of-first-level-elements);
+}
+
+.filter-star {
+  margin-left: 6px;
+  cursor: pointer;
+  transition: color ease 0.2s 0s;
+  color: var(--filled-star-color);
+}
+
+.filter-star.active {
+  color: var(--focus-star-color);
+}
+
+.filter-star:hover {
+  transform: scale(1.12);
+}
+
+.filter-text-block {
+  display: flex;
+  flex-flow: row-reverse;
+  align-items: center;
+  flex: 1;
+}
+
+.decor-filter-line {
+  margin: 0 5px;
+  width: 109px;
+  height: 1px;
+  order: 1;
+  background: var(--decor-line-bg-color-sp);
+}
+
+.filter-text {
+  margin-right: 11px;
+  max-width: 498px;
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: default;
+  color: var(--fifth-static-text-color);
+}

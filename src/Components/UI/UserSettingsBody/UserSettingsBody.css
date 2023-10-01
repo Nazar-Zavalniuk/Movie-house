@@ -1,0 +1,58 @@
+.user-settings-body {
+  margin: 0 6px;
+  background: var(--bg-color-of-first-level-elements);
+}
+
+.user-settings-body .settings {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 60px;
+}
+
+.user-settings-body .user-info {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  row-gap: 10px;
+}
+
+.user-settings-body .user-about {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  row-gap: 8px;
+}
+
+.user-settings-body .user-about .avatar-info {
+  padding: 8px;
+  border-radius: 3px;
+  border: 2px solid var(--avatar-border-color);
+}
+
+.user-settings-body .user-about .name-info {
+  max-width: 828px;
+  word-wrap: break-word;
+  font-size: 32px;
+}
+
+.user-settings-body .user-info .log-out-btn {
+  width: 70px;
+  padding: 8px;
+  font-weight: bold;
+  border: 1px solid var(--main-border-color-btn);
+  border-radius: 3px;
+  color: var(--main-text-color-btn);
+  background: var(--main-bg-color-btn);
+}
+
+.user-settings-body .user-info .log-out-btn:hover,
+.user-settings-body .user-info .log-out-btn:focus {
+  border-color: var(--secondary-border-color-btn);
+  color: var(--secondary-text-color-btn);
+}
+
+.user-settings-body .user-info .log-out-btn:active {
+  color: var(--third-text-color-btn);
+  background: var(--third-bg-color-btn);
+}

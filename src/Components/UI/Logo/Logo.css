@@ -1,0 +1,20 @@
+.logo {
+  display: inline-block;
+}
+
+.logo-link {
+  display: inline-flex;
+  justify-content: center;
+  align-items: flex-end;
+  text-decoration: none;
+  color: var(--main-static-text-color);
+}
+
+.logo-link:hover {
+  color: var(--main-hover-text-color);
+}
+
+.logo-title {
+  margin-left: 5px;
+  font-size: 30px;
+}

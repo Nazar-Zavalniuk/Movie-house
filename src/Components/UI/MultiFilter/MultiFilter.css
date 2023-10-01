@@ -1,0 +1,18 @@
+.multi-filter {
+  margin: 5px 0 0 0;
+  width: 644px;
+  display: grid;
+  grid-template-rows: repeat(5, 22px) 38px;
+  row-gap: 4px;
+}
+
+.search-by-categories {
+  font-size: 14px;
+  color: var(--third-static-text-color);
+  background: var(--bg-color-of-first-level-elements);
+}
+
+.search-by-categories:hover {
+  color: var(--main-hover-text-color);
+  background: var(--bg-color-of-third-level-elements);
+}
