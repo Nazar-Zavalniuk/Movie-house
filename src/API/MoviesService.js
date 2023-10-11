@@ -2,19 +2,19 @@ import axios from "axios";
 
 class MoviesService {
   static async getAllMovies(params) {
-    const response = await axios.get("http://localhost:3005/movies", {
+    const response = await axios.get("http://45.147.248.85/movies", {
       params,
     });
     return response;
   }
 
   static async getMovieById(id) {
-    const response = await axios.get(`http://localhost:3005/movies/${id}`);
+    const response = await axios.get(`http://45.147.248.85/movies/${id}`);
     return response.data;
   }
 
   static async getTopMovies(limit) {
-    const response = await axios.get("http://localhost:3005/movies", {
+    const response = await axios.get("http://45.147.248.85/movies", {
       params: {
         _limit: limit,
         _sort: "year,id",
@@ -25,7 +25,7 @@ class MoviesService {
   }
 
   static async getRecommendedMovies(type) {
-    const response = await axios.get("http://localhost:3005/movies", {
+    const response = await axios.get("http://45.147.248.85/movies", {
       params: {
         type,
         _sort: "views",
@@ -41,7 +41,7 @@ class MoviesService {
   }
 
   static async getAllActors() {
-    const response = await axios.get("http://localhost:3005/actors");
+    const response = await axios.get("http://45.147.248.85/actors");
     const actors = response.data;
     const actorsByAlphabet = actors.sort((a, b) => a.localeCompare(b, "uk-UA"));
     return actorsByAlphabet;
@@ -49,14 +49,14 @@ class MoviesService {
 
   static async updateMovieData(movieId, data) {
     const response = await axios.patch(
-      `http://localhost:3005/movies/${movieId}`,
+      `http://45.147.248.85/movies/${movieId}`,
       data
     );
     return response.status;
   }
 
   static async getUserByName(userName) {
-    const response = await axios.get("http://localhost:3005/users", {
+    const response = await axios.get("http://45.147.248.85/users", {
       params: {
         userName: userName,
       },
@@ -65,13 +65,13 @@ class MoviesService {
   }
 
   static async addNewUser(user) {
-    const response = await axios.post("http://localhost:3005/users", user);
+    const response = await axios.post("http://45.147.248.85/users", user);
     return response.data;
   }
 
   static async updateUserData(userId, data) {
     const response = await axios.patch(
-      `http://localhost:3005/users/${userId}`,
+      `http://45.147.248.85/users/${userId}`,
       data
     );
     return response.data;
