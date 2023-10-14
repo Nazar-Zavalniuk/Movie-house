@@ -11,7 +11,7 @@ function useFetching(callback) {
       await callback();
     } catch (e) {
       setError({ errorState: true, errorMessage: e.message });
-      console.error(e.message);
+      console.error(e);
     } finally {
       setIsLoading(false);
     }

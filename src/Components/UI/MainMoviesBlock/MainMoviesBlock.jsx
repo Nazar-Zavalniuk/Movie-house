@@ -3,14 +3,16 @@ import "./MainMoviesBlock.css";
 import BigMovieCard from "../Cards/BigMovieCard/BigMovieCard";
 import BigLoadingCard from "../Cards/BigLoadingCard/BigLoadingCard";
 import PageNavigationButtons from "../Buttons/PageNavigationButtons/PageNavigationButtons";
+import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 
 function MainMoviesBlock({
   movies = [],
   isMoviesLoading,
-  totalPages = 0,
   scrollParams,
   ...props
 }) {
+  const { offsetPages } = useAppState();
+
   const cardsSkeletons = Array(12)
     .fill(null)
     .map((_, index) => {
@@ -26,11 +28,8 @@ function MainMoviesBlock({
       <div className="main-movies-block">
         {isMoviesLoading ? cardsSkeletons : moviesCards}
       </div>
-      {totalPages !== 1 && !isMoviesLoading && (
-        <PageNavigationButtons
-          totalPages={totalPages}
-          scrollParams={scrollParams}
-        />
+      {offsetPages.length > 1 && (
+        <PageNavigationButtons scrollParams={scrollParams} />
       )}
     </Fragment>
   );

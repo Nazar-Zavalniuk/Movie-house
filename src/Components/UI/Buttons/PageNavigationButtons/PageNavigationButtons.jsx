@@ -1,31 +1,23 @@
 import React from "react";
 import "./PageNavigationButtons.css";
-import {
-  FaAngleLeft,
-  FaAngleDoubleLeft,
-  FaAngleRight,
-  FaAngleDoubleRight,
-} from "react-icons/fa";
-import MainNavButtons from "../MainNavButtons/MainNavButtons";
+import { FaAngleLeft, FaAngleDoubleLeft, FaAngleRight } from "react-icons/fa";
 import usePageNavigationButtons from "../../../../Hooks/usePageNavigationButtons";
+import { useAppState } from "../../../../Context/AppStateProvider/AppStateProvider";
 
 function PageNavigationButtons({
   totalPages,
   scrollParams = ["top", 425, "smooth"],
   ...props
 }) {
-  const [
-    currentPage,
-    onPageChange,
-    goToPreviousPage,
-    goToNextPage,
-    goToFirstPage,
-    goToLastPage,
-  ] = usePageNavigationButtons(totalPages, scrollParams);
+  const { offsetPages } = useAppState();
+  const offsetNextPage = offsetPages[offsetPages.length - 1];
+
+  const [currentPage, goToPreviousPage, goToNextPage, goToFirstPage] =
+    usePageNavigationButtons(scrollParams);
 
   return (
     <div className="page-navigation-buttons">
-      {currentPage >= 7 && totalPages > 10 && (
+      {currentPage >= 3 && (
         <FaAngleDoubleLeft
           onClick={goToFirstPage}
           size={15}
@@ -33,7 +25,7 @@ function PageNavigationButtons({
           title="Повернутися на першу сторінку"
         />
       )}
-      {currentPage > 1 && totalPages >= 3 && (
+      {currentPage >= 2 && (
         <FaAngleLeft
           onClick={goToPreviousPage}
           size={15}
@@ -41,32 +33,12 @@ function PageNavigationButtons({
           title="Повернутися на попередню сторінку"
         />
       )}
-      {currentPage >= 7 && totalPages > 10 && (
-        <div className="decor-dots">...</div>
-      )}
-      <MainNavButtons
-        totalPages={totalPages}
-        currentPage={currentPage}
-        onPageChange={onPageChange}
-        scrollParams={scrollParams}
-      />
-      {currentPage + 4 < totalPages && totalPages > 10 && (
-        <div className="decor-dots">...</div>
-      )}
-      {currentPage !== totalPages && totalPages >= 3 && (
+      {offsetNextPage !== null && (
         <FaAngleRight
           onClick={goToNextPage}
           size={15}
           className="go-to-next-page-btn"
           title="Перейти на наступну сторінку"
-        />
-      )}
-      {currentPage + 4 < totalPages && totalPages > 10 && (
-        <FaAngleDoubleRight
-          onClick={goToLastPage}
-          size={15}
-          className="go-to-last-page-btn"
-          title="Перейти на останню сторінку"
         />
       )}
     </div>

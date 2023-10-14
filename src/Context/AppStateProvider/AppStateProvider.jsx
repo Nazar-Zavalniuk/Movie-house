@@ -4,19 +4,26 @@ import React, {
   createContext,
   useContext,
   useCallback,
+  useReducer,
 } from "react";
-import useActors from "../../Hooks/useFetchingActors";
+import useFetchingActors from "../../Hooks/useFetchingActors";
+import { offsetPagesReducer } from "./OffsetPagesReducer";
+import { searchParamsReducer } from "./SearchParamsReducer";
 
 const ContextApp = createContext(null);
 
 export function AppStateProvider({ children, ...props }) {
   const [numReboots, setNumReboots] = useState(0);
-  const [searchParams, setSearchParams] = useState({
-    _sort: "id",
-    _order: "desc",
-    _limit: 12,
-    _page: 1,
+  const [searchParams, dispatchSearchParams] = useReducer(searchParamsReducer, {
+    pageSize: 12,
+    fields: ["title", "year", "coverImage", "id", "rating"],
+    sort: [{ field: "id", direction: "desc" }],
+    offset: null,
   });
+
+  const [offsetPages, dispatchOffsetPages] = useReducer(offsetPagesReducer, [
+    null,
+  ]);
 
   const [searchInfo, setSearchInfo] = useState({
     sortByRating: false,
@@ -26,7 +33,7 @@ export function AppStateProvider({ children, ...props }) {
   const [searchQueryValue, setSearchQueryValue] = useState("");
 
   const [fetchActors, actors, isActorsLoading, actorsError, setActorsError] =
-    useActors();
+    useFetchingActors();
 
   const clearActorsErrors = useCallback(() => {
     setActorsError({ errorState: false, errorMessage: "" });
@@ -69,7 +76,7 @@ export function AppStateProvider({ children, ...props }) {
         passwordChangeError,
         setPasswordChangeError,
         searchParams,
-        setSearchParams,
+        dispatchSearchParams,
         searchInfo,
         setSearchInfo,
         isRatingSortUnavailable,
@@ -79,6 +86,8 @@ export function AppStateProvider({ children, ...props }) {
         appError,
         setAppError,
         clearActorsErrors,
+        offsetPages,
+        dispatchOffsetPages,
       }}
     >
       {children}

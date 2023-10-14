@@ -14,7 +14,6 @@ import useHomepage from "../../Hooks/useHomepage";
 function Homepage(props) {
   const [
     mainMovies,
-    totalPages,
     isMainMoviesLoading,
     isSortByRecommended,
     isMainMoviesEmpty,
@@ -31,7 +30,6 @@ function Homepage(props) {
       ) : (
         <MainMoviesBlock
           movies={mainMovies}
-          totalPages={totalPages}
           isMoviesLoading={isMainMoviesLoading}
         />
       )}

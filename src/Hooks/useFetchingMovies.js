@@ -5,7 +5,8 @@ function useFetchingMovies(fetchFunc, fetchParameter) {
   const [movies, setMovies] = useState([]);
   const [fetchMovies, isMoviesLoading, moviesError, setMoviesError] =
     useAdvancedFetching(async () => {
-      const movies = await fetchFunc(fetchParameter);
+      const response = await fetchFunc(fetchParameter);
+      const movies = response.data.records.map((record) => record.fields);
       setMovies(movies);
     });
 
