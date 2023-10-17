@@ -1,14 +1,15 @@
 import { useCallback } from "react";
 import { useAppState } from "../Context/AppStateProvider/AppStateProvider";
-import { getSearchParams } from "../Utils/Sorting";
 
 function useSortByDefault() {
-  const { setSearchParams, setSearchInfo } = useAppState();
+  const { dispatchSearchParams, dispatchOffsetPages, setSearchInfo } =
+    useAppState();
 
   const sortByDefault = useCallback(() => {
-    setSearchParams(getSearchParams("id", "desc", 12, 1));
+    dispatchSearchParams({ type: "reset" });
+    dispatchOffsetPages({ type: "reset" });
     setSearchInfo({ sortByRating: false, info: "нове на сайті" });
-  }, [setSearchInfo, setSearchParams]);
+  }, [setSearchInfo, dispatchSearchParams, dispatchOffsetPages]);
 
   return sortByDefault;
 }

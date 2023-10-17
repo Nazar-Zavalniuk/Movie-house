@@ -12,12 +12,12 @@ function PageNavigationButtons({
   const { offsetPages } = useAppState();
   const offsetNextPage = offsetPages[offsetPages.length - 1];
 
-  const [currentPage, goToPreviousPage, goToNextPage, goToFirstPage] =
+  const [goToPreviousPage, goToNextPage, goToFirstPage] =
     usePageNavigationButtons(scrollParams);
 
   return (
     <div className="page-navigation-buttons">
-      {currentPage >= 3 && (
+      {offsetPages.length >= 4 && (
         <FaAngleDoubleLeft
           onClick={goToFirstPage}
           size={15}
@@ -25,7 +25,7 @@ function PageNavigationButtons({
           title="Повернутися на першу сторінку"
         />
       )}
-      {currentPage >= 2 && (
+      {offsetPages.length >= 3 && (
         <FaAngleLeft
           onClick={goToPreviousPage}
           size={15}

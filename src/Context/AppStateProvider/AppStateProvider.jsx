@@ -19,6 +19,7 @@ export function AppStateProvider({ children, ...props }) {
     fields: ["title", "year", "coverImage", "id", "rating"],
     sort: [{ field: "id", direction: "desc" }],
     offset: null,
+    filterByFormula: null,
   });
 
   const [offsetPages, dispatchOffsetPages] = useReducer(offsetPagesReducer, [

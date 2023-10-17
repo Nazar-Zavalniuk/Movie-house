@@ -7,6 +7,25 @@ export function searchParamsReducer(state, action) {
         offset: action.offset,
       };
     }
+    case "change_search_params": {
+      return action.params;
+    }
+    case "change_sort_params": {
+      return {
+        ...state,
+        sort: action.params,
+        offset: null,
+      };
+    }
+    case "reset": {
+      return {
+        pageSize: 12,
+        fields: ["title", "year", "coverImage", "id", "rating"],
+        sort: [{ field: "id", direction: "desc" }],
+        offset: null,
+        filterByFormula: null,
+      };
+    }
   }
   throw Error("Unknown action: " + action.type);
 }

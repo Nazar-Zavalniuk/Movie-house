@@ -7,7 +7,8 @@ import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider"
 function FilterInfo({ ...props }) {
   const {
     searchParams,
-    setSearchParams,
+    dispatchSearchParams,
+    dispatchOffsetPages,
     searchQueryValue,
     searchInfo,
     setSearchInfo,
@@ -16,10 +17,10 @@ function FilterInfo({ ...props }) {
   } = useAppState();
   const { sortByRating, info } = searchInfo;
 
-  const [prevSearchParams, setPrevSearchParams] = useState(null);
+  const [prevSortParams, setPrevSortParams] = useState(null);
   const [prevSearchInfo, setPrevSearchInfo] = useState(null);
 
-  const { _sort, _order } = searchParams;
+  const { sort } = searchParams;
 
   const handleToggle = useCallback(() => {
     if (isRatingSortUnavailable) {
@@ -28,31 +29,37 @@ function FilterInfo({ ...props }) {
     }
 
     if (!sortByRating) {
-      setPrevSearchParams(searchParams);
+      setPrevSortParams(sort);
       setPrevSearchInfo(searchInfo);
 
-      const newSearchParams = {
-        ...searchParams,
-        _sort: _sort ? `rating,${_sort}` : "rating",
-        _order: _order ? `desc,${_order}` : "desc",
-        _page: 1,
-      };
+      const newSortParams = sort
+        ? [{ field: "rating", direction: "desc" }, ...sort]
+        : [{ field: "rating", direction: "desc" }];
 
-      setSearchParams(newSearchParams);
+      dispatchSearchParams({
+        type: "change_sort_params",
+        params: newSortParams,
+      });
+      dispatchOffsetPages({ type: "reset" });
       setSearchInfo({ sortByRating: true, info: `${info}, за рейтингом` });
     } else {
-      setSearchParams({ ...prevSearchParams, _page: 1 });
+      dispatchSearchParams({
+        type: "change_sort_params",
+        params: prevSortParams,
+      });
+      dispatchOffsetPages({ type: "reset" });
       setSearchInfo(prevSearchInfo);
-      setPrevSearchParams(null);
+      setPrevSortParams(null);
       setPrevSearchInfo(null);
     }
   }, [
     prevSearchInfo,
-    prevSearchParams,
+    prevSortParams,
     searchInfo,
-    searchParams,
+    sort,
     setSearchInfo,
-    setSearchParams,
+    dispatchSearchParams,
+    dispatchOffsetPages,
     isRatingSortUnavailable,
     setShowRatingSortWarning,
   ]);

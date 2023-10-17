@@ -57,3 +57,13 @@ export const newPasswordValidation = (newPassword, oldPassword) => {
     return { message: "", state: true };
   }
 };
+
+export const searchInputValidation = (string) => {
+  if (string === "Введіть назву фільму...") {
+    return "";
+  } else {
+    const sanitizedString = string.replace(/["\s]/g, "");
+    const validString = sanitizedString.toLowerCase().slice(0, 200);
+    return validString;
+  }
+};

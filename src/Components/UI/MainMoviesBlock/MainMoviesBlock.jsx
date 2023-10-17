@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useCallback } from "react";
 import "./MainMoviesBlock.css";
 import BigMovieCard from "../Cards/BigMovieCard/BigMovieCard";
 import BigLoadingCard from "../Cards/BigLoadingCard/BigLoadingCard";
@@ -12,6 +12,12 @@ function MainMoviesBlock({
   ...props
 }) {
   const { offsetPages } = useAppState();
+  const hasValue = useCallback((value) => {
+    return value !== null;
+  }, []);
+  const isThereOffsetValue = offsetPages.some(hasValue);
+  const showPageNavigationButtons =
+    offsetPages.length > 1 && isThereOffsetValue && !isMoviesLoading;
 
   const cardsSkeletons = Array(12)
     .fill(null)
@@ -28,7 +34,7 @@ function MainMoviesBlock({
       <div className="main-movies-block">
         {isMoviesLoading ? cardsSkeletons : moviesCards}
       </div>
-      {offsetPages.length > 1 && (
+      {showPageNavigationButtons && (
         <PageNavigationButtons scrollParams={scrollParams} />
       )}
     </Fragment>

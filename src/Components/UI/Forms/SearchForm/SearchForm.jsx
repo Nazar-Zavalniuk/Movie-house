@@ -4,11 +4,16 @@ import PrimaryInput from "../../Inputs/PrimaryInput/PrimaryInput";
 import PrimaryButton from "../../Buttons/PrimaryButton/PrimaryButton";
 import { useAppState } from "../../../../Context/AppStateProvider/AppStateProvider";
 import { useNavigate } from "react-router-dom";
-import { sanitize, validate } from "../../../../Utils/Cleaning";
+import { searchInputValidation } from "../../../../Utils/Validation";
 
 function SearchForm(props) {
   const [value, setValue] = useState("Введіть назву фільму...");
-  const { setSearchParams, setSearchQueryValue, setSearchInfo } = useAppState();
+  const {
+    dispatchSearchParams,
+    dispatchOffsetPages,
+    setSearchQueryValue,
+    setSearchInfo,
+  } = useAppState();
   const inputRef = useRef(null);
   const navigate = useNavigate();
 
@@ -23,26 +28,36 @@ function SearchForm(props) {
   const searchMovie = useCallback(
     (e) => {
       e.preventDefault();
-      const sanitizedValue = sanitize(value);
-      const validValue = validate(sanitizedValue);
+      const validValue = searchInputValidation(value);
 
-      setSearchParams({
-        title_like: `${validValue}`,
-        _sort: "year",
-        _order: "desc",
-        _limit: 12,
-        _page: 1,
+      dispatchSearchParams({
+        type: "change_search_params",
+        params: {
+          pageSize: 12,
+          fields: ["title", "year", "coverImage", "id", "rating"],
+          sort: [{ field: "year", direction: "desc" }],
+          offset: null,
+          filterByFormula: `SEARCH("${validValue}", REGEX_REPLACE(LOWER({title}), '["\\s]', ''))`,
+        },
       });
+      dispatchOffsetPages({ type: "reset" });
       setSearchInfo({
         sortByRating: false,
-        info: `результати пошуку - "${sanitizedValue}"`,
+        info: `результати пошуку - "${value}"`,
       });
-      setSearchQueryValue(sanitizedValue);
+      setSearchQueryValue(value);
       setValue("Введіть назву фільму...");
       inputRef.current.blur();
       navigate("/homepage");
     },
-    [setSearchParams, value, setSearchQueryValue, navigate, setSearchInfo]
+    [
+      dispatchSearchParams,
+      dispatchOffsetPages,
+      value,
+      setSearchQueryValue,
+      navigate,
+      setSearchInfo,
+    ]
   );
 
   return (
