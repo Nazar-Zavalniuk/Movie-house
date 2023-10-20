@@ -25,7 +25,7 @@ function Navigator(props) {
     };
   }, [setIsRatingSortUnavailable, isFilterOptionsSet]);
 
-  const [mainMovies, totalPages, isMainMoviesLoading, isMainMoviesEmpty] =
+  const [mainMovies, isMainMoviesLoading, isMainMoviesEmpty] =
     useNavigator(isFilterOptionsSet);
 
   return (
@@ -44,7 +44,6 @@ function Navigator(props) {
         <MainMoviesBlock
           movies={mainMovies}
           isMoviesLoading={isMainMoviesLoading}
-          totalPages={totalPages}
           scrollParams={["top", 330, "smooth"]}
         />
       )}

@@ -28,8 +28,9 @@ function MoviePage(props) {
   const [movieData, setMovieData] = useState(null);
   const [fetchMovieData, isMovieDataLoading, movieError] = useFetching(
     async () => {
-      const data = await MoviesService.getMovieById(movieId);
-      setMovieData(data);
+      const response = await MoviesService.getMovieById(movieId);
+      const movieData = response.data.records[0]["fields"];
+      setMovieData(movieData);
     }
   );
 
@@ -60,7 +61,7 @@ function MoviePage(props) {
       <Header />
       <TopMovies />
       <NavBar />
-      {movieData !== null && !isMovieDataLoading ? (
+      {movieData && !isMovieDataLoading ? (
         <MovieInfo movieData={movieData} />
       ) : (
         <MovieInfoSkeleton />

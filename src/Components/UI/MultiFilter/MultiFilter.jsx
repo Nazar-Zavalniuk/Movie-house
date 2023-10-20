@@ -4,9 +4,11 @@ import PrimaryButton from "../Buttons/PrimaryButton/PrimaryButton";
 import { directors, countries, years, genres } from "../../../Data/DataToSort";
 import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 import Selector from "../Selector/Selector";
+import { createMultiFilterFormula } from "../../../Utils/CreateMultiFilterFormula";
 
 function MultiFilter({ setIsFilterOptionsSet, setIsFirstPageLoad, ...props }) {
-  const { actors, setSearchParams, setSearchInfo } = useAppState();
+  const { actors, dispatchSearchParams, dispatchOffsetPages, setSearchInfo } =
+    useAppState();
 
   const [genre, setGenre] = useState("");
   const [actor, setActor] = useState("");
@@ -18,21 +20,28 @@ function MultiFilter({ setIsFilterOptionsSet, setIsFirstPageLoad, ...props }) {
     async (e) => {
       e.preventDefault();
 
-      const isFilterOptionSet = (option) => option !== "";
-
-      const filterOptions = [genre, actor, director, country, year];
+      const isFilterOptionSet = (option) => option.value !== "";
+      const filterOptions = [
+        { field: "genres", value: genre },
+        { field: "actors", value: actor },
+        { field: "directors", value: director },
+        { field: "countries", value: country },
+        { field: "year", value: year },
+      ];
       const isFilterOptionsSet = filterOptions.some(isFilterOptionSet);
 
       if (isFilterOptionsSet) {
-        setSearchParams({
-          genre_like: genre !== "" ? genre : null,
-          actors_like: actor !== "" ? actor : null,
-          director_like: director !== "" ? director : null,
-          country_like: country !== "" ? country : null,
-          year: year !== "" ? year : null,
-          _limit: 12,
-          _page: 1,
+        dispatchSearchParams({
+          type: "change_search_params",
+          params: {
+            pageSize: 12,
+            fields: ["title", "year", "coverImage", "rating", "id"],
+            sort: null,
+            offset: null,
+            filterByFormula: createMultiFilterFormula(filterOptions),
+          },
         });
+        dispatchOffsetPages({ type: "reset" });
         setSearchInfo({
           sortByRating: false,
           info: "навігатор результати пошуку",
@@ -55,7 +64,8 @@ function MultiFilter({ setIsFilterOptionsSet, setIsFirstPageLoad, ...props }) {
       country,
       year,
       setIsFilterOptionsSet,
-      setSearchParams,
+      dispatchSearchParams,
+      dispatchOffsetPages,
       setSearchInfo,
       setIsFirstPageLoad,
     ]

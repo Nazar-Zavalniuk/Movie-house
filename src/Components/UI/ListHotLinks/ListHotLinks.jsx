@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import PrimaryButton from "../Buttons/PrimaryButton/PrimaryButton";
 import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 import React, { useCallback } from "react";
+import { movieIds } from "../../../Data/DataToSort";
 
 function ListHotLinks(props) {
   const { dispatchSearchParams, dispatchOffsetPages, setSearchInfo } =
@@ -33,7 +34,7 @@ function ListHotLinks(props) {
         fields: ["title", "year", "coverImage", "id", "rating"],
         sort: [
           { field: "year", direction: "desc" },
-          { field: "id", direction: "desc" },
+          { field: "serialNumber", direction: "desc" },
         ],
         offset: null,
         filterByFormula: null,
@@ -45,7 +46,8 @@ function ListHotLinks(props) {
   }, [dispatchSearchParams, dispatchOffsetPages, setSearchInfo, navigate]);
 
   const getRandomMovieId = useCallback(() => {
-    return Math.floor(Math.random() * 148) + 1;
+    const randomIndex = Math.floor(Math.random() * 148) + 1;
+    return movieIds[randomIndex];
   }, []);
 
   const goToRandomMovie = useCallback(() => {

@@ -4,14 +4,14 @@ import MovieScore from "../MovieScore/MovieScore";
 import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 
 function RatingInfo({ movieData, ...props }) {
-  const { rating, votes } = movieData;
+  const { rating, ratedByUsers, assessments, id } = movieData;
   const [currentRating, setCurrentRating] = useState(rating);
-  const [currentVotes, setCurrentVotes] = useState(votes);
+  const [currentVotes, setCurrentVotes] = useState(ratedByUsers);
 
   const { userName } = useAppState();
   const isAuth = userName !== null;
 
-  const votedUsers = currentVotes.map((item) => item.userName);
+  const votedUsers = currentVotes;
   const NumVotes = votedUsers.length;
 
   const hasTheRightToVote = !votedUsers.includes(userName) && isAuth;
@@ -32,6 +32,8 @@ function RatingInfo({ movieData, ...props }) {
         rating={currentRating}
         setRating={setCurrentRating}
         votes={currentVotes}
+        assessments={assessments}
+        movieId={id}
         setVotes={setCurrentVotes}
         hasTheRightToVote={hasTheRightToVote}
         titleRatingStars={titleRatingStars}

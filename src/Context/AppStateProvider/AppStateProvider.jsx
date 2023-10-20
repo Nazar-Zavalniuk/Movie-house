@@ -17,7 +17,7 @@ export function AppStateProvider({ children, ...props }) {
   const [searchParams, dispatchSearchParams] = useReducer(searchParamsReducer, {
     pageSize: 12,
     fields: ["title", "year", "coverImage", "id", "rating"],
-    sort: [{ field: "id", direction: "desc" }],
+    sort: [{ field: "serialNumber", direction: "desc" }],
     offset: null,
     filterByFormula: null,
   });

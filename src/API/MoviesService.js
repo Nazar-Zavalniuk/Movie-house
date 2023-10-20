@@ -18,8 +18,18 @@ class MoviesService {
   }
 
   static async getMovieById(id) {
-    const response = await axios.get(`http://45.147.248.85/movies/${id}`);
-    return response.data;
+    const response = await axios.get(
+      `https://api.airtable.com/v0/appD3LqdJac0RzHa1/movies`,
+      {
+        headers: {
+          Authorization,
+        },
+        params: {
+          filterByFormula: `SEARCH("${id}", id)`,
+        },
+      }
+    );
+    return response;
   }
 
   static async getTopMovies(limit) {
@@ -34,7 +44,7 @@ class MoviesService {
           fields: ["title", "coverImage", "id"],
           sort: [
             { field: "year", direction: "desc" },
-            { field: "id", direction: "desc" },
+            { field: "serialNumber", direction: "desc" },
           ],
         },
       }
@@ -77,12 +87,17 @@ class MoviesService {
     return response;
   }
 
-  static async updateMovieData(movieId, data) {
-    const response = await axios.patch(
-      `http://45.147.248.85/movies/${movieId}`,
-      data
+  static async rateMovie(data) {
+    const response = await axios.post(
+      `https://api.airtable.com/v0/appD3LqdJac0RzHa1/userRatings`,
+      data,
+      {
+        headers: {
+          Authorization,
+        },
+      }
     );
-    return response.status;
+    return response;
   }
 
   static async getUserByName(userName) {
