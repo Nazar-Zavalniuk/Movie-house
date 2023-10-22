@@ -4,9 +4,9 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import { privateRoutes, publicRoutes } from "../Router/Router";
 
 function AppRouter() {
-  const { userName } = useAppState();
+  const { username } = useAppState();
 
-  return userName ? (
+  return username ? (
     <Routes>
       {privateRoutes.map((route) => (
         <Route

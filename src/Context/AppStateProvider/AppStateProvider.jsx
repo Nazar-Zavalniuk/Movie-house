@@ -42,12 +42,7 @@ export function AppStateProvider({ children, ...props }) {
 
   const [showAuthRatingModal, setShowAuthRatingModal] = useState(false);
 
-  const [userName, setUserName] = useState(null);
-
-  useLayoutEffect(() => {
-    const userName = localStorage.getItem("userName");
-    setUserName(userName);
-  }, []);
+  const [username, setUsername] = useState(localStorage.getItem("username"));
 
   const [passwordChangeError, setPasswordChangeError] = useState(false);
   const [isPasswordUpdated, setIsPasswordUpdated] = useState(false);
@@ -70,8 +65,8 @@ export function AppStateProvider({ children, ...props }) {
         actorsError,
         showAuthRatingModal,
         setShowAuthRatingModal,
-        userName,
-        setUserName,
+        username,
+        setUsername,
         isPasswordUpdated,
         setIsPasswordUpdated,
         passwordChangeError,

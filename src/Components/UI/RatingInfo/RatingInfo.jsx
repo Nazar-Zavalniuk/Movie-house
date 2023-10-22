@@ -8,20 +8,20 @@ function RatingInfo({ movieData, ...props }) {
   const [currentRating, setCurrentRating] = useState(rating);
   const [currentVotes, setCurrentVotes] = useState(ratedByUsers);
 
-  const { userName } = useAppState();
-  const isAuth = userName !== null;
+  const { username } = useAppState();
+  const isAuth = username !== null;
 
   const votedUsers = currentVotes;
   const NumVotes = votedUsers.length;
 
-  const hasTheRightToVote = !votedUsers.includes(userName) && isAuth;
+  const hasTheRightToVote = !votedUsers.includes(username) && isAuth;
 
   const titleRatingStars = isAuth
     ? ""
     : "Можливість оцінюваті фільм мають тільки авторизовані користувачі";
 
   const votingInfo =
-    votedUsers.includes(userName) && isAuth
+    votedUsers.includes(username) && isAuth
       ? `З вами проголосувало: ${NumVotes}`
       : `Усього проголосувало: ${NumVotes}`;
 

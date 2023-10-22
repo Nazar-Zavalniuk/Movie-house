@@ -17,33 +17,31 @@ function MovieScore({
   titleRatingStars,
   ...props
 }) {
-  const { setShowAuthRatingModal, userName } = useAppState();
+  const { setShowAuthRatingModal, username } = useAppState();
 
   const estimate = useCallback(
     (grade) => {
-      const newVotes = [...votes, userName];
+      const newVotes = [...votes, username];
       const newAssessments = [...assessments, grade];
       const numberOfVoters = newVotes.length;
 
       const newRating = calculateRating(newAssessments, numberOfVoters);
       const newData = {
-        records: [
-          { fields: { username: userName, movie: [movieId], rating: grade } },
-        ],
+        records: [{ fields: { username, movie: [movieId], rating: grade } }],
       };
       MoviesService.rateMovie(newData);
 
       setRating(newRating);
       setVotes(newVotes);
     },
-    [setRating, setVotes, votes, userName, assessments, movieId]
+    [setRating, setVotes, votes, username, assessments, movieId]
   );
 
   const openModalWindow = useCallback(() => {
-    if (!userName) {
+    if (!username) {
       setShowAuthRatingModal(true);
     }
-  }, [userName, setShowAuthRatingModal]);
+  }, [username, setShowAuthRatingModal]);
 
   return (
     <RatingStars
