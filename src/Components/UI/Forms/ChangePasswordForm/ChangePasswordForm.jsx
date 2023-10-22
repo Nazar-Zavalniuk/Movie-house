@@ -3,16 +3,19 @@ import "./ChangePasswordForm.css";
 import PrimaryPasswordInput from "../../Inputs/PrimaryPasswordInput/PrimaryPasswordInput";
 import PrimaryButton from "../../Buttons/PrimaryButton/PrimaryButton";
 import { useAppState } from "../../../../Context/AppStateProvider/AppStateProvider";
-import MovieService from "../../../../API/MoviesService";
 import classNames from "classnames";
-import MoviesService from "../../../../API/MoviesService";
-import { newPasswordValidation } from "../../../../Utils/Validation";
+import useChangePassword from "../../../../Hooks/useChangePassword";
 
 function ChangePasswordForm({
-  passwordValidationInProgress,
-  setPasswordValidationInProgress,
+  changePasswordInProgress,
+  setChangePasswordInProgress,
   ...props
 }) {
+  const [showOldPassword, setShowOldPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const oldPasswordRef = useRef(null);
+  const newPasswordRef = useRef(null);
+
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
 
@@ -24,56 +27,19 @@ function ChangePasswordForm({
   const [newPasswordWarningMessage, setNewPasswordWarningMessage] =
     useState("");
 
-  const { userName, setIsPasswordUpdated, setPasswordChangeError } =
-    useAppState();
+  const { setIsPasswordUpdated, setPasswordChangeError } = useAppState();
 
-  const passwordsValidation = useCallback(async () => {
-    try {
-      setPasswordValidationInProgress(true);
-      const user = await MovieService.getUserByName(userName);
-
-      if (user.userPassword !== oldPassword) {
-        setIsOldPasswordValid(false);
-        setOldPasswordWarningMessage("Невірний пароль.");
-      } else {
-        const newPasswordValidationResult = newPasswordValidation(
-          newPassword,
-          oldPassword
-        );
-
-        if (newPasswordValidationResult.state) {
-          await MoviesService.updateUserData(user.id, {
-            userPassword: newPassword,
-          });
-
-          setOldPassword("");
-          setNewPassword("");
-          setIsPasswordUpdated(true);
-        } else {
-          setIsNewPasswordValid(newPasswordValidationResult.state);
-          setNewPasswordWarningMessage(newPasswordValidationResult.message);
-        }
-      }
-      setPasswordValidationInProgress(false);
-    } catch {
-      setTimeout(() => {
-        setPasswordValidationInProgress(false);
-        setPasswordChangeError(true);
-      }, 200);
-    }
-  }, [
-    userName,
-    oldPassword,
+  const [changePassword] = useChangePassword(
     newPassword,
-    setPasswordValidationInProgress,
-    setPasswordChangeError,
-    setIsPasswordUpdated,
-  ]);
-
-  const [showOldPassword, setShowOldPassword] = useState(false);
-  const [showNewPassword, setShowNewPassword] = useState(false);
-  const oldPasswordRef = useRef(null);
-  const newPasswordRef = useRef(null);
+    setNewPassword,
+    setIsNewPasswordValid,
+    setNewPasswordWarningMessage,
+    oldPassword,
+    setOldPassword,
+    setIsOldPasswordValid,
+    setOldPasswordWarningMessage,
+    setChangePasswordInProgress
+  );
 
   const submitForm = useCallback(
     (e) => {
@@ -85,10 +51,10 @@ function ChangePasswordForm({
       oldPasswordRef.current.blur();
       newPasswordRef.current.blur();
 
-      passwordsValidation();
+      changePassword();
       e.preventDefault();
     },
-    [passwordsValidation, setPasswordChangeError, setIsPasswordUpdated]
+    [changePassword, setPasswordChangeError, setIsPasswordUpdated]
   );
 
   const [isFormValid, setIsFormValid] = useState(true);
@@ -99,7 +65,7 @@ function ChangePasswordForm({
   }, [isOldPasswordValid, isNewPasswordValid]);
 
   const isBtnDisabled =
-    passwordValidationInProgress ||
+    changePasswordInProgress ||
     !isFormValid ||
     oldPassword === "" ||
     newPassword === "";
@@ -124,7 +90,7 @@ function ChangePasswordForm({
         placeholder="Введіть старий пароль"
         tabIndexInput={2}
         tabIndexShowPassBtn={3}
-        disabled={passwordValidationInProgress}
+        disabled={changePasswordInProgress}
         ref={oldPasswordRef}
       />
       <PrimaryPasswordInput
@@ -140,7 +106,7 @@ function ChangePasswordForm({
         placeholder="Введіть новий пароль"
         tabIndexInput={4}
         tabIndexShowPassBtn={5}
-        disabled={passwordValidationInProgress}
+        disabled={changePasswordInProgress}
         ref={newPasswordRef}
       />
       <PrimaryButton

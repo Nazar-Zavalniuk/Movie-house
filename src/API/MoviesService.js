@@ -100,26 +100,58 @@ class MoviesService {
     return response;
   }
 
-  static async getUserByName(userName) {
-    const response = await axios.get("http://45.147.248.85/users", {
-      params: {
-        userName: userName,
-      },
-    });
-    return response.data[0];
+  static async getUserByName(username) {
+    const response = await axios.get(
+      "https://api.airtable.com/v0/appD3LqdJac0RzHa1/users",
+      {
+        headers: {
+          Authorization,
+        },
+        params: {
+          filterByFormula: `IF("${username}" = username, 1, BLANK())`,
+        },
+      }
+    );
+    return response;
   }
 
   static async addNewUser(user) {
-    const response = await axios.post("http://45.147.248.85/users", user);
-    return response.data;
+    const response = await axios.post(
+      "https://api.airtable.com/v0/appD3LqdJac0RzHa1/users",
+      {
+        records: [
+          {
+            fields: user,
+          },
+        ],
+      },
+      {
+        headers: {
+          Authorization,
+        },
+      }
+    );
+    return response;
   }
 
   static async updateUserData(userId, data) {
     const response = await axios.patch(
-      `http://45.147.248.85/users/${userId}`,
-      data
+      `https://api.airtable.com/v0/appD3LqdJac0RzHa1/users`,
+      {
+        records: [
+          {
+            id: userId,
+            fields: data,
+          },
+        ],
+      },
+      {
+        headers: {
+          Authorization,
+        },
+      }
     );
-    return response.data;
+    return response;
   }
 }
 

@@ -18,24 +18,26 @@ function LoginForm({ setVerificationError, ...props }) {
   const [passwordWarningMessage, setPasswordWarningMessage] = useState("");
 
   const [verification, setVerification] = useState(false);
-  const { setUserName } = useAppState();
+  const { setUsername } = useAppState();
   const navigate = useNavigate();
 
   const userVerification = useCallback(async () => {
     try {
       setVerification(true);
-      const user = await MoviesService.getUserByName(login);
+      const response = await MoviesService.getUserByName(login);
       setVerification(false);
+      const isUserRegistered = response.data.records.length !== 0;
 
-      if (!user) {
+      if (!isUserRegistered) {
         setIsLoginValid(false);
       } else {
+        const user = response.data.records[0]["fields"];
         const isPasswordValid = user.userPassword === password;
 
         if (isPasswordValid) {
-          setUserName(login);
+          setUsername(login);
           navigate("/homepage");
-          localStorage.setItem("userName", login);
+          localStorage.setItem("username", login);
         } else {
           setIsPasswordValid(false);
           setPasswordWarningMessage("Невірний пароль.");
@@ -52,7 +54,7 @@ function LoginForm({ setVerificationError, ...props }) {
     password,
     setVerification,
     setVerificationError,
-    setUserName,
+    setUsername,
     navigate,
   ]);
 
