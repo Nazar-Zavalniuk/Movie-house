@@ -7,6 +7,10 @@
   outline: none;
 }
 
+.html {
+  background: var(--page-bg-color);
+}
+
 .body.no-scroll {
   overflow: hidden;
 }
@@ -18,12 +22,10 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  background: var(--page-bg-color);
 }
 
 .page {
   width: 960px;
-  min-height: calc(100vh - 30px); /* Content Height - Security Padding */
   font-family: Verdana, Geneva, sans-serif;
   font-size: 12px;
   color: var(--main-static-text-color);
