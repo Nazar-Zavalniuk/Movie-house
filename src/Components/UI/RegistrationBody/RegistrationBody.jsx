@@ -5,12 +5,12 @@ import RegistrationForm from "../Forms/RegistrationForm/RegistrationForm";
 import ErrorNotifierForForm from "../Notifiers/ErrorNotifierForForm/ErrorNotifierForForm";
 
 function RegistrationBody(props) {
-  const [verificationError, setVerificationError] = useState(false);
+  const [registrationError, setRegistrationError] = useState(false);
 
   return (
     <div className="registration-body">
-      <ErrorNotifierForForm visible={verificationError} />
-      <RegistrationForm setVerificationError={setVerificationError} />
+      <ErrorNotifierForForm visible={registrationError} />
+      <RegistrationForm setRegistrationError={setRegistrationError} />
       <div className="links">
         <Link className="login-link" to="/login">
           Вхід

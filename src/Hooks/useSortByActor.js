@@ -1,18 +1,26 @@
 import { useCallback } from "react";
 import { useAppState } from "../Context/AppStateProvider/AppStateProvider";
-import { getSearchParams } from "../Utils/Sorting";
 
 function useSortByActor() {
-  const { setSearchParams, setSearchInfo } = useAppState();
+  const { dispatchSearchParams, dispatchOffsetPages, setSearchInfo } =
+    useAppState();
 
   const sortByActor = useCallback(
     (actor = "") => {
-      setSearchParams(
-        getSearchParams("year", "desc", 12, 1, ["actors_like", actor])
-      );
+      dispatchSearchParams({
+        type: "change_search_params",
+        params: {
+          pageSize: 12,
+          fields: ["title", "year", "coverImage", "id", "rating"],
+          sort: [{ field: "year", direction: "desc" }],
+          offset: null,
+          filterByFormula: `SEARCH('${actor}', {actors})`,
+        },
+      });
+      dispatchOffsetPages({ type: "reset" });
       setSearchInfo({ sortByRating: false, info: `актор - ${actor}` });
     },
-    [setSearchInfo, setSearchParams]
+    [setSearchInfo, dispatchSearchParams, dispatchOffsetPages]
   );
 
   return sortByActor;

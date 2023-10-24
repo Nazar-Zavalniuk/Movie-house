@@ -10,7 +10,7 @@ function NavBar({ ...props }) {
 
   const onChangeGenre = useCallback(
     (e) => {
-      const genre = e.target.value.toLowerCase();
+      const genre = e.target.textContent.toLowerCase();
 
       sortByGenre(genre);
       navigate("/homepage");
@@ -23,9 +23,7 @@ function NavBar({ ...props }) {
       {genres.map((genre, index) => {
         return (
           <li className="nav-bar-list-item" key={index} onClick={onChangeGenre}>
-            <option className="nav-bar-option" value={genre}>
-              {genre}
-            </option>
+            <div className="nav-bar-option">{genre}</div>
           </li>
         );
       })}

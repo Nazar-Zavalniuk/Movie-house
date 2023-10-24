@@ -2,42 +2,52 @@ import "./ListHotLinks.css";
 import { Link, useNavigate } from "react-router-dom";
 import PrimaryButton from "../Buttons/PrimaryButton/PrimaryButton";
 import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
-import { useCallback } from "react";
+import React, { useCallback } from "react";
+import { movieIds } from "../../../Data/DataToSort";
 
 function ListHotLinks(props) {
-  const { setSearchParams, setSearchInfo } = useAppState();
+  const { dispatchSearchParams, dispatchOffsetPages, setSearchInfo } =
+    useAppState();
   const navigate = useNavigate();
 
   const sortByNovelties = useCallback(() => {
-    setSearchParams({
-      _sort: "year",
-      _order: "desc",
-      _limit: 12,
-      _page: 1,
+    dispatchSearchParams({
+      type: "change_search_params",
+      params: {
+        pageSize: 12,
+        fields: ["title", "year", "coverImage", "id", "rating"],
+        sort: [{ field: "year", direction: "desc" }],
+        offset: null,
+        filterByFormula: null,
+      },
     });
-    setSearchInfo({
-      sortByRating: false,
-      info: "новинки",
-    });
+    dispatchOffsetPages({ type: "reset" });
+    setSearchInfo({ sortByRating: false, info: "новинки" });
     navigate("/homepage");
-  }, [setSearchParams, setSearchInfo, navigate]);
+  }, [dispatchSearchParams, dispatchOffsetPages, setSearchInfo, navigate]);
 
   const sortByPremiers = useCallback(() => {
-    setSearchParams({
-      _sort: "year,id",
-      _order: "desc,desc",
-      _limit: 12,
-      _page: 1,
+    dispatchSearchParams({
+      type: "change_search_params",
+      params: {
+        pageSize: 12,
+        fields: ["title", "year", "coverImage", "id", "rating"],
+        sort: [
+          { field: "year", direction: "desc" },
+          { field: "serialNumber", direction: "desc" },
+        ],
+        offset: null,
+        filterByFormula: null,
+      },
     });
-    setSearchInfo({
-      sortByRating: false,
-      info: "прем'єри",
-    });
+    dispatchOffsetPages({ type: "reset" });
+    setSearchInfo({ sortByRating: false, info: "прем'єри" });
     navigate("/homepage");
-  }, [setSearchParams, setSearchInfo, navigate]);
+  }, [dispatchSearchParams, dispatchOffsetPages, setSearchInfo, navigate]);
 
   const getRandomMovieId = useCallback(() => {
-    return Math.floor(Math.random() * 148) + 1;
+    const randomIndex = Math.floor(Math.random() * 148) + 1;
+    return movieIds[randomIndex];
   }, []);
 
   const goToRandomMovie = useCallback(() => {

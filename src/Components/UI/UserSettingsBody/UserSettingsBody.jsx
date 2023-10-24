@@ -8,16 +8,16 @@ import ChangePasswordLoader from "../Loaders/ChangePasswordLoader/ChangePassword
 import { useNavigate } from "react-router-dom";
 
 function UserSettingsBody(props) {
-  const { userName, setUserName } = useAppState();
-  const [passwordValidationInProgress, setPasswordValidationInProgress] =
+  const { username, setUsername } = useAppState();
+  const [changePasswordInProgress, setChangePasswordInProgress] =
     useState(false);
   const navigate = useNavigate();
 
   const logOut = useCallback(() => {
-    localStorage.removeItem("userName");
-    setUserName(null);
+    localStorage.removeItem("username");
+    setUsername(null);
     navigate("/homepage");
-  }, [navigate, setUserName]);
+  }, [navigate, setUsername]);
 
   return (
     <div className="user-settings-body">
@@ -28,7 +28,7 @@ function UserSettingsBody(props) {
               <div className="avatar-info">
                 <FaUser size={50} />
               </div>
-              <div className="name-info">{userName}</div>
+              <div className="name-info">{username}</div>
             </div>
             <PrimaryButton
               className="log-out-btn"
@@ -38,10 +38,10 @@ function UserSettingsBody(props) {
               Вийти
             </PrimaryButton>
           </div>
-          <ChangePasswordLoader visible={passwordValidationInProgress} />
+          <ChangePasswordLoader visible={changePasswordInProgress} />
           <ChangePasswordForm
-            passwordValidationInProgress={passwordValidationInProgress}
-            setPasswordValidationInProgress={setPasswordValidationInProgress}
+            changePasswordInProgress={changePasswordInProgress}
+            setChangePasswordInProgress={setChangePasswordInProgress}
           />
         </div>
       </div>

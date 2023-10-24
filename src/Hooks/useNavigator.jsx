@@ -32,13 +32,8 @@ function useNavigator(isFilterOptionsSet) {
     if (recommendedSeries.length === 0) fetchRecommendedSeries();
   }, []);
 
-  const [
-    fetchMainMovies,
-    mainMovies,
-    totalPages,
-    isMainMoviesLoading,
-    mainMoviesError,
-  ] = useFetchingMainMovies(MoviesService.getAllMovies, searchParams);
+  const [fetchMainMovies, mainMovies, isMainMoviesLoading, mainMoviesError] =
+    useFetchingMainMovies(MoviesService.getAllMovies, searchParams);
 
   useEffect(() => {
     if (isFilterOptionsSet) {
@@ -72,7 +67,7 @@ function useNavigator(isFilterOptionsSet) {
     setSearchInfo({ sortByRating: false, info: "навігатор" });
   }, []);
 
-  return [mainMovies, totalPages, isMainMoviesLoading, isMainMoviesEmpty];
+  return [mainMovies, isMainMoviesLoading, isMainMoviesEmpty];
 }
 
 export default useNavigator;

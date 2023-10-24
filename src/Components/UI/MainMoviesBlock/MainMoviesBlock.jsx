@@ -1,16 +1,24 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useCallback } from "react";
 import "./MainMoviesBlock.css";
 import BigMovieCard from "../Cards/BigMovieCard/BigMovieCard";
 import BigLoadingCard from "../Cards/BigLoadingCard/BigLoadingCard";
 import PageNavigationButtons from "../Buttons/PageNavigationButtons/PageNavigationButtons";
+import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 
 function MainMoviesBlock({
   movies = [],
   isMoviesLoading,
-  totalPages = 0,
   scrollParams,
   ...props
 }) {
+  const { offsetPages } = useAppState();
+  const hasValue = useCallback((value) => {
+    return value !== null;
+  }, []);
+  const isThereOffsetValue = offsetPages.some(hasValue);
+  const showPageNavigationButtons =
+    offsetPages.length > 1 && isThereOffsetValue && !isMoviesLoading;
+
   const cardsSkeletons = Array(12)
     .fill(null)
     .map((_, index) => {
@@ -26,11 +34,8 @@ function MainMoviesBlock({
       <div className="main-movies-block">
         {isMoviesLoading ? cardsSkeletons : moviesCards}
       </div>
-      {totalPages !== 1 && !isMoviesLoading && (
-        <PageNavigationButtons
-          totalPages={totalPages}
-          scrollParams={scrollParams}
-        />
+      {showPageNavigationButtons && (
+        <PageNavigationButtons scrollParams={scrollParams} />
       )}
     </Fragment>
   );

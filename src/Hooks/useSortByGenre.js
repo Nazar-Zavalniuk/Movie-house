@@ -1,18 +1,26 @@
 import { useCallback } from "react";
 import { useAppState } from "../Context/AppStateProvider/AppStateProvider";
-import { getSearchParams } from "../Utils/Sorting";
 
 function useSortByGenre() {
-  const { setSearchParams, setSearchInfo } = useAppState();
+  const { dispatchSearchParams, dispatchOffsetPages, setSearchInfo } =
+    useAppState();
 
   const sortByGenres = useCallback(
     (genre = "") => {
-      setSearchParams(
-        getSearchParams("year,id", "desc,desc", 12, 1, ["genre_like", genre])
-      );
+      dispatchSearchParams({
+        type: "change_search_params",
+        params: {
+          pageSize: 12,
+          fields: ["title", "year", "coverImage", "id", "rating"],
+          sort: [{ field: "year", direction: "desc" }],
+          offset: null,
+          filterByFormula: `SEARCH('${genre}', {genres})`,
+        },
+      });
+      dispatchOffsetPages({ type: "reset" });
       setSearchInfo({ sortByRating: false, info: `жанр - ${genre}` });
     },
-    [setSearchInfo, setSearchParams]
+    [setSearchInfo, dispatchSearchParams, dispatchOffsetPages]
   );
 
   return sortByGenres;

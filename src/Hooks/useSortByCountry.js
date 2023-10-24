@@ -1,18 +1,26 @@
 import { useCallback } from "react";
 import { useAppState } from "../Context/AppStateProvider/AppStateProvider";
-import { getSearchParams } from "../Utils/Sorting";
 
 function useSortByCountry() {
-  const { setSearchParams, setSearchInfo } = useAppState();
+  const { dispatchSearchParams, dispatchOffsetPages, setSearchInfo } =
+    useAppState();
 
   const sortByCountry = useCallback(
     (country = "") => {
-      setSearchParams(
-        getSearchParams("year", "desc", 12, 1, ["country_like", country])
-      );
+      dispatchSearchParams({
+        type: "change_search_params",
+        params: {
+          pageSize: 12,
+          fields: ["title", "year", "coverImage", "id", "rating"],
+          sort: [{ field: "year", direction: "desc" }],
+          offset: null,
+          filterByFormula: `SEARCH('${country}', {countries})`,
+        },
+      });
+      dispatchOffsetPages({ type: "reset" });
       setSearchInfo({ sortByRating: false, info: `країна - ${country}` });
     },
-    [setSearchInfo, setSearchParams]
+    [setSearchInfo, dispatchSearchParams, dispatchOffsetPages]
   );
 
   return sortByCountry;

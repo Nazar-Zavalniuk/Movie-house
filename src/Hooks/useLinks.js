@@ -1,10 +1,7 @@
 import { Link } from "react-router-dom";
 import { Fragment } from "react";
 
-function useLinks(str = "", sortFunc = () => {}) {
-  if (typeof str !== "string") return undefined;
-
-  const arrayOfStrings = str.split(", ");
+function useLinks(arrayOfStrings = [], sortFunc = () => {}) {
   const lastElementIndex = arrayOfStrings.length - 1;
 
   const sort = (e) => sortFunc(e.target.textContent);

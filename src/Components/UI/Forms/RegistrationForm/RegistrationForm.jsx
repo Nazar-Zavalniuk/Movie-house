@@ -1,18 +1,16 @@
 import React, { useState, useCallback, useEffect } from "react";
 import "./RegistrationForm.css";
-import MoviesService from "../../../../API/MoviesService";
 import RegistrationLoginInput from "../../Inputs/RegistrationLoginInput/RegistrationLoginInput";
 import {
   passwordValidation,
   loginValidation,
 } from "../../../../Utils/Validation";
 import RegistrationFormButtons from "../../Buttons/RegistrationFormButtons/RegistrationFormButtons";
-import { useAppState } from "../../../../Context/AppStateProvider/AppStateProvider";
-import { useNavigate } from "react-router-dom";
 import PrimaryOverlay from "../../PrimaryOverlay/PrimaryOverlay";
 import PrimaryPasswordInput from "../../Inputs/PrimaryPasswordInput/PrimaryPasswordInput";
+import useRegistration from "../../../../Hooks/useRegistration";
 
-function RegistrationForm({ setVerificationError, ...props }) {
+function RegistrationForm({ setRegistrationError, ...props }) {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,46 +22,15 @@ function RegistrationForm({ setVerificationError, ...props }) {
   const [humanConfirmation, setHumanConfirmation] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
 
-  const { setUserName } = useAppState();
-  const navigate = useNavigate();
-
-  const addNewUser = useCallback(
-    async (user) => {
-      await MoviesService.addNewUser(user);
-      setUserName(user.userName);
-      navigate("/homepage");
-      localStorage.setItem("userName", user.userName);
-    },
-    [setUserName, navigate]
+  const [registration, registrationInProgress] = useRegistration(
+    login,
+    password,
+    setIsLoginValid,
+    setLoginWarningMessage,
+    setRegistrationError
   );
 
-  const [verification, setVerification] = useState(false);
-  const userVerification = useCallback(async () => {
-    try {
-      setVerification(true);
-      const user = await MoviesService.getUserByName(login);
-
-      if (user) {
-        setIsLoginValid(false);
-        setLoginWarningMessage("Логін вже зайнятий іншим користувачем.");
-      } else {
-        const newUser = {
-          userName: login,
-          userPassword: password,
-        };
-
-        await addNewUser(newUser);
-      }
-      setVerification(false);
-    } catch {
-      setTimeout(() => {
-        setVerificationError(true);
-        setVerification(false);
-      }, 200);
-    }
-  }, [login, password, addNewUser, setVerificationError]);
-
-  const checkForm = useCallback(() => {
+  const validateForm = useCallback(() => {
     const loginValidationResult = loginValidation(login);
     const passwordValidationResult = passwordValidation(password);
 
@@ -80,18 +47,18 @@ function RegistrationForm({ setVerificationError, ...props }) {
   const submitForm = useCallback(
     (e) => {
       setHumanConfirmation(false);
-      setVerificationError(false);
+      setRegistrationError(false);
 
       setShowPassword(false);
 
-      const isFormValid = checkForm();
+      const isFormValid = validateForm();
       if (isFormValid) {
-        userVerification();
+        registration();
       }
 
       e.preventDefault();
     },
-    [checkForm, userVerification, setVerificationError]
+    [validateForm, registration, setRegistrationError]
   );
 
   useEffect(() => {
@@ -99,7 +66,7 @@ function RegistrationForm({ setVerificationError, ...props }) {
     setIsFormValid(isFormValid);
   }, [isLoginValid, isPasswordValid, humanConfirmation]);
 
-  const isOverlayActive = verification;
+  const isOverlayActive = registrationInProgress;
 
   return (
     <form className="registration-form" onSubmit={submitForm}>

@@ -5,12 +5,12 @@ import SideBarUserLinks from "../SideBarUserLinks/SideBarUserLinks";
 import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 
 function PrimarySideBar({ children, ...props }) {
-  const { userName } = useAppState();
+  const { username } = useAppState();
 
   return (
     <div className="side-bar">
       <div className="side-bar-links">
-        {userName !== null ? <SideBarUserLinks /> : <SidBarGuestLinks />}
+        {username !== null ? <SideBarUserLinks /> : <SidBarGuestLinks />}
       </div>
       {children}
     </div>

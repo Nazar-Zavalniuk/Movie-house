@@ -6,7 +6,8 @@ function useFetchingActors() {
   const [actors, setActors] = useState([]);
   const [fetchActors, isActorsLoading, actorsError, setActorsError] =
     useAdvancedFetching(async () => {
-      const actors = await MoviesService.getAllActors();
+      const response = await MoviesService.getAllActors();
+      const actors = response.data.records.map((record) => record.fields.actor);
       setActors(actors);
     });
 

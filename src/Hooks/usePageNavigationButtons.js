@@ -2,53 +2,49 @@ import { useAppState } from "../Context/AppStateProvider/AppStateProvider";
 import { useCallback } from "react";
 import { scroll } from "../Utils/Scroll";
 
-function usePageNavigationButtons(totalPages, scrollParams) {
-  const { searchParams, setSearchParams } = useAppState();
-  const currentPage = searchParams["_page"];
-
-  const onPageChange = useCallback(
-    (page) => {
-      setSearchParams({ ...searchParams, _page: page });
-    },
-    [setSearchParams, searchParams]
-  );
-
-  const goToPreviousPage = useCallback(() => {
-    if (currentPage > 1) {
-      onPageChange(currentPage - 1);
-      scroll(...scrollParams);
-    }
-  }, [currentPage, onPageChange, scrollParams]);
-
-  const goToNextPage = useCallback(() => {
-    if (currentPage < totalPages) {
-      onPageChange(currentPage + 1);
-      scroll(...scrollParams);
-    }
-  }, [currentPage, totalPages, onPageChange, scrollParams]);
+function usePageNavigationButtons(scrollParams) {
+  const { dispatchSearchParams, offsetPages, dispatchOffsetPages } =
+    useAppState();
 
   const goToFirstPage = useCallback(() => {
-    if (currentPage !== 1) {
-      onPageChange(1);
+    dispatchOffsetPages({ type: "reset" });
+    dispatchSearchParams({
+      type: "update_offset",
+      offset: null,
+    });
+    scroll(...scrollParams);
+  }, [scrollParams, dispatchOffsetPages, dispatchSearchParams]);
+
+  const goToPreviousPage = useCallback(() => {
+    if (offsetPages.length === 3) {
+      goToFirstPage();
+    } else {
+      const offsetPrevPage = offsetPages[offsetPages.length - 3];
+      dispatchSearchParams({
+        type: "update_offset",
+        offset: offsetPrevPage,
+      });
+      dispatchOffsetPages({ type: "delete_last_offset" });
       scroll(...scrollParams);
     }
-  }, [currentPage, onPageChange, scrollParams]);
-
-  const goToLastPage = useCallback(() => {
-    if (currentPage !== totalPages) {
-      onPageChange(totalPages);
-      scroll(...scrollParams);
-    }
-  }, [currentPage, totalPages, onPageChange, scrollParams]);
-
-  return [
-    currentPage,
-    onPageChange,
-    goToPreviousPage,
-    goToNextPage,
+  }, [
+    scrollParams,
+    dispatchSearchParams,
+    offsetPages,
     goToFirstPage,
-    goToLastPage,
-  ];
+    dispatchOffsetPages,
+  ]);
+
+  const goToNextPage = useCallback(() => {
+    const offsetNextPage = offsetPages[offsetPages.length - 1];
+    dispatchSearchParams({
+      type: "update_offset",
+      offset: offsetNextPage,
+    });
+    scroll(...scrollParams);
+  }, [scrollParams, dispatchSearchParams, offsetPages]);
+
+  return [goToPreviousPage, goToNextPage, goToFirstPage];
 }
 
 export default usePageNavigationButtons;

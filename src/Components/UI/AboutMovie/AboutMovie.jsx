@@ -14,24 +14,24 @@ function AboutMovie({ movieData, ...props }) {
   const {
     title,
     year,
-    country,
-    genre,
+    countries,
+    genres,
     time,
     description,
     coverImage,
     actors,
-    director,
+    directors,
     type,
   } = movieData;
 
   const sortByCountry = useSortByCountry();
-  const countriesLinks = useLinks(country, sortByCountry);
+  const countriesLinks = useLinks(countries, sortByCountry);
 
   const sortByGenre = useSortByGenre();
-  const genresLinks = useLinks(genre, sortByGenre);
+  const genresLinks = useLinks(genres, sortByGenre);
 
   const sortByDirector = useSortByDirector();
-  const directorsLinks = useLinks(director, sortByDirector);
+  const directorsLinks = useLinks(directors, sortByDirector);
 
   const sortByActor = useSortByActor();
   const actorsLinks = useLinks(actors, sortByActor);
@@ -77,14 +77,14 @@ function AboutMovie({ movieData, ...props }) {
         <div className="details-row">
           <div className="movie-parameter">Режисер(и)</div>
           <div className="parameter-description">
-            {directorsLinks ? directorsLinks : "інформація відсутня"}
+            {directors ? directorsLinks : "інформація відсутня"}
           </div>
         </div>
         <div className="details-row">
           <div className="movie-parameter">Актор(и)</div>
           <div className="parameter-description">
             <RollWrapper className="actors">
-              {actorsLinks ? actorsLinks : "інформація відсутня"}
+              {actors ? actorsLinks : "інформація відсутня"}
             </RollWrapper>
           </div>
         </div>

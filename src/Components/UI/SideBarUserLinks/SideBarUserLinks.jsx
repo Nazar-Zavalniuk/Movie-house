@@ -5,14 +5,14 @@ import { FaUser } from "react-icons/fa";
 import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 
 function SideBarUserLinks(props) {
-  const { userName } = useAppState();
+  const { username } = useAppState();
 
   return (
     <div className="user-links">
       <PrimaryLinkAsButton className="user-info" link="/user-settings">
         <FaUser className="user-icon" size={30} />
-        <div className="user-name" title={userName}>
-          {userName}
+        <div className="user-name" title={username}>
+          {username}
         </div>
       </PrimaryLinkAsButton>
       <PrimaryLinkAsButton className="faq-user" link="/temporary-page">

@@ -44,13 +44,8 @@ function useHomepage() {
     }
   }, [numReboots]);
 
-  const [
-    fetchMainMovies,
-    mainMovies,
-    totalPages,
-    isMainMoviesLoading,
-    mainMoviesError,
-  ] = useFetchingMainMovies(MoviesService.getAllMovies, searchParams);
+  const [fetchMainMovies, mainMovies, isMainMoviesLoading, mainMoviesError] =
+    useFetchingMainMovies(MoviesService.getAllMovies, searchParams);
 
   useEffect(() => {
     fetchMainMovies();
@@ -96,7 +91,6 @@ function useHomepage() {
 
   return [
     mainMovies,
-    totalPages,
     isMainMoviesLoading,
     isSortByRecommended,
     isMainMoviesEmpty,
