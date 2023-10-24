@@ -8,10 +8,11 @@
 }
 
 .temporary-page .message {
+  min-height: 780px;
+  box-sizing: border-box;
   margin: 0 6px;
   padding: 60px 30px;
   font-size: 32px;
   text-align: center;
-  flex: 1;
   background: #181818;
 }

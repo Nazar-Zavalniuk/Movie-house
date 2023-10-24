@@ -8,5 +8,6 @@
 }
 
 .registration-body {
-  flex: 1;
+  min-height: 780px;
+  box-sizing: border-box;
 }
