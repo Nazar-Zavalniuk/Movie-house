@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import "./MoviePage.css";
 import Header from "../../Components/UI/Header/Header";

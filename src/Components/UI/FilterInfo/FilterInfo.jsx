@@ -52,6 +52,7 @@ function FilterInfo({ ...props }) {
       setPrevSortParams(null);
       setPrevSearchInfo(null);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     prevSearchInfo,
     prevSortParams,

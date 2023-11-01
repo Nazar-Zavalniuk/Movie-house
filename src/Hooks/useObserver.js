@@ -14,6 +14,7 @@ function useObserver(ref, canLoad, isLoading, options, callback) {
     };
     observer.current = new IntersectionObserver(cb, options);
     observer.current.observe(ref.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useAppState } from "../Context/AppStateProvider/AppStateProvider";
 import { useMoviesState } from "../Context/MoviesStateProvider/MoviesStateProvider";
 import { useEffect, useLayoutEffect } from "react";

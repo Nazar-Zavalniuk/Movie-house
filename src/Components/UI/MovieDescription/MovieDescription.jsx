@@ -1,13 +1,13 @@
-import React, { Fragment } from "react";
+import React from "react";
 import "./MovieDescription.css";
-import { BsFillStarFill } from "react-icons/bs";
-import { FaRegClock } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
+// import { BsFillStarFill } from "react-icons/bs";
+// import { FaRegClock } from "react-icons/fa";
+// import { Link } from "react-router-dom";
+// import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
 
 function MovieDescription({ children, MovieType, ...props }) {
-  const { userName } = useAppState();
-  const isAuth = userName !== null;
+  // const { userName } = useAppState();
+  // const isAuth = userName !== null;
   let headerText;
 
   if (MovieType === "tv-series") headerText = "Про серіал";
