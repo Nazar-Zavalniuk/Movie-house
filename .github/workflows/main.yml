@@ -19,6 +19,8 @@ jobs:
           run: npm install
         - name: Build the app
           run: npm run build
+        - name: Configure git to trust the workspace despite the different owner
+          run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
         - name: Deploy
           uses: JamesIves/github-pages-deploy-action@v4.4.3
           with:
