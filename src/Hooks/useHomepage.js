@@ -30,16 +30,16 @@ function useHomepage() {
   } = useMoviesState();
 
   useEffect(() => {
-    if (actors.length === 0 || numReboots !== 0) {
+    if (actors.length === 0) {
       fetchActors();
     }
-    if (topMovies.length === 0 || numReboots !== 0) {
+    if (topMovies.length === 0) {
       fetchTopMovies();
     }
-    if (recommendedMovies.length === 0 || numReboots !== 0) {
+    if (recommendedMovies.length === 0) {
       fetchRecommendedMovies();
     }
-    if (recommendedSeries.length === 0 || numReboots !== 0) {
+    if (recommendedSeries.length === 0) {
       fetchRecommendedSeries();
     }
   }, [numReboots]);
@@ -73,13 +73,10 @@ function useHomepage() {
 
   useEffect(() => {
     const loadingError =
-      actorsError.errorState ||
-      topMoviesError.errorState ||
-      mainMoviesError.errorState;
+      topMoviesError.errorState || mainMoviesError.errorState;
 
     if (loadingError) {
       const appError = [
-        { ...actorsError, from: "Homepage - actors" },
         { ...topMoviesError, from: "Homepage - topMovies" },
         { ...mainMoviesError, from: "Homepage - mainMovies" },
       ];

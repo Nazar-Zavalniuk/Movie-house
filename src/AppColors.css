@@ -108,6 +108,8 @@
   --first-color-loader: #0000;
   --second-color-loader: #eeeeee;
   --third-color-loader: #000;
+  --gradient-loader: radial-gradient(circle closest-side, #999 90%, #0000) 0 0/33%
+    100% space;
 
   /* Overlay */
   --overlay-bg-color: rgba(0, 0, 0, 0.1);
@@ -128,4 +130,8 @@
 
   /* Avatar */
   --avatar-border-color: #353535;
+
+  /* Options */
+  --bg-selected-option: rgba(0, 89, 255, 0.5);
+  --bg-highlighted-option: rgba(0, 89, 255, 0.7);
 }

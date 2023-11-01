@@ -14,7 +14,7 @@ function useSortByGenre() {
           fields: ["title", "year", "coverImage", "id", "rating"],
           sort: [{ field: "year", direction: "desc" }],
           offset: null,
-          filterByFormula: `SEARCH('${genre}', {genres})`,
+          filterByFormula: `SEARCH("${genre}", {genres})`,
         },
       });
       dispatchOffsetPages({ type: "reset" });

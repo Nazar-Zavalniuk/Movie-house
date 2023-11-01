@@ -1,5 +1,4 @@
 import React, {
-  useLayoutEffect,
   useState,
   createContext,
   useContext,
@@ -33,8 +32,9 @@ export function AppStateProvider({ children, ...props }) {
 
   const [searchQueryValue, setSearchQueryValue] = useState("");
 
+  const [offsetActors, setOffsetActors] = useState(null);
   const [fetchActors, actors, isActorsLoading, actorsError, setActorsError] =
-    useFetchingActors();
+    useFetchingActors(offsetActors, setOffsetActors);
 
   const clearActorsErrors = useCallback(() => {
     setActorsError({ errorState: false, errorMessage: "" });
@@ -63,6 +63,8 @@ export function AppStateProvider({ children, ...props }) {
         actors,
         isActorsLoading,
         actorsError,
+        offsetActors,
+        setOffsetActors,
         showAuthRatingModal,
         setShowAuthRatingModal,
         username,

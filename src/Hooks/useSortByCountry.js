@@ -14,13 +14,13 @@ function useSortByCountry() {
           fields: ["title", "year", "coverImage", "id", "rating"],
           sort: [{ field: "year", direction: "desc" }],
           offset: null,
-          filterByFormula: `SEARCH('${country}', {countries})`,
+          filterByFormula: `SEARCH("${country}", {countries})`,
         },
       });
       dispatchOffsetPages({ type: "reset" });
       setSearchInfo({ sortByRating: false, info: `країна - ${country}` });
     },
-    [setSearchInfo, dispatchSearchParams, dispatchOffsetPages]
+    [dispatchSearchParams, dispatchOffsetPages, setSearchInfo]
   );
 
   return sortByCountry;

@@ -14,13 +14,13 @@ function useSortByDirector() {
           fields: ["title", "year", "coverImage", "id", "rating"],
           sort: [{ field: "year", direction: "desc" }],
           offset: null,
-          filterByFormula: `SEARCH('${director}', {directors})`,
+          filterByFormula: `SEARCH("${director}", {directors})`,
         },
       });
       dispatchOffsetPages({ type: "reset" });
       setSearchInfo({ sortByRating: false, info: `режисер - ${director}` });
     },
-    [setSearchInfo, dispatchSearchParams, dispatchOffsetPages]
+    [dispatchSearchParams, dispatchOffsetPages, setSearchInfo]
   );
 
   return sortByDirector;

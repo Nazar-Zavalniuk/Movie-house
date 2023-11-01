@@ -2,10 +2,11 @@ function generateYearsArray() {
   const lastYear = 1940;
   const startYear = new Date().getFullYear();
 
-  return Array.from(
+  const yearsArray = Array.from(
     { length: startYear - lastYear + 1 },
     (_, i) => startYear - i
   );
+  return yearsArray.map((year) => String(year));
 }
 
 export const years = generateYearsArray();

@@ -3,12 +3,19 @@ import "./MultiFilter.css";
 import PrimaryButton from "../Buttons/PrimaryButton/PrimaryButton";
 import { directors, countries, years, genres } from "../../../Data/DataToSort";
 import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
-import Selector from "../Selector/Selector";
+import Select from "../Select/Select";
 import { createMultiFilterFormula } from "../../../Utils/CreateMultiFilterFormula";
 
 function MultiFilter({ setIsFilterOptionsSet, setIsFirstPageLoad, ...props }) {
-  const { actors, dispatchSearchParams, dispatchOffsetPages, setSearchInfo } =
-    useAppState();
+  const {
+    actors,
+    fetchActors,
+    isActorsLoading,
+    offsetActors,
+    dispatchSearchParams,
+    dispatchOffsetPages,
+    setSearchInfo,
+  } = useAppState();
 
   const [genre, setGenre] = useState("");
   const [actor, setActor] = useState("");
@@ -73,46 +80,44 @@ function MultiFilter({ setIsFilterOptionsSet, setIsFirstPageLoad, ...props }) {
 
   return (
     <form className="multi-filter" onSubmit={search}>
-      <Selector
+      <Select
         className="genre"
+        label="Жанр"
         data={genres}
-        currentOption={genre}
-        setCurrentOption={setGenre}
-      >
-        Жанр
-      </Selector>
-      <Selector
+        isSelectForMultiSelector={true}
+        onChange={setGenre}
+      />
+      <Select
         className="actor"
+        label="Актор"
         data={actors}
-        currentOption={actor}
-        setCurrentOption={setActor}
-      >
-        Актор
-      </Selector>
-      <Selector
+        fetchFunc={fetchActors}
+        isLoading={isActorsLoading}
+        offset={offsetActors}
+        isSelectForMultiSelector={true}
+        onChange={setActor}
+      />
+      <Select
         className="director"
+        label="Режисер"
         data={directors}
-        currentOption={director}
-        setCurrentOption={setDirector}
-      >
-        Режисер
-      </Selector>
-      <Selector
+        isSelectForMultiSelector={true}
+        onChange={setDirector}
+      />
+      <Select
         className="country"
+        label="Країна"
         data={countries}
-        currentOption={country}
-        setCurrentOption={setCountry}
-      >
-        Країна
-      </Selector>
-      <Selector
+        isSelectForMultiSelector={true}
+        onChange={setCountry}
+      />
+      <Select
         className="year"
+        label="Рік"
         data={years}
-        currentOption={year}
-        setCurrentOption={setYear}
-      >
-        Рік
-      </Selector>
+        isSelectForMultiSelector={true}
+        onChange={setYear}
+      />
       <PrimaryButton className="search-by-categories">
         Знайти фільм
       </PrimaryButton>

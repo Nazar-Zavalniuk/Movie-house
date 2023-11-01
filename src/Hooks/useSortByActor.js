@@ -14,13 +14,13 @@ function useSortByActor() {
           fields: ["title", "year", "coverImage", "id", "rating"],
           sort: [{ field: "year", direction: "desc" }],
           offset: null,
-          filterByFormula: `SEARCH('${actor}', {actors})`,
+          filterByFormula: `SEARCH("${actor}", {actors})`,
         },
       });
       dispatchOffsetPages({ type: "reset" });
       setSearchInfo({ sortByRating: false, info: `актор - ${actor}` });
     },
-    [setSearchInfo, dispatchSearchParams, dispatchOffsetPages]
+    [dispatchSearchParams, dispatchOffsetPages, setSearchInfo]
   );
 
   return sortByActor;

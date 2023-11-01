@@ -1,0 +1,21 @@
+.loader-for-options {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  column-gap: 2px;
+}
+
+.loader-for-options .loader-animation {
+  width: 12px;
+  height: 2px;
+  margin-bottom: 3px;
+  background: var(--gradient-loader);
+  clip-path: inset(0 100% 0 0);
+  animation: d1 1s steps(4) infinite;
+}
+
+@keyframes d1 {
+  to {
+    clip-path: inset(0 -34% 0 0);
+  }
+}

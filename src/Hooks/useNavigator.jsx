@@ -47,13 +47,10 @@ function useNavigator(isFilterOptionsSet) {
 
   useEffect(() => {
     const loadingError =
-      actorsError.errorState ||
-      topMoviesError.errorState ||
-      mainMoviesError.errorState;
+      topMoviesError.errorState || mainMoviesError.errorState;
 
     if (loadingError) {
       const appError = [
-        { ...actorsError, from: "Navigator - actors" },
         { ...topMoviesError, from: "Navigator - topMovies" },
         { ...mainMoviesError, from: "Navigator - mainMovies" },
       ];

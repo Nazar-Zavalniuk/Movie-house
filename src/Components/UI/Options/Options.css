@@ -1,0 +1,35 @@
+.options {
+  padding: 0;
+  width: 100%;
+  max-height: 300px;
+  display: none;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  list-style: none;
+  text-align: left;
+  cursor: pointer;
+  background: inherit;
+  color: inherit;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  z-index: 3;
+}
+
+.options.show {
+  display: block;
+}
+
+.options .option {
+  padding: 3px 3px 3px 5px;
+}
+
+.options .option.selected {
+  background: var(--bg-selected-option);
+  color: var(--fourth-static-text-color);
+}
+
+.options .option.highlighted {
+  background: var(--bg-highlighted-option);
+  color: var(--third-hover-text-color);
+}

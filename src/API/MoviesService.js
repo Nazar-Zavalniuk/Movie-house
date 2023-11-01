@@ -71,7 +71,7 @@ class MoviesService {
     return response;
   }
 
-  static async getAllActors() {
+  static async getAllActors(offset) {
     const response = await axios.get(
       "https://api.airtable.com/v0/appD3LqdJac0RzHa1/actors",
       {
@@ -80,6 +80,7 @@ class MoviesService {
         },
         params: {
           sort: [{ field: "actor", direction: "asc" }],
+          offset,
         },
       }
     );

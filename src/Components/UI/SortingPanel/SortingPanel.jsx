@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useCallback } from "react";
 import "./SortingPanel.css";
-import Filter from "../Filter/Filter";
 import FilterInfo from "../FilterInfo/FilterInfo";
 import { countries, directors, years } from "../../../Data/DataToSort";
 import { useAppState } from "../../../Context/AppStateProvider/AppStateProvider";
@@ -8,46 +7,80 @@ import useSortByYear from "../../../Hooks/useSortByYear";
 import useSortByCountry from "../../../Hooks/useSortByCountry";
 import useSortByDirector from "../../../Hooks/useSortByDirector";
 import useSortByActor from "../../../Hooks/useSortByActor";
+import Select from "../Select/Select";
+import useSortByDefault from "../../../Hooks/useSortByDefault";
 
 function SortingPanel({ ...props }) {
-  const { actors } = useAppState();
+  const { actors, fetchActors, isActorsLoading, offsetActors } = useAppState();
 
   const sortByYear = useSortByYear();
   const sortByCountry = useSortByCountry();
   const sortByDirector = useSortByDirector();
   const sortByActor = useSortByActor();
+  const sortByDefault = useSortByDefault();
+
+  const onChangeActor = useCallback(
+    (actor) => {
+      if (actor === "") sortByDefault();
+      else sortByActor(actor);
+    },
+    [sortByActor, sortByDefault]
+  );
+
+  const onChangeYear = useCallback(
+    (year) => {
+      if (year === "") sortByDefault();
+      else sortByYear(year);
+    },
+    [sortByDefault, sortByYear]
+  );
+
+  const onChangeCountry = useCallback(
+    (country) => {
+      if (country === "") sortByDefault();
+      else sortByCountry(country);
+    },
+    [sortByCountry, sortByDefault]
+  );
+
+  const onChangeDirector = useCallback(
+    (director) => {
+      if (director === "") sortByDefault();
+      else sortByDirector(director);
+    },
+    [sortByDefault, sortByDirector]
+  );
 
   return (
     <div className="sorting-panel">
       <div className="filter-panel">
-        <Filter
+        <Select
           className="actor-filter"
-          filterData={actors}
-          sortByOption={sortByActor}
-        >
-          Актор
-        </Filter>
-        <Filter
+          label="Актор"
+          data={actors}
+          fetchFunc={fetchActors}
+          isLoading={isActorsLoading}
+          offset={offsetActors}
+          onChange={onChangeActor}
+        />
+        <Select
           className="director-filter"
-          filterData={directors}
-          sortByOption={sortByDirector}
-        >
-          Режисер
-        </Filter>
-        <Filter
+          label="Режисер"
+          data={directors}
+          onChange={onChangeDirector}
+        />
+        <Select
           className="country-filter"
-          filterData={countries}
-          sortByOption={sortByCountry}
-        >
-          Країна
-        </Filter>
-        <Filter
+          label="Країна"
+          data={countries}
+          onChange={onChangeCountry}
+        />
+        <Select
           className="year-filter"
-          filterData={years}
-          sortByOption={sortByYear}
-        >
-          Рік
-        </Filter>
+          label="Рік"
+          data={years}
+          onChange={onChangeYear}
+        />
       </div>
       <FilterInfo />
     </div>

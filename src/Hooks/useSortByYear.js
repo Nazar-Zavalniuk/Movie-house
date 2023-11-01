@@ -6,7 +6,7 @@ function useSortByYear() {
     useAppState();
 
   const sortByYear = useCallback(
-    (year = 0) => {
+    (year = "") => {
       dispatchSearchParams({
         type: "change_search_params",
         params: {
@@ -20,7 +20,7 @@ function useSortByYear() {
       dispatchOffsetPages({ type: "reset" });
       setSearchInfo({ sortByRating: false, info: `рік - ${year}` });
     },
-    [setSearchInfo, dispatchSearchParams, dispatchOffsetPages]
+    [dispatchSearchParams, dispatchOffsetPages, setSearchInfo]
   );
 
   return sortByYear;
