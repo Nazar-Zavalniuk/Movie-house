@@ -1,12 +1,11 @@
 import React from "react";
 import "./MovieBlock.css";
 import { BsPlayCircle } from "react-icons/bs";
-import { useLocation } from "react-router-dom";
 import CopyButton from "../Buttons/CopyButton/CopyButton";
 
 function MovieBlock({ movieData, ...props }) {
   const { title } = movieData;
-  const movieLink = "https//movie-house" + useLocation().pathname;
+  const movieLink = window.location.href;
 
   return (
     <div className="movie-block">
