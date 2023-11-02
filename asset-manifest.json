@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/Movie-house/static/css/main.9a2a7612.css",
-    "main.js": "/Movie-house/static/js/main.55f4fe42.js",
-    "static/media/ukrainian_emblem.svg": "/Movie-house/static/media/ukrainian_emblem.456cf381a5021b26bd06a75a16fcdd67.svg",
-    "index.html": "/Movie-house/index.html",
-    "main.9a2a7612.css.map": "/Movie-house/static/css/main.9a2a7612.css.map",
-    "main.55f4fe42.js.map": "/Movie-house/static/js/main.55f4fe42.js.map"
+    "main.css": "./static/css/main.9a2a7612.css",
+    "main.js": "./static/js/main.a44c67cd.js",
+    "static/media/ukrainian_emblem.svg": "./static/media/ukrainian_emblem.456cf381a5021b26bd06a75a16fcdd67.svg",
+    "index.html": "./index.html",
+    "main.9a2a7612.css.map": "./static/css/main.9a2a7612.css.map",
+    "main.a44c67cd.js.map": "./static/js/main.a44c67cd.js.map"
   },
   "entrypoints": [
     "static/css/main.9a2a7612.css",
-    "static/js/main.55f4fe42.js"
+    "static/js/main.a44c67cd.js"
   ]
 }
