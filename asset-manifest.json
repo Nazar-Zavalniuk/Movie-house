@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "./static/css/main.9a2a7612.css",
-    "main.js": "./static/js/main.a44c67cd.js",
+    "main.js": "./static/js/main.8fe708d6.js",
     "static/media/ukrainian_emblem.svg": "./static/media/ukrainian_emblem.456cf381a5021b26bd06a75a16fcdd67.svg",
     "index.html": "./index.html",
     "main.9a2a7612.css.map": "./static/css/main.9a2a7612.css.map",
-    "main.a44c67cd.js.map": "./static/js/main.a44c67cd.js.map"
+    "main.8fe708d6.js.map": "./static/js/main.8fe708d6.js.map"
   },
   "entrypoints": [
     "static/css/main.9a2a7612.css",
-    "static/js/main.a44c67cd.js"
+    "static/js/main.8fe708d6.js"
   ]
 }
