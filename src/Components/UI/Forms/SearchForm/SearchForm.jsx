@@ -41,11 +41,20 @@ function SearchForm(props) {
         },
       });
       dispatchOffsetPages({ type: "reset" });
-      setSearchInfo({
-        sortByRating: false,
-        info: `результати пошуку - "${value}"`,
-      });
-      setSearchQueryValue(value);
+
+      if (value !== "Введіть назву фільму...") {
+        setSearchInfo({
+          sortByRating: false,
+          info: `результати пошуку - "${value}"`,
+        });
+        setSearchQueryValue(value);
+      } else {
+        setSearchInfo({
+          sortByRating: false,
+          info: `результати пошуку - ""`,
+        });
+        setSearchQueryValue("");
+      }
       setValue("Введіть назву фільму...");
       inputRef.current.blur();
       navigate("/homepage");
