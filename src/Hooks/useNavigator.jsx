@@ -63,6 +63,9 @@ function useNavigator(isFilterOptionsSet) {
 
   useLayoutEffect(() => {
     setSearchInfo({ sortByRating: false, info: "навігатор" });
+    return () => {
+      setSearchInfo({ sortByRating: false, info: "нове на сайті" });
+    };
   }, []);
 
   return [mainMovies, isMainMoviesLoading, isMainMoviesEmpty];
